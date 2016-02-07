@@ -1,0 +1,168 @@
+<chapter>
+   <title>
+      Nova poruka
+   </title>
+   <summary>
+      Ovom opcijom pokrećete SquirrelMail za pisanje i slanje pošte
+      na e-mail koji vas interesuje.
+   </summary>
+   <description>
+      <p>
+      Pri izabiranju Nove Poruke s menija, biće vam otvorena nova stranica.
+      Na njoj ćete naći nekoliko polja i par dugmića. U zavisnosti od toga kako ste
+      stigli do ove strane neka od polja mogu već biti popunjena.
+            </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Od
+   </title>
+   <description>
+      <p>Polje <B>Od:</B> će biti ispisano jedino ako ste uključili višestruke identitete
+      (kroz Opcije, Lične Informacije). Ukoliko ste definisali više identiteta ovde možete
+      izabrati koji identitet ćete slati pri slanju pošte. Na primer koje će se ime i email adresa
+      pojaviti kod primaoca u "Od:" polju vaše poruke.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Prima
+   </title>
+   <description>
+      <p>
+      Sledeće je <B>Prima:</B> polje. U ovo polje bi trebalo da unesete
+      adresu osobe ili osoba kojima šaljete email poruku. Možete uneti koliko god adresa
+      želite tako što ćete ih razdvojiti zapetom. Možete i pritisnuti na dugmence
+      "Adrese" da biste popunili ovo polje. Ne brinite ukoliko se tada ne prikaže cela 
+      email adresa u polju. Polje na ekranu je fiksne dužine, ali će sve što upišete u 
+      njega biti iskorišćeno. 
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kopija
+   </title>
+   <description>
+      <p>
+      Sledeće polje je <B>Kopija:</B>.  Ukoliko nekome želite da pošaljete kopiju 
+      poruke koju ste na pisali ovo je mesto u koje ćete upisati primaočevu adresu. 
+      Možete i u ovom polju imati koliko god želite adresa. Jedino će osobe kojima
+      je poruka namenjena stajati u polju Prima: a ostale osobe kojima to može biti
+      od čisto informativnog značaja će stajati u poljima Kopija: i Bcc:.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      BCC
+   </title>
+   <description>
+      <p>
+      BCC je skraćenica za englesko <B>B</B>lind <B>C</B>arbon <B>C</B>opy.
+      U prevodu bi značilo "slepa kopija". U ovo polje napišite adrese za 
+      koje primaoci iz liste Prima: i Kopija: neće znati, jer im se neće 
+      prikazati adresa(e) koja se nalazi u ovom polju. 
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Naslov
+   </title>
+   <description>
+      <p>
+      Ovo je neka vrsta naslova poruke i u ovo polje upišite nešto što  
+      će približnije objasniti ovu poruku primaocu kad je bude dobio u svoj mailbox.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Adrese
+   </title>
+   <description>
+      <p>
+      Ovo dugmence će otvoriti adresar posle kog je prikazano polje za pretraživanje.
+      Nešto mora biti unešeno u ovo polje kako bi se dobio rezultat.
+      Ako su vam neophodne sve adrese iz adresara, kliknite na Prikaži Sve.
+      Adresar ima toliko posebnih funkcinalnosti da ima zasebno poglavlje
+      u okviru pomoći. Više detaljnijih informacija možete naći u sekciji "Adrese"
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Snimi Draft 
+      </title>
+   <description>
+      <p>
+      Ako ste pisali poruku, ali iz nekog razloga ne želite još da je pošaljete
+      možete upotrebiti ovo dugme da biste snimili poruku u direktorijum Drafts.
+      Ukoliko kasnije želite da završite poruku i pošaljete je, idite u Drafts direktorijum
+      otvorite poruku, i bićete vraćeni u interfejs za pisanje Nove poruke, s vašom porukom
+      već popunjenom dokle ste je snimili.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Prioritet
+   </title>
+   <description>
+      <p>
+      Ukoliko je uključena ova opcija od strane administratora, možete
+      koristiti padajući meni "Prioritet:". Ovde možete izabrati, zamislite, 
+      prioritet poruke. Poruka visokog prioriteta će biti drugačije prikazana kod 
+      primaoca u njegovom mail programu. Napominjemo da preterana upotreba ove
+      opcije poništava njenu primarnu funkcionalnost.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Telo Poruke
+   </title>
+   <description>
+      <p>
+      Veliki prazni kvadrat služi za pisanje vaše poruke i u njega možete upisati
+      šta god želite. Snimljene poruke će se takođe ovde pokazati. Znači, ovo je
+      polje u koje pišete vašu poruku.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Zakači
+   </title>
+   <description>
+      <p>
+      Nalazi se na dnu strane za sastavljanje nove poruke, i dozvoljava vam
+      da prikačite neku datoteku uz vaš email. Datoteka koju šaljete mora
+      biti na <I>vašem</I> računaru ili mrežnom disku. Postoji i dugme Browse: 
+      koje služi da pronađete datoteku kroz vaše direktorijume i označite fajl 
+      koji želite da pošaljete. Naravno, možete ukucati putanju direktno u  
+      Zakači polje ukoliko je znate. Jednostavno potom kliknite na dugme Dodaj
+      i vaša datoteka će biti poslata na server i prikazaće se ispod poruke.
+      
+      </p>
+      <p>
+      Kada je bar jedna datoteka zakačena pojaviće se još jedno dugme. Brisanje
+      jedne ili više datoteka vršite tako što izaberete datoteku(e) koje želite
+      da obrišete i pritiskanjem dugmeta za brisanje. (Izbriši dodatak)
+      
+      <p>
+   </description>
+</section>

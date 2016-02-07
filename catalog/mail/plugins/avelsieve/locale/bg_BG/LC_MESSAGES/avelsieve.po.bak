@@ -1,0 +1,827 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avelsieve\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-11-09 17:09+0200\n"
+"PO-Revision-Date: 2006-01-11 17:50+0200\n"
+"Last-Translator: Ognyan Kulev\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "You have to define at least one header match text."
+msgstr "Трябва да определите поне един съвпадащ текст за хедър."
+
+msgid "Add New Rule"
+msgstr "Добавяне на ново правило"
+
+msgid "New Rule Wizard - Step"
+msgstr "Помощник за ново правило - стъпка"
+
+msgid "of"
+msgstr "от"
+
+msgid "Rule Type"
+msgstr "Вид на правило"
+
+msgid "Condition"
+msgstr "Условие"
+
+msgid "Action"
+msgstr "Действие"
+
+msgid "Confirmation"
+msgstr "Потвърждение"
+
+msgid ""
+"<p>You have chosen to keep every mail. This is the default action anyway, so "
+"you might want to start over with a rule that makes more sense. Select &quot;"
+"finished&quot; to save this rule nonetheless.</p>"
+msgstr "<p>Избрахте да пазите всяко писмо. Това е подразбиращото се действие, така че може да искате да започнете с правило, което има повече смисъл. Изберете &#8222;Край&#8220;, ако искате все пак да запишете правилото."
+
+msgid ""
+"Please use the buttons on the bottom instead of your browser's reload, back "
+"and forward buttons, to build a rule."
+msgstr "Моля, за създаване на правило използвайте бутоните в края на страницата вместо бутоните за презареждане, назад и напред на браузъра."
+
+msgid "Add SPAM Rule"
+msgstr "Добавяне на правило за СПАМ"
+
+msgid "Configure Anti-SPAM Protection"
+msgstr "Настройване на защита срещу СПАМ"
+
+msgid ""
+"All incoming mail is checked for unsolicited commercial content (SPAM) and "
+"marked accordingly. This special rule allows you to configure what to do "
+"with such messages once they arrive to your Inbox."
+msgstr "Всичката входяща поща се проверява за нежелано търговско съдържание (СПАМ) и съответно се отбелязва. Това специално правило позволява да се настройва какво точно да се прави с такива писма, когато пристигнат в пощенската кутия."
+
+#, php-format
+msgid ""
+"Select %s to add the predefined rule, or select the advanced SPAM filter to "
+"customize the rule."
+msgstr "Изберете %s за добавяне на предварително определено правило или изберете разширен филтър за СПАМ, за да персонализирате правилото."
+
+msgid "Add Spam Rule"
+msgstr "Добавяне на правило за СПАМ"
+
+msgid "Advanced Spam Filter..."
+msgstr "Разширен филтър за СПАМ"
+
+msgid "Target Score"
+msgstr "Целева оценка"
+
+#, php-format
+msgid ""
+"Messages with SPAM-Score higher than the target value, the maximum value "
+"being %s, will be considered SPAM."
+msgstr "Писма с оценка, надвишаваща целевата, като максималната стойност е %s, ще бъдат считани за СПАМ."
+
+msgid "SPAM Lists to check against"
+msgstr "Списъци за СПАМ, които да се проверяват"
+
+msgid "Whitelist"
+msgstr "Бели списъци"
+
+msgid ""
+"Messages that match any of these header rules will never end up in Junk "
+"Folders or regarded as SPAM."
+msgstr "Писмата, които съвпадат с кое да е от тези правила на хедъри, никога няма да попадат в папката Junk или да бъдат считани за СПАМ."
+
+msgid "More..."
+msgstr "Още..."
+
+msgid "STOP"
+msgstr "Спиране"
+
+msgid "If this rule matches, do not check any rules after it."
+msgstr "Ако това правило съвпада, да не се проверяват последващите правила."
+
+msgid "Could not get SIEVE script from your IMAP server"
+msgstr "Не може да се вземе SIEVE скрипт от Вашия IMAP сървър"
+
+msgid "(Probably the script is size null)."
+msgstr "(Вероятно големината на скрипта е нула.)"
+
+msgid "Please contact your administrator."
+msgstr "Моля, свържете се с Вашия администратор."
+
+msgid "Message Filters"
+msgstr "Филтри за писма"
+
+msgid ""
+"Server-Side mail filtering enables you to add criteria in order to "
+"automatically forward, delete or place a given message into a folder."
+msgstr "Сървърското филтриране на поща ви позволява да добавите критерии за автоматично препращане, изтриване или поставяне на писма в папки."
+
+msgid "Filters"
+msgstr "Филтри"
+
+msgid "Current Mail Filtering Rules"
+msgstr "Текущи правила за филтриране на поща"
+
+msgid "No Filtering Rules Defined Yet"
+msgstr "Все още не са определени правила за филтриране"
+
+msgid "Could not set active script on your IMAP server"
+msgstr "Не можа да се зададе активен скрипт във Вашия IMAP сървър"
+
+msgid "AND (Every item must match)"
+msgstr "И (Всички елементи трябва да съвпадат)"
+
+msgid "OR (Either item will match)"
+msgstr "ИЛИ (Кой да е елемент трябва да съвпада)"
+
+msgid "Rule"
+msgstr "Правило"
+
+msgid "Anti-SPAM"
+msgstr "Срещу СПАМ"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid ""
+"Perform an action depending on email addresses appearing in message headers."
+msgstr "Извършване на действие в зависимост пощенските адреси в хедърите."
+
+msgid "Header"
+msgstr "Хедър"
+
+msgid ""
+"Perform an action on messages matching a specified header (From, To etc.)."
+msgstr "Извършване на действие върху писмо, което съвпада с определен хедър (От, До и т.н.)."
+
+msgid "Envelope"
+msgstr "Плик"
+
+msgid ""
+"Perform an action on messages matching a specified envelope header (Envelope "
+"FROM, TO)."
+msgstr "Извършване на действие върху писмо, което съвпада с определен хедър на плик (От и До на плик)."
+
+msgid "Size"
+msgstr "Големина"
+
+msgid "Perform an action on messages depending on their size."
+msgstr "Извършване на действие върху писмо в зависимост от неговата големина."
+
+msgid "Body"
+msgstr "Текст"
+
+msgid "Perform an action on messages depending on their content (body text)."
+msgstr "Извършване на действие върху писмо в зависимост от неговото съдържание (текст в тялото)"
+
+msgid "All"
+msgstr "Всички"
+
+msgid "Perform an action on <strong>all</strong> incoming messages."
+msgstr "Извършване на действие върху <strong>всички</strong> входящи писма."
+
+msgid "contains"
+msgstr "съдържа"
+
+msgid "does not contain"
+msgstr "не съдържа"
+
+msgid "is"
+msgstr "е"
+
+msgid "is not"
+msgstr "не е"
+
+msgid "matches"
+msgstr "съвпада с"
+
+msgid "wildcard"
+msgstr "wildcard"
+
+msgid "does not match"
+msgstr "не съвпада"
+
+msgid "regexp"
+msgstr "рег. израз"
+
+msgid "is greater than"
+msgstr "е по-голяма от"
+
+msgid "is greater or equal to"
+msgstr "е по-голяма или равна на"
+
+msgid "is lower than"
+msgstr "е по-малка от"
+
+msgid "is lower or equal to"
+msgstr "е по-малка или равна на"
+
+msgid "is equal to"
+msgstr "е равна на"
+
+msgid "is not equal to"
+msgstr "не е равна на"
+
+msgid "verbose"
+msgstr "подробно"
+
+msgid "Textual descriptions of the rules"
+msgstr "Текстово описание на правилата"
+
+msgid "terse"
+msgstr "сбито"
+
+msgid "More suitable for viewing the table of rules at once"
+msgstr "По-подходящо за разглеждане на таблицата от правила наведнъж"
+
+msgid "tech"
+msgstr "техн."
+
+msgid "Even more terse description for technical people"
+msgstr "Още по-сбито описание за техничари"
+
+msgid "source"
+msgstr "изходен код"
+
+msgid "Display SIEVE source"
+msgstr "Показване на изходния код на SIEVE"
+
+msgid "Low"
+msgstr "Нисък"
+
+msgid "Normal"
+msgstr "Нормален"
+
+msgid "High"
+msgstr "Висок"
+
+msgid "Delete"
+msgstr "Изтриване"
+
+msgid "Edit"
+msgstr "Редактиране"
+
+msgid "Duplicate"
+msgstr "Клониране"
+
+msgid "Move Up"
+msgstr "Преместване нагоре"
+
+msgid "Move to Top"
+msgstr "Преместване в началото"
+
+msgid "Move Down"
+msgstr "Преместване надолу"
+
+msgid "Move to Bottom"
+msgstr "Преместване в края"
+
+msgid "Junk Folder"
+msgstr "Папка Junk"
+
+#, php-format
+msgid ""
+"Store SPAM message in your Junk Folder. Messages older than %s days will be "
+"deleted automatically."
+msgstr "Съхраняване на писмата със СПАМ във Вашата папка Junk. Писмата по-стари от %s дни ще бъдат автоматично изтривани."
+
+msgid "Note that you can set the number of days in Folder Preferences."
+msgstr "Забележете, че можете да задавате броя на дните в настройките на папката."
+
+msgid "Trash Folder"
+msgstr "Папка Trash"
+
+msgid ""
+"Store SPAM message in your Trash Folder. You will have to purge the folder "
+"yourself."
+msgstr "Съхраняване на писмата със СПАМ във Вашата папка Trash. Ще трябва сам да си изчиствате папката."
+
+msgid "Discard"
+msgstr "Изхвърляне"
+
+msgid ""
+"Discard SPAM message. You will get no indication that the message ever "
+"arrived."
+msgstr "Изхвърляне на писмата със СПАМ. Няма да има следа, че писмото някога е пристигало."
+
+msgid "Server-Side Mail Filtering"
+msgstr "Сървърско филтриране на поща"
+
+msgid "To: or Cc"
+msgstr "To: или Cc:"
+
+msgid "The condition for the following rules is:"
+msgstr "Условието за следващите правила е:"
+
+msgid "Less..."
+msgstr "По-малко..."
+
+msgid "bigger"
+msgstr "по-голяма"
+
+msgid "smaller"
+msgstr "по-малъка"
+
+msgid "than"
+msgstr "от"
+
+msgid "KB (kilobytes)"
+msgstr "KB (килобайта)"
+
+msgid "MB (megabytes)"
+msgstr "MB (мегабайта)"
+
+msgid "All Messages"
+msgstr "Всички писма"
+
+msgid ""
+"The following action will be applied to <strong>all</strong> incoming "
+"messages that do not match any of the previous rules."
+msgstr "Следното действие ще бъде прилагано върху <strong>всички</strong> входящи писма, които не съвпадат с някое от предните правила."
+
+msgid "Choose what to do when this rule triggers, from one of the following:"
+msgstr "Измежду следните възможности, изберете какво да се случи, когато това правило се активира:"
+
+msgid "Apply Changes"
+msgstr "Прилагане на промените"
+
+msgid "Cancel"
+msgstr "Отказ"
+
+msgid "Editing Mail Filtering Rule"
+msgstr "Редактиране на правило за филтриране на поща"
+
+msgid "Create New Mail Filtering Rule"
+msgstr "Създаване на ново правило за филтриране на поща"
+
+msgid "Error Encountered:"
+msgstr "Получена е грешка:"
+
+msgid "You must correct the above errors before continuing."
+msgstr "Трябва да поправите горните грешки преди да продължите."
+
+msgid "Additional Actions"
+msgstr "Допълнителни действия"
+
+msgid "Clear this Form"
+msgstr "Изчистване на този формуляр"
+
+msgid "Start Over"
+msgstr "Започване отначало"
+
+msgid "Move back to step"
+msgstr "Връщане обратно към стъпка"
+
+msgid "Finished"
+msgstr "Край"
+
+msgid "Move on to step"
+msgstr "Придвижване към стъпка"
+
+msgid "Your new rule states:"
+msgstr "Вашето ново правило е следното:"
+
+msgid ""
+"If this is what you wanted, select Finished. You can also start over or "
+"cancel adding a rule altogether."
+msgstr "Ако това е, което искате, натиснете Край. Можете също да започнете отначало или да прекъснете добавянето на ново правило."
+
+msgid ""
+"Here you can add or delete filtering rules for your email account. These "
+"filters will always apply to your incoming mail, wherever you check your "
+"email."
+msgstr "Тук можете да добавяте и изтривате правила за филтриране от Вашия пощенски акаунт. Тези филтри винаги ще се прилагат върху входящата поща, когато проверявате пощата си."
+
+msgid ""
+"You don't have any rules yet. Feel free to add any with the button &quot;Add "
+"a New Rule&quot;. When you are done, please select &quot;Save Changes&quot; "
+"to get back to the main options screen."
+msgstr "Все още нямате никакви правила. Чувствайте се свободни да добавите нови чрез бутона &#8222;Добавяне на ново правило&#8220;. Когато свършите, моля натиснете &#8222;Запис на промените&#8220;, за да се върнете към екрана с главните настройки."
+
+msgid ""
+"When you are done with editing, <strong>remember to select &quot;Save "
+"Changes&quot;</strong> to activate your changes!"
+msgstr "Когато свършите с редактирането, <strong>не забравяйте да изберете &#8222;Запис на промените&#8220;</strong>, за да активирате Вашите промени!"
+
+msgid ""
+"Warning: In your rules, you have defined an action that refers to a folder "
+"that does not exist or a folder where you do not have permission to append "
+"to."
+msgstr "Внимание: Във Вашите правила сте определили действие, което използва папка, която не съществува или за която нямате права за добавяне."
+
+msgid "The following table summarizes your current mail filtering rules."
+msgstr "Следната таблица обобщава Вашите текущи правила за филтриране на писма."
+
+msgid "No"
+msgstr "Не"
+
+msgid "Description of Rule"
+msgstr "Описание на правило"
+
+msgid "Display as:"
+msgstr "Показване като:"
+
+msgid "Options"
+msgstr "Настройки"
+
+msgid "Successfully added new rule."
+msgstr "Успешно добавяне на ново правило."
+
+msgid "Successfully updated rule #"
+msgstr "Успешно обновяване на правило &#8470;"
+
+msgid "Successfully deleted rules #"
+msgstr "Успешно изтриване на правила &#8470;"
+
+msgid "Successfully deleted rule #"
+msgstr "Успешно изтриване на правило &#8470;"
+
+msgid "Add a New Rule"
+msgstr "Добавяне на ново правило"
+
+msgid "Enable"
+msgstr "Активиране"
+
+msgid "Disable"
+msgstr "Деактивиране"
+
+msgid ""
+"When you are done, please click the button below to return to your webmail."
+msgstr "Когато сте готови, моля натиснете бутона по-долу, за да се върнете към пощата."
+
+msgid "Save Changes"
+msgstr "Запис на промените"
+
+msgid "Last modified:"
+msgstr "Последна промяна:"
+
+msgid "Created:"
+msgstr "Създаден на:"
+
+msgid "Close"
+msgstr "Затваряне"
+
+msgid "Really delete this rule?"
+msgstr "Наистина ли да се изтрие това правило?"
+
+msgid "Action for Selected Rules:"
+msgstr "Действие върху избраните правила:"
+
+msgid "Could not log on to timsieved daemon on your IMAP server"
+msgstr "Не може да се влезе в демона timsieved на Вашия IMAP сървър"
+
+msgid "Unable to load script to server."
+msgstr "Скриптът не може да бъде сложен на сървъра."
+
+msgid "Server responded with:"
+msgstr "Сървърът отговори с:"
+
+msgid "Automatically"
+msgstr "Автоматично"
+
+msgid "Sender"
+msgstr "Изпращач"
+
+msgid "From"
+msgstr "От"
+
+msgid "To"
+msgstr "До"
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "Create Filter"
+msgstr "Създаване на филтър"
+
+msgid "You have to define at least one condition."
+msgstr "Трябва да определите поне едно условие."
+
+msgid "Keep (Default action)"
+msgstr "Запазване (подразбиращо се действие)"
+
+msgid "Discard Silently"
+msgstr "Безшумно изхвърляне"
+
+msgid "Reject, sending this excuse to the sender:"
+msgstr "Отхвърляне, изпращайки следния претекст към изпращача:"
+
+msgid "Please do not send me large attachments."
+msgstr "Моля, не ми изпращайте големи притурки."
+
+msgid "Redirect to the following email address:"
+msgstr "Препращане към следния пощенски адрес:"
+
+msgid "someone@example.org"
+msgstr "someone@example.org"
+
+msgid "Keep a local copy as well."
+msgstr "Също така със запазване на локално копие."
+
+msgid ""
+"Incorrect email address(es). You must enter one or more valid email "
+"addresses, separated by comma."
+msgstr "Неправилен пощенски адрес(и). Трябва да въведете един или повече валидни пощенски адреси, разделени със запетая."
+
+msgid "Move message into"
+msgstr "Преместване на писмото в"
+
+msgid "the existing folder"
+msgstr "съществуващата папка"
+
+msgid "a new folder, named"
+msgstr "нова папка с име"
+
+msgid "created as a subfolder of"
+msgstr "създадена като подпапка на"
+
+msgid "Vacation"
+msgstr "Отпуска"
+
+msgid ""
+"This is an automated reply; I am away and will not be able to reply to you "
+"immediately."
+msgstr "Това е автоматичен отговор; Далеч съм и не мога да Ви отговоря веднага."
+
+msgid "I will get back to you as soon as I return."
+msgstr "Ще Ви обърна внимание скоро след като се върна."
+
+msgid ""
+"The notice will be sent only once to each person that sends you mail, and "
+"will not be sent to a mailing list address."
+msgstr "Бележката ще бъде изпратена само един път на всеки човек, който е изпратил поща, и няма да бъде пратена на пощенски списъци."
+
+msgid "Addresses: Only reply if sent to these addresses:"
+msgstr "Адреси: Отговаряне само при изпращане до следните адреси:"
+
+msgid "Days: Reply message will be resent after"
+msgstr "Дни: Отговарящото писмо ще бъде препратено след"
+
+msgid "days"
+msgstr "дни"
+
+msgid "Use the following message:"
+msgstr "Използване на следното съобщение:"
+
+msgid "The number of days between vacation messages must be a positive number."
+msgstr "Броят на дните между писмата за отпуска трябва да бъде положително число."
+
+msgid ""
+"Your email addresses for which a vacation message is returned must be "
+"defined."
+msgstr "Трябва да бъде определен Вашият пощенски адрес, за който се връща писмо за отпуска."
+
+msgid "Notify me, using the following method:"
+msgstr "Уведоми ме по следния начин:"
+
+msgid "Mobile Phone Message (SMS)"
+msgstr "Съобщение до мобилен телефон (SMS)"
+
+msgid "Email notification"
+msgstr "Уведомяване по поща"
+
+msgid "Notification via Zephyr"
+msgstr "Уведомяване през Zephyr"
+
+msgid "Notification via ICQ"
+msgstr "Уведомяване през ICQ"
+
+msgid "Notification ID"
+msgstr "Идентификатор на уведомяване"
+
+msgid "Destination"
+msgstr "Местоназначение"
+
+msgid "Message"
+msgstr "Съобщение"
+
+msgid "Help: Valid variables are:"
+msgstr "Помощ: Валидни променливи са:"
+
+msgid "Also keep copy in INBOX, marked as deleted."
+msgstr "Също така със запазване на копие в INBOX, отбелязано като изтрито."
+
+msgid "Disable this rule"
+msgstr "Деактивиране на това правило"
+
+msgid "The rule will have no effect for as long as it is disabled."
+msgstr "Това правило няма да има ефект, докато е деактивирано."
+
+#, php-format
+msgid "the header %s"
+msgstr "хедърът %s"
+
+#, php-format
+msgid "Header %s"
+msgstr "Хедър %s"
+
+msgid "To or Cc"
+msgstr "To или Cc"
+
+#, php-format
+msgid "the envelope %s"
+msgstr "пликът %s"
+
+#, php-format
+msgid "Envelope %s"
+msgstr "Плик %s"
+
+#, php-format
+msgid "the address %s"
+msgstr "адресът %s"
+
+#, php-format
+msgid "Address %s"
+msgstr "Адрес %s"
+
+msgid "message body"
+msgstr "текстът на писмо"
+
+msgid "matches the regural expression"
+msgstr "съвпада с регулярния израз"
+
+msgid "does not match the regural expression"
+msgstr "не съвпада с регулярния израз"
+
+msgid "exists"
+msgstr "съществува"
+
+msgid "does not exist"
+msgstr "не съществува"
+
+msgid "This rule is currently <strong>DISABLED</strong>:"
+msgstr "Това правило е <strong>ДЕАКТИВИРАНО</strong>:"
+
+msgid "DISABLED"
+msgstr "ДЕАКТИВИРАНО"
+
+msgid ""
+"All messages considered as <strong>SPAM</strong> (unsolicited commercial "
+"messages)"
+msgstr "Всички писма, считани за <strong>СПАМ</strong> (нежелана търговска поща)"
+
+msgid "SPAM"
+msgstr "СПАМ"
+
+msgid "unless"
+msgstr "освен ако"
+
+msgid "Whitelist:"
+msgstr "Бял списък:"
+
+msgid "or"
+msgstr "или"
+
+msgid "matching the Spam List(s):"
+msgstr "съвпадащ със списъка(-ците) за СПАМ:"
+
+msgid "Spam List(s):"
+msgstr "Списък(-ците) за СПАМ:"
+
+#, php-format
+msgid "and with score greater than %s"
+msgstr "и с оценка по-голяма от %s"
+
+#, php-format
+msgid "Score > %s"
+msgstr "Оценка > %s"
+
+msgid "will be"
+msgstr "ще бъде"
+
+msgid "stored in the Junk Folder."
+msgstr "съхранен в папка Junk."
+
+msgid "Junk"
+msgstr "Junk"
+
+msgid "stored in the Trash Folder."
+msgstr "съхранен в папка Trash"
+
+msgid "Trash"
+msgstr "Trash"
+
+msgid "discarded."
+msgstr "изхвърлен."
+
+msgid "If"
+msgstr "Ако"
+
+msgid "<em>any</em> of the following mail headers match: "
+msgstr "<em>кой да е</em> от следните пощенски хедъри съвпада:"
+
+msgid "<em>all</em> of the following mail headers match: "
+msgstr "<em>всички</em> пощенски хедъри съвпадат:"
+
+msgid "the size of the message is"
+msgstr "големината на писмото е"
+
+msgid " bigger"
+msgstr " по-голямо"
+
+msgid " smaller"
+msgstr " по-малко"
+
+msgid "For <strong>ALL</strong> incoming messages; "
+msgstr "За <strong>ВСИЧКИ</strong> входящи писма; "
+
+msgid "ALL"
+msgstr "ВСИЧКИ"
+
+msgid "and"
+msgstr "и"
+
+msgid "then"
+msgstr "тогава"
+
+msgid "<em>keep</em> it."
+msgstr "<em>запазване</em>."
+
+msgid "Keep"
+msgstr "Запазване"
+
+msgid "<em>discard</em> it."
+msgstr "<em>изхвърляне</em>."
+
+msgid "DISCARD"
+msgstr "ИЗХВЪРЛЯНЕ"
+
+msgid "<em>reject</em> it, sending this excuse back to the sender:"
+msgstr "<em>отхвърляне</em>, изпращайки следния претекст обратно към изпращача:"
+
+msgid "Reject"
+msgstr "Отхвърляне"
+
+msgid "Redirect to"
+msgstr "Пренасочване към"
+
+#, php-format
+msgid "<em>redirect</em> it to the email addresses: %s."
+msgstr "<em>пренасочване</em> към пощенски адреси: %s."
+
+msgid "<em>redirect</em> it to the email address"
+msgstr "<em>пренасочване</em> към пощенски адрес"
+
+#, php-format
+msgid "<em>file</em> it into the folder %s"
+msgstr "<em>записване</em> в папката %s"
+
+#, php-format
+msgid "File into %s"
+msgstr "Записване в %s"
+
+msgid "(Warning: Folder not available)"
+msgstr "(Внимание: Папката не съществува)"
+
+msgid "reply with this vacation message: "
+msgstr "отговаряне със следното писмо за отпуск: "
+
+msgid "Vacation Message"
+msgstr "Писмо за отпуск"
+
+msgid "Also keep a local copy."
+msgstr "Също така запазване на локално копие."
+
+msgid " Also keep a copy in INBOX, marked as deleted."
+msgstr " Също съхраняване на копие в пощенската кутия, отбелязано като изтрито."
+
+msgid "Keep Deleted"
+msgstr "Съхраняване изтрито"
+
+msgid " Also notify using the method"
+msgstr " Също уведомяване използвайки метода"
+
+msgid "with"
+msgstr "с"
+
+msgid "priority and the message"
+msgstr "приоритет и писмото"
+
+#, php-format
+msgid "Notify %s"
+msgstr "Уведомяване на %s"
+
+msgid "Then <strong>STOP</strong> processing rules."
+msgstr "След това <strong>СПРИ</strong> обработката на правила."
+
+msgid "Stop"
+msgstr "Спиране"
+
+msgid "Test for Forged Header"
+msgstr "Проверка за фалшифицирани хедъри"
+
+msgid "You have not defined the name for the new folder."
+msgstr "Не сте определелили име за новата папка."
+
+msgid "Please try again."
+msgstr "Моля, опитайте отново."
+
+msgid "Illegal folder name.  Please select a different name"
+msgstr "Невалидно име на папка. Моля, изберете различно име"
+
+msgid "None"
+msgstr "Няма"

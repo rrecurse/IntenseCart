@@ -1,0 +1,100 @@
+<chapter>
+   <title>
+      Pogosta Vprašanje in odgovori
+   </title>   
+   <summary>
+      To je seznam pogosto zastavljenih vprašanj in odgovori nanje.
+   </summary>
+</chapter>
+
+<section>
+   <title>
+      Lahko uporabim naenkrat več kot eno ime iz Adresarja?
+   </title>
+   <description>
+      <p>
+      Da.  Iskanje po Adresarju vam prikaže vse zadetke za iskalni niz ki ste ga vpisali.
+	  Če je 10 imen prikazanih, vsaka kobinacija je lahko izbrana za <B>To:</B> ali <B>CC:</B>
+      polja.  Vsi izbrani naslovi bodo vpisani v pravilna polja kadar uporabite gumb Dodaj naslov.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Lahko dodam imena direktno iz pošte v Adresar?
+   </title>
+   <description>
+      <p>
+      Ne.  Trenutno ni mogoče dodati naslova ali imena v Adresar ob pisanju pošte.
+	  Lahko pa, izberete željen naslov, z desnim gumbom miške ga skopirate in nato prilepite v Adresar.
+	  Ne bodite razočarani, SquirrelMail je vedno pod nadaljevalnim razvijanje in ta možnost se lahko
+	  vključi v prihodnosti.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kdo je izdelal SquirrelMail?
+   </title>
+   <description>
+      <p>
+      Veliko ljudi pomaga. Za seznam vseh, lahko obiščete spletno stran <a href="http://www.squirrelmail.org" target=_top>www.squirrelmail.org</a>.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kaj je webmail?
+   </title>
+   <description>
+      <p>
+      SquirrelMail vam daje možnost dostopa preko IMAP protokola do email računa.  To pomeni
+      da vam ni potrebno ugotavljati kako se nastavijo stvari drugih, ampak samo preverite
+      svojo pošto.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kje lahko uporabljam ta webmail?
+   </title>
+   <description>
+      <p>
+      Tam kjer je brskalnik na voljo.
+      Brezžični dostop (WAP/WML) trenutno ni na seznamu izdelave.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Zakaj uporabljati webmail namesto navadnega poštnega odjemalca?
+   </title>
+   <description>
+      <p>
+      Je dvomljivo da bi webmail bil celoten nadomestek za navaden email klient
+	  Kdo ve?  Kakorkoli, če ste že kdaj bil v hiši prijatelja, na poti, doma ali v skužbi in
+	  vstran od svojega računalnika in si želite prebrati pošto, potem veste zakaj.
+	  Ker je veliko breme nastaviti meail račun na drugem računalniku in nato ga izbrisati.
+	  SquirrelMail je narejen kot nadomestek normalnemu email klientu
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kako ta stvar deluje?
+   </title>
+   <description>
+      <p>
+      SquirrelMail uporablja IMAP protokol, dodatne informacije o tem najdete
+      <A HREF="http://imap.org"/>tukaj</A>.  Program uporablja  svoje IMAP funkcije
+      in ne te ki so vključene v PHP4.  To se ne tiče nikogar razen tistih, ki so
+      odgovorni za njegovo namestitev.
+      </p>
+   </description>
+</section>

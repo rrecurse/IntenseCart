@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs For Class MySQL_DataBase</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Google-XML-Sitemap-Feed<br /><div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../classtrees_Google-XML-Sitemap-Feed.html" class="menu">class tree: Google-XML-Sitemap-Feed</a> ]
+		  [ <a href="../elementindex_Google-XML-Sitemap-Feed.html" class="menu">index: Google-XML-Sitemap-Feed</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Google-XML-Sitemap-Feed</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_Google-XML-Sitemap-Feed.html">Google-XML-Sitemap-Feed</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_index_php.html">index.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_sitemap_class_php.html">sitemap.class.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html">GoogleSitemap</a>    	 <br />
+	    		<a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html">MySQL_DataBase</a>    	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: MySQL_DataBase</h1>
+Source Location: sitemap.class.php<br />
+<br />
+
+<h2 class="class-name">Class MySQL_DataBase</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Class Overview</div>
+	<div class="nav-bar">
+					<span class="disabled">Class Overview</span> |
+															<a href="#sec-var-summary">Properties Summary</a> | <a href="#sec-vars">Properties Detail</a>
+						|											<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+							</div>
+	<div class="info-box-body">
+		<table width="100%" border="0">
+		<tr><td valign="top" width="60%" class="class-overview">
+
+		<p align="center" class="short-description"><strong>MySQL_Database Class
+</strong></p>
+<span class="description"><p>The MySQL_Database class provides abstraction so the databaes can be accessed  without having to use tep API functions. This class has minimal error handling  so make sure your code is tight!</p></span>
+		<p class="notes">
+			Located in <a class="field" href="_googlesitemap_sitemap_class_php.html">sitemap.class.php</a> [<span class="field">line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a32">32</a></span>]
+		</p>
+
+		
+		<pre></pre>
+
+		
+				<strong>Author(s):</strong>
+		<ul>
+		  			 			 
+		 		  			 		  		</ul>
+		
+		
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+				
+				
+				<tr><td><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.1</td></tr>
+				<tr><td><strong>License:</strong>&nbsp;&nbsp;</td><td><a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a></td></tr>
+	</table>
+		</td>
+
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_vars">Properties</a></strong></p>
+		<ul>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$db">$db</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$host">$host</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$link_id">$link_id</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$pass">$pass</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#var$user">$user</a></li>
+		  		</ul>
+		</td>
+		
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_methods">Methods</a></strong></p>
+		<ul>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodMySQL_DataBase">MySQL_DataBase</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodConnectDB">ConnectDB</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodDBPerform">DBPerform</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodFetchArray">FetchArray</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodFree">Free</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodNumRows">NumRows</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodQuery">Query</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodSelectDB">SelectDB</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html#methodSlashes">Slashes</a></li>
+		  		</ul>
+		</td>
+		
+		</tr></table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+</div>
+
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Property Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+									<span class="disabled">Property Summary</span> | <a href="#sec-vars">Properties Detail</a>
+												<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+		    				</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+			<table border="0" cellspacing="0" cellpadding="0" class="var-summary">
+							<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$db" title="details" class="var-name-summary">$db</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Database name</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$host" title="details" class="var-name-summary">$host</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Database host (localhost, IP based, etc)</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">resource</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$link_id" title="details" class="var-name-summary">$link_id</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Database link</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$pass" title="details" class="var-name-summary">$pass</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Database password</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$user" title="details" class="var-name-summary">$user</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">Database user</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+																		<a href="#sec-var-summary">Properties Summary</a> | <a href="#sec-vars">Properties Detail</a>
+											    					<span class="disabled">Method Summary</span> | <a href="#sec-methods">Methods Detail</a>
+		</div>
+		<div class="info-box-body">
+			<div class="method-summary">
+				<table border="0" cellspacing="0" cellpadding="0" class="method-summary">
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">MySQL_DataBase</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#MySQL_DataBase" title="details" class="method-name">MySQL_DataBase</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">MySQL_DataBase class constructor</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">void</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#ConnectDB" title="details" class="method-name">ConnectDB</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to connect to MySQL</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">resource</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#DBPerform" title="details" class="method-name">DBPerform</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to perform DB inserts and updates </td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">array</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#FetchArray" title="details" class="method-name">FetchArray</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to fetch array</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">boolean</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Free" title="details" class="method-name">Free</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to free the resource</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">mixed</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#NumRows" title="details" class="method-name">NumRows</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to fetch the number of rows</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">resource</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Query" title="details" class="method-name">Query</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to perform queries</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">resoource</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#SelectDB" title="details" class="method-name">SelectDB</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to select the database</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">string</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#Slashes" title="details" class="method-name">Slashes</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to add slashes</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Properties</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+													<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+			
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+							</div>
+		<div class="info-box-body">
+			<a name="var$db" id="$db"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$db</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a47">47</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Database name
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$host" id="$host"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$host</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a37">37</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Database host (localhost, IP based, etc)
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$link_id" id="$link_id"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">resource</span>&nbsp;&nbsp;
+			<span class="var-name">$link_id</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a57">57</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Database link
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$pass" id="$pass"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$pass</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a52">52</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Database password
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$user" id="$user"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$user</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a42">42</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>Database user
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+									                |
+									<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+																	| <a href="#sec-method-summary">Method Summary</a> | <span class="disabled">Methods Detail</span>
+					</div>
+		<div class="info-box-body">
+			<a name='method_detail'></a>
+<a name="methodMySQL_DataBase" id="MySQL_DataBase"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Constructor MySQL_DataBase</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a68">68</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>MySQL_DataBase MySQL_DataBase(
+string
+$host, string
+$user, string
+$db, string
+$pass&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>MySQL_DataBase class constructor
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$host:&nbsp;</span></td>
+				<td>
+							</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$user:&nbsp;</span></td>
+				<td>
+							</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$db:&nbsp;</span></td>
+				<td>
+							</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$pass:&nbsp;</span></td>
+				<td>
+							</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodConnectDB" id="ConnectDB"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">ConnectDB</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a82">82</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>void ConnectDB(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to connect to MySQL
+</strong></p>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodDBPerform" id="DBPerform"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">DBPerform</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a162">162</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>resource DBPerform(
+string
+$table, array
+$data, [string
+$action = 'insert'], [string
+$parameters = '']&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to perform DB inserts and updates 
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$table:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Database table</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$data:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Associative array of columns / values</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$action:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> insert or update</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$parameters:&nbsp;</span></td>
+				<td>
+							</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodFetchArray" id="FetchArray"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">FetchArray</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a115">115</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>array FetchArray(
+resource
+$resource_id, [string
+$type = MYSQL_BOTH]&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to fetch array
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">resource</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$resource_id:&nbsp;</span></td>
+				<td>
+							</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$type:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> MYSQL_BOTH or MYSQL_ASSOC</span>			</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodFree" id="Free"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Free</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a137">137</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>boolean Free(
+resource
+$resource_id&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to free the resource
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">resource</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$resource_id:&nbsp;</span></td>
+				<td>
+							</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodNumRows" id="NumRows"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">NumRows</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a126">126</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>mixed NumRows(
+resource
+$resource_id&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to fetch the number of rows
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">resource</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$resource_id:&nbsp;</span></td>
+				<td>
+							</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodQuery" id="Query"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Query</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a103">103</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>resource Query(
+string
+$query&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to perform queries
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$query:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> SQL statement</span>			</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSelectDB" id="SelectDB"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">SelectDB</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a92">92</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>resoource SelectDB(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to select the database
+</strong></p>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSlashes" id="Slashes"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Slashes</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a148">148</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>string Slashes(
+string
+$data&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to add slashes
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$data:&nbsp;</span></td>
+				<td>
+							</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Sat,  4 Jun 2005 23:45:59 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

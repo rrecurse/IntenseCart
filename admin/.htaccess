@@ -1,0 +1,29 @@
+RewriteEngine on
+#RewriteCond ${REMOTE_USER} !.
+#RewriteRule .* /admin
+
+# // Redirect all IP http traffic to hostname
+RewriteCond %{HTTP_HOST} ^199\.21\.115\.175 [OR]
+RewriteCond %{HTTP_HOST} ^72\.167\.39\.227 [OR]
+RewriteCond %{HTTP_HOST} ^72\.167\.37\.228
+
+RewriteRule (.*) http://www.intensecart.com/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} \.php$
+RewriteCond %{REQUEST_FILENAME}su -f
+RewriteRule (.*) $1su
+
+php_flag display_errors on
+
+Options +ExecCGI
+AddHandler cgi-script .phpsu
+
+php_value session.auto_start off
+php_value register_long_arrays on
+php_value register_globals on
+php_flag zend.ze1_compatibility_mode Off
+
+ModPagespeed on
+ModPagespeedCriticalImagesBeaconEnabled false
+SetEnvIfNoCase Remote_Addr ^216\.164\.8\.47$ MODSEC_ENABLE=Off

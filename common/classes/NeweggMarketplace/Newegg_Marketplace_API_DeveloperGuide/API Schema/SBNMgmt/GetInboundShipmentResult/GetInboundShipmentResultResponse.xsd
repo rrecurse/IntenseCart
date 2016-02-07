@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="NeweggAPIResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="IsSuccess">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="true"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OperationType" type="xs:string" fixed="GetShipmentResultResponse"/>
+				<xs:element name="SellerID" type="xs:string"/>
+				<xs:element name="ResponseBody">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="RequestID" type="xs:string"/>
+							<xs:element name="RequestDate" type="xs:string"/>
+							<xs:element name="ProcessedDate" type="xs:string"/>
+							<xs:element name="RequestStatus">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="FINISHED"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Shipment">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="ShipmentID" type="xs:string" minOccurs="0"/>
+										<xs:element name="LabelURLList">
+											<xs:complexType>
+												<xs:sequence minOccurs="0" maxOccurs="unbounded">
+													<xs:element name="Label">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="LabelType">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="ItemLabel"/>
+																			<xs:enumeration value="PackageLabel"/>
+																			<xs:enumeration value="ShippingLabel"/>
+																			<xs:enumeration value="PackingListLabel"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="LabelUrl" type="xs:string"/>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ErrorList">
+											<xs:complexType>
+												<xs:sequence minOccurs="0" maxOccurs="unbounded">
+													<xs:element name="Error">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="ErrorDescription" type="xs:string"/>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,41 @@
+<?php
+
+  define('ACTION_INFORMATION', 'Action');
+  define('ACTIVATION_ID_INFORMATION', 'Display in Catalog ACTIVE');
+  define('ADD_INFORMATION', 'Add new information');
+  define('ADD_QUEUE_INFORMATION', ' Add information to queue');
+  define('ALERT_INFORMATION', 'Empty: You currently have no files!');
+  define('ANSWER_INFORMATION', 'Answer');
+  define('CONFIRM_INFORMATION', 'Confirm');
+  define('DEACTIVATION_ID_INFORMATION', 'Display in Catalog INACTIVE');
+  define('DELETE_INFORMATION', 'Delete');
+  define('DELETE_CONFITMATION_ID_INFORMATION', 'Do you really want to delete?<br><br><small>Confirm Deletion of ID: ');
+  define('DELETE_ID_INFORMATION', ' Delete: ');
+  define('DELETED_ID_INFORMATION', 'Deleted the information ID=');
+  define('DESCRIPTION_INFORMATION', 'Description');
+  define('EDIT_ID_INFORMATION', 'Edit Page and Title: ');
+  define('EDIT_INFORMATION', 'Edit');
+  define('ERROR_20_INFORMATION', 'You have not defined a valid value for option <b>Queue</b>. You can only define a numeric value');
+  define('ERROR_80_INFORMATION', 'You did not fill all <b>necessary fields</b>');
+  define('INFORMATION_ID_ACTIVE', 'this information is Active');
+  define('INFORMATION_ID_DEACTIVE', 'this information is NOT active');
+  define('INFORMATION_ACTIVE', 'Active');
+  define('INFORMATION_DEACTIVE', 'Inactive');
+  define('ID_INFORMATION', 'ID');
+  define('MANAGER_INFORMATION', 'Web Page Control');
+  define('NO_INFORMATION', 'No');
+  define('PUBLIC_INFORMATION', 'Public');
+  define('PAGE_PREVIEW', 'Preview');
+  define('QUEUE_INFORMATION', 'Order');
+  define('QUEUE_INFORMATION_LIST', 'Order: ');
+  define('SORT_BY', 'In information Page this Sort by');
+  define('STATUS_INFORMATION', 'Status:');
+  define('SUCCED_INFORMATION', ' Succeeded');
+  define('TITLE', 'Information system');
+  define('TITLE_INFORMATION', 'Title:');
+  define('VIEW_INFORMATION', 'Information View');
+  define('VISIBLE_INFORMATION', 'Visible');
+  define('VISIBLE_INFORMATION_DO', '( To Do visible )');
+  define('UPDATE_ID_INFORMATION', 'Updated: ');
+  define('WARNING_INFORMATION', 'Warning');
+?>

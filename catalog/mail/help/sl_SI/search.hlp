@@ -1,0 +1,73 @@
+<chapter>
+   <title>
+      Iskanje
+   </title>
+   <summary>
+      Iskanje v mapi po danih kriterijih.
+   </summary>
+   <description>
+      <p>
+      S tem uporabnim orodjem lahko v določeni mapi iščete sporočila, katerih
+      polja v zaglavju ustrezajo določenim kriterijem.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Splošni pregled
+   </title>
+   <description>
+      <p>
+      Izberite mapo v kateri želite iskati, vpišite iskalne kriterije in
+      izberite katere dele sporočila želite preiskati. Kot odgovor na vašo
+      poizvedbo, boste pod iskalno formo dobili seznam sporočil, ki ustrezajo
+      določenim kriterijem. Sporočila lahko izberete in preberete kot vsa
+      ostala sporočila.
+      </p>
+      <p>
+      Bodite pozorni na to, da je privzeta mapa za iskanje tista, v kateri
+      trenutno berete sporočila.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kaj preiskati
+   </title>
+   <description>
+      <p>
+      Na levi strani polja za vnos je padajoči izbirnik s polji po katerih je
+      možno iskanje. Ta polja so: Vsebina sporočila, Vse, Naslov, Od, Kopija,
+      Od.
+      </p>
+      <p>
+      <b>Vsebina sporočila</b> - Preišče vsebino sporočila.  To je glavni del
+      e-sporočila, kjer je napisan tekst.
+      </p>
+      <p>
+      <b>Vse</b> - Preišče vse, tudi celotno zaglavje sporočila. Če niste
+      prepričani, da je res tisto kar želite potem verjetno ni. Lahko vrne
+      nepričakovane rezultate.
+      </p>
+      <p>
+      <b>Naslov</b> - Preišče samo naslove vseh sporočil.
+      </p>
+      <p>
+      <b>Od</b> - Išče po pošiljatelju. To je lahko več kot je običajno videti
+      v seznamu sporočil. Normalno polje "Od" vključuje ime IN e-naslov
+      pošiljatelja, vendar SquirrelMail navadno pokaže samo ime. Če torej
+      določite kriterij, ki se ujema z e-naslovom, boste morda v seznamu
+      rezultatov videli sporočilo, ki na prvi pogled ne ustreza kriterijem, ker
+      bo v seznamu samo ime pošiljatelja.
+      </p>
+      <p>
+      <b>Za</b> - Komu je sporočilo namenjeno.  To je lahko vveč naslovov - ne
+      samo eden. Kar se tiče iskanja velja isto opozorilo kot za polje "Od".
+      </p>
+      <p>
+      <b>Kopija</b> - Skoraj isto kot "Za".
+      </p>
+   </description>
+</section>

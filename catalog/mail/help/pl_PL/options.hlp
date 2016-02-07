@@ -1,0 +1,207 @@
+<chapter>
+   <title>
+     Konfiguracja 
+     </title>
+   <summary>
+      Sekcja pozwala modyfikować, za pomocą różnorodnych opcji, wygląd i zachowanie
+      Wiewiórczej poczty.
+   </summary>
+   <description>
+      <p>
+      Najprzyjemniejszą cechą Wiewiórczej poczty jest wysoki stopień jej
+      konfigurowalności.
+      Opcje dają możliwość wyboru schematu kolorów, języka, folderów oraz
+      innych ustawień. To wszystko może zostać zmienione bez wpływu na ustawienia
+      innych użytkowników systemu. Istnieją cztery główne sekcje konfiguracji:
+      <i>Dane użytkownika</i>, <i>Podświetlanie wiadomości</i>, <i>Ustawienia
+      wyświetlania</i> oraz <i>Ustawienia folderów</i>.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Dane Użytkownika
+   </title>
+   <description>
+      <b>Imię i Nazwisko</b><br>
+      Użytkownik powinien wpisać tu swoje imię i nazwisko. Na przykład:
+      "Kunegunda Kowalska". Dane te ujrzą w swoich programach pocztowych osoby,
+      do których użytkownik wyśle wiadomość. Zobaczą one, że list jest od
+      "Kunegundy Kowalskiej". Jeżeli pole pozostanie niewypełnione, adresaci
+      ujrzą tylko adres poczty elektronicznej nadawcy
+      "kunegunda@moja_domena.org".
+      <br><br>
+      
+      <b>Adres E-mail</b><br>
+      <i>Opcjonalne</i> - Jeżeli użytkownik pragnie korzystać z innego adresu
+      poczty elektronicznej niż automatycznie pobrany z systemu, może w tym
+      miejscu zmienić to ustawienie.
+      <br><br>
+      
+      <b>Odpowiedz do</b><br>
+      <i>Opcjonalne</i> - Jest to adres pocztowy, na który odbiorcy wiadomości
+      użytkownika będą kierowali odpowiedzi. Jeśli różni się od adresu, z którego
+      użytkownik wysyła pocztę, może go tutaj określić. Opcja jest przydatna,
+      gdy użytkownik pragnie otrzymywać odpowiedzi nie na konto, z którego wysyła
+      wiadomości lecz inne, np. na Wirtualnej Polsce, Onecie, czy Yahoo.
+      <br><br>
+      
+      <b>Sygnatura</b><br>
+      <i>Opcjonalne</i> - Sygnatury (podpisy) sa dołączane u dołu wysyłanych
+      wiadomości. Jeżeli użytkownik pragnie używać sygnatury, musi zaznaczyć
+      opcję "Używać sygantury?", a następnie wypełnić podpisem pole poniżej. 
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Ustawienia Wyświetlania
+   </title>
+   <description>
+      <b>Schemat</b><br>
+      Wiewiórcza poczta oferuje różnorodne schematy kolorów dla uprzyjemnienia
+      pracy z programem. Można wybrać dowolny schemat, następnie zmienić wedle 
+      nastroju i upodobania.
+      <br><br>
+
+      <b>Język</b><br>
+      Opcja umożliwia użytkownikowi dostosowanie do swoich wymagań języka,
+      w jakim komunikuje się z nim program. Więc jeśli język angielski nie
+      odpowiada potrzebom, może zostać zmieniony na dowolny z występujących na liście.
+      Należy zwrócić uwagę, iż opcja nie powoduje tłumaczenia nazw folderów ani
+      treści przychodzących wiadomości.
+      <br><br>
+
+      <b>Użyj Javascriptu do ksiązki adresowej</b><br>
+      Jednym z głównych celów przy pracy nad Wiewiórczą Pocztą było stworzenie
+      systemu działającego bez pomocy Javascriptu. Jednakże kilku twórców
+      stworzyło bardzo dobry system wyszukiwania w książce adresowej
+      korzystający z JavaScriptu, który nastęnie dołączono do programu.
+      Użytkownik może wybrać pomiędzy książką adresową pracującą z Javascriptem
+      lub czystym HTML'em. Jeśli nie wiesz, co to wszystko znaczy, bezpieczniej
+      będzie pozostać przy wersji HTML'owej, choć z pewnością Javascript również
+      będzie działać.
+      <br><br>
+      
+      <b>Ilość wiadomości do wyświetlenia</b><br>
+      Jest to ilość wiadomości pokazana na stronie. Jeśli wiadomości (listów)
+      jest więcej niż podana liczba, pojawią się odsyłacze "Następny" oraz
+      "Poprzedni", które pozwolą na przemieszczanie się do kolejnych lub
+      poprzednich wiadomości w folderze.
+      <br><br>
+      
+      <b>Zawijaj wiersze wiadomości po</b><br>
+      Ustawienie liczby znaków, przy której linia zostanie "złamana".
+      Pozwala to zapobiec "uciekaniu" wiadomości poza ekran. 86 jest 
+      wartością zazwyczaj bezpieczną do wpisania w to pole, jednak zawsze
+      można dostosować ją do własnych upodobań.
+      <br><br>
+      
+      <b>Wielkość okna edycyjnego</b><br>
+      Ustawienie szerokości okna tekstu "Nowej wiadomości", czyli liczby
+      znaków w linii, po których automatycznie nastąpi jej "złamanie" na czas
+      pisania listu.
+      <br><br>
+      
+      <b>Szerokość lewego okna</b><br>
+      W ramce po lewej stronie okna przeglądarki wyświetlana jest lista
+      folderów. Niniejsza opcja pozwala na zmianę szerokości tej listy.
+      W przypadku folderów z długą nazwą powinno się wpisać wartość wysoką.
+      Dla folderów o nazwach krótkich lepiej jest postąpić odwrotnie, by nie
+      marnować miejsca na ekranie; jak najwięcej przestrzeni poświęcić 
+      dla okna wiadomości.
+      <br><br>
+      
+      <b>Automatycznie odśwież listę folderów</b><br>
+      Wiewiórcza poczta pozwala na automatyczne odświeżanie listy folderów
+      w ramce po lewej stronie okna przeglądarki. Uaktualni to również
+      informację o ilości nieprzeczytanych listów w każdym z folderów.
+      Jest to dobry sposób na odświeżanie wiadomości w skrzynce bez potrzeby
+      każdorazowego klikania skrzynki <i>Inbox</i>.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Podświetlanie Wiadomości
+   </title>
+   <description>
+      Właściwość ta została opracowana, by ułatwić użytkownikowi orientację w
+      sytuacji, gdy otrzymuje duże ilości poczty z wielu różnych źródeł. Za
+      pomocą opcji <i>Podświetlanie Wiadomości</i> można dopasować konkretnym
+      nadawcom, czy też grupom dyskusyjnym, kolory tła pochodzących od nich
+      wiadomości.
+      <br><br>
+
+	Aby utworzyć nową regułę podświetlania, wystarczy kliknąć odsyłacz
+	<i>Nowa reguła</i>. <i>Zrobione</i> pozwala edytować już istniejące
+	reguły. Następnie pojawiają się kolejne opcje.
+      <br><br>
+      
+      <b>Identyfikator reguły</b><br>
+
+	Jest to po prostu nazwa reguły. Przykładowo, jeśli użytkownik pragnąłby
+	podświetlać wiadomości przychodzące od swojej matki, mógłby wpisać w to
+	pole: "Od mamusi".
+      <br><br>
+      
+      <b>Kolor</b><br>
+      Właśnie tutaj określa się kolor tła. Wyboru można dokonać z listy już
+      zdefiniowanych kolorów lub też wstawić wartość heksadecymalną
+      pożądanego koloru (np. a6b492). W drugim przypadku należy pamiętać o
+      kliknięciu znajdującego się po lewej znacznika wyboru.
+      <br><br>
+      
+      <b>Dopasuj</b><br>
+	W tym miejscu określa się pasujące do reguły zwroty. W przycisku
+	wyboru wybiera się część nagłówka do dopasowania ("Do", "Od",
+	"Temat"), zaś w polu tekstowym odpowiadający mu zwrot
+	(np. mama@mamini_serwer.org).
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Ustawienia folderów
+   </title>
+   <description>
+      <b>Ścieżka do folderu</b><br>
+	W niektórych systemach opcja nie jest wyświetlana. Wówczas nie należy
+	przejmować się jej brakiem. Z kolei w innych jest to ważna
+	opcja. Zwykle początkowa wartość jest taka, jaka powinna być.
+	Określa ona umiejscowienie folderów poczty w katalogu domowym
+	użytkownika. Jeżeli nie wiesz, o co chodzi, to nie zmieniaj niczego.
+      <br><br>
+
+      <b>Kosz</b><br>
+	Można wybrać folder, do którego zostaną przesłane wiadomości po
+	skasowaniu lub ustawić na "Nie używaj Kosza", by naprawdę usuwać
+	wiadomości.
+      <br><br>
+      
+      <b>Wysłane</b><br>
+	Określenie foldera, do którego zostaną skopiowane wysłane wiadomości.
+	"Nie zapisuj wysłanych" wyłącza tą funkcję.
+      <br><br>
+      
+      <b>Informacja o nie przeczytanej poczcie</b><br>
+      Opcja określająca sposób informowania o nieprzeczytanych wiadomościach w
+      lewym oknie przeglądarki. "Brak informacji" wyłącza tą funkcję. "Tylko
+      INBOX" powoduje pogrubienie czcionki nazwy foldera oraz wyświetlenie
+      liczby nowych wiadomości po jego prawej stronie w sytuacji, gdy istnieją
+      nieprzeczytane wiadomości. Wybranie wartości "Wszystkie foldery"
+      spowoduje poszerzenie powyższego działania na wszystkie foldery.
+      Gdy lista folderów jest ładowana długo, należy - w celu przyśpieszenia
+      tego procesu - dokonać wyboru wartości "Tylko INBOX" lub "Brak informacji".
+      <br><br>
+      
+      <b>Typ powiadamiania o nie przeczytanych wiadomościach</b><br>
+	Do wyboru jest wyświetlanie tylko liczby nowych wiadomości lub liczby
+	wiadomości nowych w stosunku do wszystkich.
+      <br><br>
+   </description>
+</section>

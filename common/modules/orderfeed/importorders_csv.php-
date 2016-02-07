@@ -1,0 +1,873 @@
+<?php
+  class importorders_csv extends IXmodule
+  {
+    // Current file pointer
+    var $fp=NULL;
+
+    // Must be equal or greater than the length of the longest line in the file to be processed
+    var $maxLineLength=1024;
+
+    var $ftype;
+    var $fdelimiter;
+
+    var $enclosure='"';
+
+    var $profileName='';
+    var $passValues=array();
+
+    var $error='';
+
+    var $columnMapping=array();
+
+    var $rawOrderFields="
+      ordernum,    Order Number,        none/unique
+      custemail,   Customer Email,      none/unique
+      phone,       Phone,               none/unique
+      d_fname,     Delivery First Name, none/unique
+      d_lname,     Delivery Last Name,  none/unique
+      d_addr1,     Delivery Address,    none/unique
+      d_addr2,     Delivery Address2,   none/unique
+      d_city,      Delivery City,       none/unique
+      d_state,     Delivery State,      none/unique
+      d_pcode,     Delivery Postcode,   none/unique
+      d_country,   Delivery Country,    none/unique
+      b_fname,     Billing First Name,  none/unique
+      b_lname,     Billing Last Name,   none/unique
+      b_addr1,     Billing Address,     none/unique
+      b_addr2,     Billing Address2,    none/unique
+      b_city,      Billing City,        none/unique
+      b_state,     Billing State,       none/unique
+      b_pcode,     Billing Postcode,    none/unique
+      b_country,   Billing Country,     none/unique
+      s_method,    Shipping Method,     none/unique
+      s_cost,      Shipping Cost,       none/unique
+      p_upc,       Product UPC,         none/unique/numbered
+      p_name,      Product Name,        none/unique/numbered
+      p_price,     Product Price,       none/unique/numbered
+      p_qty,       Product Quantity,    none/unique/numbered
+      p_tax,       Product Tax,         none/unique/numbered
+    ";
+
+    var $rawOrderFieldsMapping="
+      ordernum,    void
+      custemail,   shipdata.email_address+  billdata.email_address
+      phone,       shipdata.telephone+      billdata.telephone
+      d_fname,     d_name.fname
+      d_lname,     d_name.lname
+      d_addr1,     shipdata.street_address
+      d_addr2,     shipdata.suburb
+      d_city,      shipdata.city
+      d_state,     shipdata.state
+      d_pcode,     shipdata.postcode
+      d_country,   shipdata.country
+      b_fname,     b_name.fname
+      b_lname,     b_name.lname
+      b_addr1,     billdata.street_address
+      b_addr2,     billdata.suburb
+      b_city,      billdata.city
+      b_state,     billdata.state
+      b_pcode,     billdata.postcode
+      b_country,   billdata.country
+      s_method,    info.shipping_method
+      s_cost,      ???
+      p_upc,       ???
+      p_name,      ???
+      p_price,     itemdata.price
+      p_qty,       itemdata.qty
+      p_tax,       ???
+    ";
+
+    function importorders_csv()
+    {
+      require_once(dirname(dirname(dirname(dirname(__FILE__))))."/catalog/includes/classes/order.php");
+      $this->readPassedValues();
+    }
+
+    function addError($message)
+    {
+      $this->error.="$message\n";
+    }
+
+    function getErrors()
+    {
+      return nl2br($this->error);
+    }
+
+    function readPassedValues()
+    {
+      if (!$this->readPOSTvalues()) {
+        return false;
+      }
+      return $this->parsePassedValues();
+    }
+
+    function readPOSTvalues()
+    {
+      if (!isset($_POST['importorders_csv']) || !is_array($_POST['importorders_csv'])) {
+        return NULL;
+      }
+      $return=true;
+      foreach($_POST['importorders_csv'] as $key=>$value) {
+        if (get_magic_quotes_gpc()) {
+          $value=stripslashes($value);
+        }
+        $this->addPassValue($key,$value);
+      }
+      return true;
+    }
+
+    function parsePassedValues()
+    {
+      $return=true;
+      foreach($this->passValues as $passed) {
+        $key=$passed['name'];
+        $value=$passed['value'];
+        $xkey=explode('_',$key);
+        switch($xkey[0]) {
+          case 'delimiter':
+            $this->fdelimiter=chr($value);
+            break;
+          case 'ftype':
+            $this->ftype=$value;
+            break;
+          case 'profile':
+            $this->profileName=$value;
+            break;
+          case 'mapping':
+            $db_key=substr($key,8);
+            $xcsv=explode('_',$value);
+            $csv_key=implode('_',array_slice($xcsv,1));
+            $this->columnMapping[$db_key]=$csv_key;
+            break;
+          case 'confirm':
+            switch($xkey[1]) {
+              case 'edit':
+                $this->editConfirmed=$value;
+                break;
+              case 'mapping':
+                $this->mappingConfirmed=$value;
+                break;
+              case 'delimiter':
+                $this->delimiterConfirmed=$value;
+                break;
+              default:
+                $this->addError("Unknown confirmation: $key");
+                $return=false;
+            }
+            break;
+          default:
+            $this->addError("Unknown field: $key");
+            $return=false;
+        }
+      }
+      return $return;
+    }
+
+    function addPassValue($var,$val)
+    {
+      $this->passValues[]=array('name'=>$var,'value'=>$val);
+      return $val;
+    }
+
+    function readCSVLine()
+    {
+      return fgetcsv($this->fp,$this->maxLineLength,$this->fdelimiter,$this->enclosure);
+    }
+
+    function readRawLine()
+    {
+      return fgets($this->fp,$this->maxLineLength);
+    }
+
+    function parseHeading()
+    {
+      $line=$this->readRawLine();
+      rewind($this->fp);
+      if (strpos($line,"\t")) {
+        $this->ftype="TAB-delimited";
+        $this->fdelimiter="\t";
+      } elseif (strpos($line,",")) {
+        $this->ftype="Comma-delimited";
+        $this->fdelimiter=",";
+      } elseif (strpos($line,";")) {
+        $this->ftype="Semi-colon delimited";
+        $this->fdelimiter=";";
+      } elseif ($_POST['delimiter']) {
+        $this->addPassValue('confirm_delimiter',1);
+        $this->ftype="Custom delimiter";
+        $d=$_POST['delimiter'];
+        if (get_magic_quotes_gpc()) {
+          $d=stripslashes($d);
+        }
+        if (preg_match("/^\\(([0-9]+)\\)$/",$d,$m)) {
+          $this->fdelimiter=chr($m[1]);
+        } elseif (preg_match("/^\\\\x([0-9A-Fa-f]{1,2})$/",$d,$m)) {
+          $this->fdelimiter=chr(hexdec($m[1]));
+        } else {
+          $this->fdelimiter=substr($d,0,1);
+        }
+      } else {
+        return false;
+      }
+      $this->addPassValue('delimiter',ord($this->fdelimiter));
+      $this->addPassValue('ftype',$this->ftype);
+      return true;
+    }
+
+    function parseHeaderFields($data)
+    {
+      $fields=array();
+      foreach($data as $atom) {
+        $field=array();
+        if (preg_match("/^(.+?)([0-9]+)$/",$atom,$matches)) {
+          $field['type']='numbered';
+          $field['prefix']=$matches[1];
+          $field['no']=$matches[2];
+        } else {
+          $field['type']='unique';
+        }
+        $field['name']=$atom;
+        $fields[]=$field;
+      }
+      return $fields;
+    }
+
+    function initFile($file)
+    {
+      if (!is_file($file) || !is_readable($file)) {
+        $this->addError("Can't open file $file for reading.");
+        return false;
+      }
+      return (bool) $this->fp=fopen($file,'r');
+    }
+
+    function findDelimiter($file)
+    {
+      if (!$this->initFile($file)) {
+        // No need to complain here, initFile already has.
+        return false;
+      }
+      $headingData=$this->parseHeading();
+      if (!$headingData) {
+        return $this->renderPage($this->renderDelimiterSelector());
+      }
+      $this->addPassValue('confirm_delimiter',1);
+      return true;
+    }
+
+    function getOrderFieldMapping()
+    {
+      if ($this->cachedOrderMappingInfo) {
+        return $this->cachedOrderMappingInfo;
+      }
+      $mapping_info=array();
+      $raw_fields=explode("\n",$this->rawOrderFieldsMapping);
+      foreach($raw_fields as $raw_field) {
+        $raw_field=trim($raw_field);
+        if (!$raw_field) {
+          continue;
+        }
+        $raw_data=explode(",",$raw_field);
+        $raw_mappings=explode("+",trim($raw_data[1]));
+        $mappings=array();
+        foreach($raw_mappings as $mapping) {
+          $mappings[]=explode(".",$mapping);
+        }
+        $mapping_info[trim($raw_data[0])]=$mappings;
+      }
+      $this->cachedOrderMappingInfo=$mapping_info;
+      return $mapping_info;
+    }
+
+    function getOrderFieldInfo()
+    {
+      if ($this->cachedOrderFieldInfo) {
+        return $this->cachedOrderFieldInfo;
+      }
+      $field_info=array();
+      $raw_fields=explode("\n",$this->rawOrderFields);
+      foreach($raw_fields as $raw_field) {
+        $raw_field=trim($raw_field);
+        if (!$raw_field) {
+          continue;
+        }
+        $raw_data=explode(",",$raw_field);
+        $raw_options=explode("/",trim($raw_data[2]));
+        $options=array();
+        foreach($raw_options as $raw_option) {
+          $options[$raw_option]=true;
+        }
+        $field_info[]=array(
+          'name'=>trim($raw_data[0]),
+          'display'=>trim($raw_data[1]),
+          'options'=>$options
+        );
+      }
+      $this->cachedOrderFieldInfo=$field_info;
+      return $field_info;
+    }
+
+    function makeCanonicalFields($fields)
+    {
+      $result=array();
+      $processed=array();
+      $xtra=array();
+      foreach($fields as $field) {
+        if ($field['type']!='numbered') {
+          $result[]=$field;
+          continue;
+        }
+        $idx=array_search($field['prefix'],$processed);
+        if ($idx!==false) {
+          $xtra[$idx].=", ".$field['no'];
+          continue;
+        }
+        $field['xtra']=count($xtra);
+        $xtra[]=$field['no'];
+        $processed[]=$field['prefix'];
+        unset($field['name']);
+        unset($field['no']);
+        $result[]=$field;
+      }
+      foreach($result as $key=>$val) {
+        if (isset($val['xtra'])) {
+          $val['name']=$val['prefix']." (".$xtra[$val['xtra']].")";
+          $val['value']=$val['prefix'];
+          unset($val['xtra']);
+        } else {
+          $val['value']=$val['name'];
+        }
+        $result[$key]=$val;
+      }
+      return $result;
+    }
+
+    function renderSelect($name,$data,$selected=NULL)
+    {
+      $result="";
+      $result.="<select name='$name'>\n";
+      foreach($data as $option) {
+        $result.="<option value='".addslashes($option['value'])."'";
+        if ($option['value']==$selected) {
+          $result.=" selected";
+        }
+        $result.=">".htmlspecialchars($option['display'])."</option>\n";
+      }
+      $result.="</select>\n";
+      return $result;
+    }
+
+    function parseMapping()
+    {
+      $mapping=array();
+      $ofi=$this->getOrderFieldInfo();
+      $legit=array();
+      foreach($ofi as $field) {
+        $legit[]=$field['name'];
+      }
+      $ok=true;
+      foreach($_POST['mapping'] as $db_field=>$csv_field) {
+        if (!$csv_field) {
+          continue;
+        }
+        $this->addPassValue("mapping_$db_field",$csv_field);
+        $csv_field=substr($csv_field, strpos($csv_field,"_")+1);
+        if (!in_array($db_field,$legit)) {
+          $ok=false;
+          $this->addError("Unknown field \"$db_field\"");
+          continue;
+        }
+        $mapping[$db_field]=$csv_field;
+      }
+      $this->columnMapping=$mapping;
+      return $ok;
+    }
+
+    function doColumnMapping()
+    {
+      if ($_POST['mapping'] && is_array($_POST['mapping'])) {
+        if ($this->parseMapping()) {
+          $this->addPassValue('confirm_mapping',1);
+          return true;
+        }
+      }
+      $file_fields=$this->parseHeaderFields($this->readCSVLine());
+      $canonical_file_fields=$this->makeCanonicalFields($file_fields);
+      $ofi=$this->getOrderFieldInfo();
+      $table=array();
+      foreach($ofi as $field) {
+        $options=$field['options'];
+        $select=array();
+        $selected='';
+        if ($options['none']) {
+          $select[]=array(
+            'value'=>'',
+            'display'=>'n/a'
+          );
+        } else {
+          $select[]=array(
+            'value'=>'',
+            'display'=>'Please select:'
+          );
+        }
+        foreach($canonical_file_fields as $ff) {
+          if (in_array($ff['type'],array_keys($options))) {
+            $ffval=$ff['type'].'_'.$ff['value'];
+            if ($ff['value']==$this->columnMapping[$field['name']]) {
+              $selected=$ffval;
+            }
+            $select[]=array(
+              'value'=>$ffval,
+              'display'=>$ff['name']
+            );
+          }
+        }
+        $table[]=array(
+          $field['display'],
+          $this->renderSelect(
+            "mapping[".$field['name']."]",
+            $select,
+            $selected
+          )
+        );
+      }
+      return $this->renderPage($this->renderFormTable($table));
+    }
+
+    function confirmEdit()
+    {
+      $table=array();
+      $ofi=$this->getOrderFieldInfo();
+      $names=array();
+      foreach($ofi as $field) {
+        $names[$field['name']]=$field['display'];
+      }
+      foreach($this->columnMapping as $db_key=>$csv_key) {
+        $table[]=array(
+          $names[$db_key],
+          $csv_key
+        );
+      }
+      $this->addPassValue('confirm_edit',1);
+
+      return $this->renderPage(
+        "<h1>Confirm profile</h1>\n".
+        $this->renderFormTable($table)
+      );
+    }
+
+    function profileInput()
+    {
+      if ($_POST['profileName']) {
+        $profileName=$_POST['profileName'];
+        if (get_magic_quotes_gpc()) {
+          $profileName=stripslashes($profileName);
+        }
+        $this->profileName=$profileName;
+        return true;
+      }
+      $result='';
+      $result.="<h1>Profile name</h1>\n";
+      $result.=$this->renderFormTable(array(
+        array(
+          'Profile name',
+          "<input type=text name='profileName'>"
+        )
+      ));
+      return $this->renderPage($result);
+    }
+
+    function editProfile($file,$profile=NULL)
+    {
+      if ($profile===NULL) {
+        $profile=$this->profileName;
+      } else {
+        $this->profileName=$profile;
+      }
+      if (!$profile) {
+        if (($result=$this->profileInput())!==true) {
+          return $result;
+        }
+        $profile=$this->profileName;
+      }
+      $this->addPassValue('profile',$profile);
+      if (!$this->delimiterConfirmed) {
+        $this->loadProfile($profile);
+        if (($result=$this->findDelimiter($file))!==true) {
+          return $result;
+        }
+      }
+      if (!$this->mappingConfirmed) {
+        if (($result=$this->doColumnMapping())!==true) {
+          return $result;
+        }
+      }
+      if (!$this->editConfirmed) {
+        if (($result=$this->confirmEdit())!==true) {
+          return $result;
+        }
+      }
+      return true;
+    }
+
+    function renderForm($content)
+    {
+      $result="<form method='POST' action='".$_SERVER['PHP_SELF']."'>\n";
+      foreach($this->passValues as $varData) {
+        $result.="<input type='hidden' name=\"importorders_csv[".addslashes($varData['name'])."]\" value=\"".addslashes($varData['value'])."\">\n";
+      }
+      $result.=$content;
+      $result.="</form>\n";
+      return $result;
+    }
+
+    function renderTable($table)
+    {
+      $result='<table border=1>';
+      $maxcount=0;
+      foreach($table as $row) {
+        $count=0;
+        $result.="<tr>\n";
+        foreach($row as $cell) {
+          $count++;
+          $result.="  <td>\n";
+          $result.="    ".$cell."\n";
+          $result.="  </td>\n";
+        }
+        $result.="</tr>\n";
+        $maxcount=max($count,$maxcount);
+      }
+      $result.="</table>\n";
+      $this->_maxtablecount=$maxcount;
+      return $result;
+    }
+
+    function renderFormTable($table)
+    {
+      $result=$this->renderTable($table);
+      $result=substr($result,0,-9);
+      $result.="<tr>\n";
+      $result.="  <td colspan={$this->_maxtablecount} align=center><input type='submit' name='submit' value='Submit'></td>\n";
+      $result.="</tr>\n";
+      $result.="</table>\n";
+
+      return $this->renderForm($result);
+    }
+
+    function renderDelimiterSelector()
+    {
+      $return="<h1>Delimiter</h1>\n";
+      $return.="<div><i>Please provide the field delimiter manually:</i></div>\n";
+      $return.="<div><small>".
+        "(For special characters, use &quot;(nnn)&quot; for character nnn (decimal), ".
+        "or &quot;\\xNN&quot; for character NN (hex).)".
+        "</small></div>\n";
+      $return.=$this->renderFormTable(array(
+        array('Delimiter',"<input type='text' name='delimiter' value='' size=5>")
+      ));
+      return $return;
+    }
+
+    function renderPage($content)
+    {
+      $result='';
+      $result.=$this->renderPageStart();
+      $result.=$this->renderHeaderBoxes();
+      $result.=$content;
+      $result.=$this->renderPageEnd();
+      return $result;
+    }
+
+    function renderPageStart()
+    {
+      $result='';
+      $result.="<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
+      $result.="<HTML>\n";
+      $result.="<HEAD>\n";
+      $result.="  <TITLE>Edit CSV import profile</TITLE>\n";
+      $result.="</HEAD>\n";
+      $result.="<BODY>\n";
+      return $result;
+    }
+
+    function renderPageEnd()
+    {
+      $result='';
+      $result.="</BODY>\n";
+      $result.="</HTML>\n";
+      return $result;
+    }
+
+    function renderHeaderBoxes()
+    {
+      $result=array();
+      if ($this->profileName) {
+        $result=array_merge($result,$this->renderProfileNameBox());
+      }
+      if ($this->fdelimiter) {
+        $result=array_merge($result,$this->renderDelimiterBox());
+      }
+      if ($result) {
+        return $this->renderTable($result)."<br>";
+      } else {
+        return '';
+      }
+    }
+
+    function renderProfileNameBox()
+    {
+      return array(
+        array("Profile name",$this->profileName)
+      );
+    }
+
+    function renderDelimiterBox()
+    {
+      $result=array(
+        array(
+          "Delimiter type",
+          $this->ftype
+        )
+      );
+      if ($this->ftype=="Custom delimiter") {
+        $result[]=array(
+          "Delimiter",
+          $this->fdelimiter." (ASCII ".ord($this->fdelimiter).")"
+        );
+      }
+      return $result;
+    }
+
+    function saveProfile()
+    {
+      if(!$this->profileName || !$this->columnMapping || !$this->fdelimiter) {
+        $this->addError("Can't save incomplete profile.");
+        return false;
+      }
+      foreach($this->passValues as $passed) {
+        $xname=explode("_",$passed['name']);
+        if ($xname[0]=='confirm' || $passed['name']=='profile') {
+          continue;
+        }
+        $this->setExtra('profile',$this->profileName,$passed['name'],$passed['value']);
+      }
+      return true;
+    }
+
+    function loadProfile($profile)
+    {
+      if (!$profile) {
+        $this->addError("Can't load unnamed profile!");
+        return false;
+      }
+      $data=$this->getExtra('profile',$profile);
+      if (!$data) {
+        $this->addError("Can't load profile \"$profile\" -- no data available.");
+        return false;
+      }
+      foreach($data as $key=>$value) {
+        $this->passValues[]=array(
+          'name'=>$key,
+          'value'=>$value
+        );
+      }
+      return $this->parsePassedValues();
+    }
+
+    function getProfiles()
+    {
+      return array_keys($this->getExtra('profile'));
+    }
+
+    function importOrders($file,$profile)
+    {
+      if(!$this->loadProfile($profile)) {
+        $this->addError("Can't import orders -- failed loading profile \"$profile\".");
+        return false;
+      }
+      if(!$this->initFile($file)) {
+        $this->addError("Can't import orders -- failed opening file!");
+        return false;
+      }
+      $header=$this->readCSVLine();
+      if (!$header) {
+        $this->addError("Can't import orders -- failed reading header line from file!");
+        return false;
+      }
+      $heading_data=$this->parseHeaderFields($header);
+      $mapping=array();
+      $usedFields=array();
+      foreach($heading_data as $CSV_key=>$CSV_field) {
+        foreach($this->columnMapping as $mapKey=>$mapVal) {
+          if (
+            ($CSV_field['type']=='numbered' && $CSV_field['prefix']==$mapVal) ||
+            ($CSV_field['type']=='unique' && $CSV_field['name']==$mapVal)
+          ) {
+            $mapping[$CSV_key]=$mapKey;
+            if (!isset($usedFields[$mapKey])) {
+              $usedFields[$mapKey]=1;
+            } else {
+              $usedFields[$mapKey]++;
+            }
+            // We do NOT break here, because we want to allow re-using columns
+            //break;
+          }
+        }
+      }
+      $usedCount=0;
+      $ok=true;
+      foreach($this->columnMapping as $mapKey=>$mapVal) {
+        if (!isset($usedFields[$mapKey])) {
+          $this->addError("Field $mapVal ($mapKey) required by the profile not found in this file!");
+          ob_start();
+          echo "<pre>";
+          var_dump($usedFields);
+          echo "</pre>";
+          $this->addError(ob_get_clean());
+          $ok=false;
+        }
+        if ($usedFields[$mapKey]>1) {
+          if ($usedCount==0) {
+            $usedCount=$usedFields[$mapKey];
+          } elseif ($usedCount!=$usedFields[$mapKey]) {
+            $this->addError("Numbered fields used incorrectly! (The same number of numbered fields must be used for all such fields in each row.)");
+            $ok=false;
+          }
+        }
+      }
+      if (!$ok) {
+        return false;
+      }
+      $last_order_id=false;
+      $lastorder=array();
+      echo "<table border=1>\n";
+      $ofi=$this->getOrderFieldInfo();
+      while($line=$this->readCSVLine()) {
+        echo "<tr>\n";
+        $corder=array();
+        $count=0;
+        foreach($line as $k=>$v) {
+          $count++;
+          echo "<td>";
+          echo "<small>".$mapping[$k]."</small><br>";
+          echo $v;
+          if ($heading_data[$k]['type']=='numbered') {
+            $corder[$mapping[$k]][]=array('value'=>$v,'index'=>$heading_data[$k]['no']);
+          } else {
+            $corder[$mapping[$k]]=$v;
+          }
+          echo "</td>\n";
+        }
+        $saved=false;
+        if (isset($corder['ordernum']) && $last_order_id===$corder['ordernum']) {
+          foreach($corder as $k=>$v) {
+            $numbered=false;
+            foreach($ofi as $o) {
+              if ($o['name']==$k) {
+                if ($o['options']['numbered']) {
+                  $numbered=true;
+                }
+              }
+            }
+            if (!$numbered) {
+              continue;
+            }
+            if (!is_array($v)) {
+              $v=array($v);
+            }
+            if (!is_array($lastorder[$k])) {
+              $lastorder[$k]=array($lastorder[$k]);
+            }
+            $lastorder[$k]=array_merge($lastorder[$k],$v);
+          }
+          $corder=$lastorder;
+        } else {
+          if ($lastorder) {
+            $this->saveOrder($lastorder);
+            $saved=true;
+          }
+          $lastorder=$corder;
+          $last_order_id=$corder['ordernum'];
+        }
+        echo "</tr>\n";
+        echo "<tr><td colspan=$count><pre>";
+        var_dump($corder);
+        echo "</td></tr>\n";
+      }
+      echo "</table>\n";
+      $this->saveOrder($lastorder);
+    }
+
+    function saveOrder($order_data)
+    {
+      echo "<pre>";
+      var_dump($order_data);
+      echo "</pre>";
+      $ofm=$this->getOrderFieldMapping();
+      $shipdata=$billdata=$itemdata=$orderinfo=$bname=$dname=array();
+      $itemdata=array();
+      foreach($order_data as $field=>$value) {
+        if (!$ofm[$field]) {
+          $this->addError("Unknown field type \"$field\"");
+          continue;
+        }
+        foreach($ofm[$field] as $map) {
+          switch($map[0]) {
+            case 'void':
+              break;
+            case 'shipdata':
+              $shipdata[$map[1]]=$value;
+              break;
+            case 'billdata':
+              $billdata[$map[1]]=$value;
+              break;
+            case 'info':
+              $orderinfo[$map[1]]=$value;
+              break;
+            case 'bname':
+              $bname[$map[1]]=$value;
+              break;
+            case 'dname':
+              $dname[$map[1]]=$value;
+              break;
+            case 'itemdata':
+              $itemdata[$map[1]][]=$value;
+              break;
+          }
+        }
+      }
+      $bname=$this->processName($bname);
+      if ($bname) {
+        $billdata['name']=$bname;
+      }
+      $dname=$this->processName($dname);
+      if ($dname) {
+        $shipdata['name']=$dname;
+      }
+      $order=new order;
+      $order->create(NULL,$shipdata,$billdata);
+      $order->info=$orderinfo;
+
+//      foreach($itemdata as $
+      //@@
+    }
+
+    function processName($name)
+    {
+      if (!$name) {
+        return NULL;
+      }
+      if ($name['fname'] && $name['lname']) {
+        $name=$name['fname'].' '.$name['lname'];
+      } elseif ($name['fname']) {
+        $name=$name['fname'];
+      } elseif ($name['lname']) {
+        $name=$name['lname'];
+      } else {
+        $name=NULL;
+      }
+      return $name;
+    }
+  }
+
+?>

@@ -1,0 +1,92 @@
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	<s:Body>
+		<CreateOrderShipToBillToWithItems xmlns="http://tempuri.org/">
+			<securityToken>?????????????????????????????</securityToken>
+			<regionID>1</regionID>
+			<webOrder z:Id="i1" xmlns:a="http://schemas.datacontract.org/2004/07/V2K.PDM.WebErp.Data" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/">
+				<AddedDataObject xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data" xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				<CreatedBy xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0</CreatedBy>
+				<CreatedDate xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0001-01-01T00:00:00</CreatedDate>
+				<ExtensionData i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data"/>
+				<ID xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">-1</ID>
+				<IDOverride i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data"/>
+				<IsMarkDeleted xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">false</IsMarkDeleted>
+				<IsModified xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">false</IsModified>
+				<ModifiedBy xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0</ModifiedBy>
+				<ModifiedDate xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0001-01-01T00:00:00</ModifiedDate>
+				<PreviousID i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data"/>
+				<WasInitialized xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">false</WasInitialized>
+				<a:CustomerPO>090722223M36</a:CustomerPO>
+			<a:DateCancelBy>2009-08-05T10:30:00-04:00</a:DateCancelBy>
+			<a:DateShipBy>2009-08-05T10:30:00-04:00</a:DateShipBy>
+			<a:Freight>15.75</a:Freight>
+			<a:Notes i:nil="true" />
+			<a:OrderState>Open</a:OrderState>
+			<a:Reference i:nil="true" />
+			<a:SONumber i:nil="true" />
+			<a:SalesTypeID>0</a:SalesTypeID>
+			<a:ShipToID>0</a:ShipToID>
+			<a:ShipViaID>20</a:ShipViaID>
+			<a:Tax1ID>14</a:Tax1ID>
+			<a:Tax2ID>11</a:Tax2ID>
+			<a:TermID>15</a:TermID>
+			
+			</webOrder>
+			<webBillTo xmlns:a="http://schemas.datacontract.org/2004/07/V2K.PDM.WebErp.Data" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+				<a:Address>130 X Ave</a:Address>
+			<a:Address2 i:nil="true" />
+			<a:BillToID i:nil="true" />
+			<a:City>XX</a:City>
+			<a:Country>CA</a:Country>
+			<a:Email>xxx@xxx.ca</a:Email>
+			<a:FaxNumber i:nil="true" />
+			<a:FirstName>XXXX</a:FirstName>
+			<a:ID>0</a:ID>
+			<a:LastName>XXXX</a:LastName>
+			<a:PhoneNumber>000-000-0000</a:PhoneNumber>
+			<a:State>XX</a:State>
+			<a:StoreCode>XXXX</a:StoreCode>
+			<a:Zip>X1X1X1</a:Zip>
+			</webBillTo>
+			<webShipTo xmlns:a="http://schemas.datacontract.org/2004/07/V2K.PDM.WebErp.Data" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+				<a:Address>130 X Ave</a:Address>
+			<a:Address2 i:nil="true" />
+			<a:BillToID i:nil="true" />
+			<a:City>XXX</a:City>
+			<a:Country>CA</a:Country>
+			<a:Email>emc4@sfu.ca</a:Email>
+			<a:FaxNumber i:nil="true" />
+			<a:FirstName>XX</a:FirstName>
+			<a:ID>0</a:ID>
+			<a:LastName>XXX</a:LastName>
+			<a:PhoneNumber>000-000-0000</a:PhoneNumber>
+			<a:State>XX</a:State>
+			<a:StoreCode>XXXX</a:StoreCode>
+			<a:Zip>x1x1x1</a:Zip>
+			</webShipTo>
+			<language>English</language>
+			<items xmlns:a="http://schemas.datacontract.org/2004/07/V2K.PDM.WebErp.Data" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+				
+		<a:WebErpOrderItemData z:Id="i1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/">
+		<AddedDataObject xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data" xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+		<CreatedBy xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0</CreatedBy>
+		<CreatedDate xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0001-01-01T00:00:00</CreatedDate>
+		<ExtensionData i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data"/>
+		<ID xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">-1</ID>
+		<IDOverride i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data"/>
+		<IsMarkDeleted xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">false</IsMarkDeleted>
+		<IsModified xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">false</IsModified>
+		<ModifiedBy xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0</ModifiedBy>
+		<ModifiedDate xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">0001-01-01T00:00:00</ModifiedDate>
+		<PreviousID i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data"/>
+		<WasInitialized xmlns="http://schemas.datacontract.org/2004/07/V2K.Framework.Data">false</WasInitialized>
+		<a:CategoryID>1</a:CategoryID>
+			<a:IPCCode>0046600020860101</a:IPCCode>
+			<a:Quantity>1</a:Quantity>
+			
+	</a:WebErpOrderItemData>
+			</items>
+		</CreateOrderShipToBillToWithItems>
+	</s:Body>
+</s:Envelope>

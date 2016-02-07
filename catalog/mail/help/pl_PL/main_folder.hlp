@@ -1,0 +1,54 @@
+<chapter>
+   <title>
+      Lista (spis) wiadomości
+   </title>
+   <summary>
+      Nie jest to nic skomplikowanego lecz tylko wyświetlanie wiadomości pocztowych,
+      znajdujących się w określonym folderze.
+   </summary>
+</chapter>
+
+<section>
+   <title>
+      Lista wiadomości
+   </title>
+   <description>
+      <p>
+     Po wybraniu - poprzez kliknięcie - foldera w lewej ramce, w prawej pojawi się
+     jego indeks wiadomości, czyli zostaną wyświetlone wiadomości znajdujące się
+     w wybranym folderze. Nad tabelką zawierającą listę wiadomości widnieje informacja
+     o aktualnie wyświetlanych na stronie wiadomościach oraz całkowitej ich liczbie w folderze.
+      </p><p>
+      Na przykład: Przeglądanie wiadomości <b>20</b> do <b>30</b> (45 razem).
+      </p><p>
+      Należy zauważyć, że całkowita liczba wiadomości w folderze może różnić się od liczby
+      wiadomości nieprzeczytanych, która wyświetlana jest po prawej stronie głównego foldera
+      poczty (w lewej ramce).
+      </p><p>
+     Poniżej informacji o wyświetlanych wiadomościach znajduje się pasek wyboru z trzema
+     przyciskami. W pierwszym po lewej można wybrać jeden folder z grupy folderów użytkownika.
+     Każda zaznaczona wiadomość zostanie przeniesiona do wybranego folderu po naciśnięciu
+     przycisku <i>Przenieś</i>. Można jednocześnie przenosić wszystkie zaznaczone wiadomości.
+     Po prawej stronie znajduje się przycisk służący do usuwania wiadomości zatytułowany
+     <i>Usuń</i>. Wystarczy zaznaczyć przeznaczone do skasowania wiadomości i kliknąć ten
+     przycisk.
+      </p><p>
+      Jeszcze niżej znajduje się wiersz z trzema polami (<i>Od</i>, <i>Data</i>, <i>Temat</i>).
+      Nagłówki te dzielą tabelę wiadomości na logiczne części. <i>Od</i> określa osobę,
+      która przysłała wiadomość lub przynajmniej adres poczty elektronicznej, z którego została
+	zaadresowana.
+      <i>Data</i> informuje o dniu i godzinie nadejścia wiadomości. <i>Temat</i> opisuje jej temat.
+      <br><b>Uwaga</b>: pomiędzy kolumnami <i>Daty</i> i <i>Tematu</i> znajduje się wąska
+      kolumna bez tytułu. Litera "A" - wyświetlana w tej kolumnie - oznacza, iż na wiadomość
+      została udzielona odpowiedź, symbol "!" określa wiadomość jako pilną.
+      </p><p>
+     Pozostaje jeszcze tablica wiadomości. Już przejrzane wiadomości pisane są zwykłą czcionką,
+     podczas gdy nieprzeczytane zostają <b>pogrubione</b>. W tablicy znajdują się cztery pola.
+     Pierwsze po lewej zawiera znacznik wyboru, służący do zaznaczania i odznaczania wiadomości.
+     Gdy wiadomość jest zaznaczona, można dokonywać na niej omówione wcześniej czynności
+     (przenoszenie, usuwanie). Pod nagłówkiem <i>Od</i> opisany jest nadawca wiadomości.
+     Wiem, to zdumiewające! Ale przecież nikt nie jest zmuszany do czytania tego dokumentu.
+     Następnie określone są data i czas oraz temat.
+      </p>
+   </description>
+</section>

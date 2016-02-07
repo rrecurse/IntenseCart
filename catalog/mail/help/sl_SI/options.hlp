@@ -1,0 +1,179 @@
+<chapter>
+   <title>
+      Opcije
+   </title>
+   <summary>
+      Z nastavitvami različnih opcij, si lahko prikrojite izgled in način
+      kako se vam SquirrelMail odziva.
+   </summary>
+   <description>
+      <p>
+      Ena boljših strani SquirelMaila je stopnja do katere si ga lahko prikrojite. Odvisno
+      od konfiguracije imate na izbiro več tem, jezikov, map in drugih lastnosti. Vse to
+      lahko spremenite ne da bi s tem vplivali na ostale uporabnike sistema. So štirje
+      glavni deli Opcij: Osebne, Prikaz, Poudarjanje sporočil in Mape.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Osebne informacije
+   </title>
+   <description>
+      <b>Polno ime</b><br>
+      Tukaj naj bi vpisali vaše polno ime, npr: "Janez Povprečnik". To se prejemnikom
+      vaših sporočil pokaže kot pošiljatelj. Videli bodo, da je prišlo sporočilo od
+      "Janeza Povprečnika". Če tega polje ne izpolnite, bodo kot pošiljatelja videli vaš
+      elektronski naslovv, npr: "pjanez@domena.si".
+      <br><br>
+
+      <b>E-Poštni naslov</b><br>
+      <i>Neobvezno</i> - Če vaš naslov ni tak, kot ga je samodejno zaznal sistem, ga lahko
+      tukaj vpišete.
+      <br><br>
+
+      <b>Naslov za odgovor</b><br>
+      <i>Neobvezno</i> - To je naslov kamor bodo prihajali odgovori na vaša sporočila. Če
+      je ta naslov drugačen od tistega od koder pošto pošiljate, ga lahko tukaj vpišete. To
+      je uporabna opcija, če želite da bodo odgovori prihajali na vaš @email.si ali
+      @yahoo.com naslov namesto v službo.
+      <br><br>
+
+      <b>Podpis</b><br>
+      <i>Neobvezno</i> - Podpis je priključen na konec vseh sporočil, ki jih odpošljete.
+      Če želite, da se bo podpis uporabil, morate odkljukati polje "Uporabi Podpis" in
+      potem vpisati karkoli pač želite za podpis v polje pod njim.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Lastnosti prikaza
+   </title>
+   <description>
+      <b>Theme</b><br>
+      SquirrelMail različne barvne teme za vaše udobje pri delu. Izbirate lahko med
+      več temami, če tako želite.
+      <br><br>
+
+      <b>Jezik</b><br>
+      Če angleščina ni vaš materin jezik lahko enostavno nastavite jezik v katerem
+      je izpisanih večina stvari. Če je jezik ki ga želite na seznamu, ga lahko izberete
+      in vsa nadaljnja SquirrelMailova sporočila bodo v tem jeziku. Ta opcija velja
+      samo za sporočila SquirrelMaila, vaša prihajajoča pošte ne bo prevedena.
+      <br><br>
+
+      <b>Uporabi Javascript addresar?</b><br>
+      Eden naših glavnih ciljev pri razvoju SquirrelMaila je bil neuporaba Javascripta
+      v vseh naših straneh. Kjub temu so razvijalci napisali odličen pripomoček za
+      iskanje po adresarju, ki uporablja Javascript. Raje kot da bi ga pobrisali, smo
+      vam dali na voljo izbiro med HTML in Javascripr adresarjem. Če ne veste kaj to
+      pomeni, je najvarnejša odločitev HTML adresar, čeprav bi vam najverjtneje
+      delovala tudi varijanta z Javascriptom.
+      <br><br>
+
+      <b>Število sporočil za prikaz</b><br>
+      To je naječje število sporočil, ki se jih naenkrat prikaže v mapi. Če je v mapi
+      več sporočil, bo na vrhu in na dnu seznama povezava za "Prejšnja" in "Naslednja"
+      sporočila.
+      <br><br>
+
+      <b>Prelomi prihajajoči tekst pri</b><br>
+      Koliko znakov naj bo v vrstici pred prelomom teksta v naslednjo vrstico. Ta
+      opcija prepreči "uhajanje" teksta iz ekrana. 86 je priporočljiva vrednost, ki
+      pa si jo seveda lahko prilagodite.
+      <br><br>
+
+      <b>Velikost okna za urejanje</b><br>
+      Kako širok naj bo okvir za "Novo sporočilo"? Definiran je v številu znakov, ki
+      jih lahko napišete v eno vrstico, preden se le ta prelomi v naslednjo.
+      <br><br>
+
+      <b>Širina seznama map na levi</b><br>
+      Na levi strani vašega internetnega brskalnika boste videli seznam map. S to
+      opcijo določite kako širok naj bo ta seznam. Če imate zelo dolga imena map ali
+      velike fonte, je dobro da to vrednost nastavite precej veliko, sicer je pa bolje,
+      da ostane čim manjša, da ne zapravljate prostora ba ekranu.
+      <br><br>
+
+      <b>Samodejno osveži seznam map</b><br>
+      SquirrelMail ima zmožnost samodejnega osveževanja seznama map na levi strani
+      brskalnika. Pri tem se obnovi tudi število sporočil, ki so v vsaki mapi. To je
+      prikladen način preverjanja za novo pošto, ne da bi bilo potrebno vsakič klikati
+      na PREJETO.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Označevanje sporočil
+   </title>
+   <description>
+      Če ste naročeni na več dopisnih seznamov je včasih težko razločiti od kod
+      je katero sporočilo. Z označevanjem sporočil lahko določite svojo barvo
+      ozadja za vsak dopisni seznam, na katerega ste naročeni.<br><br>
+
+      Kliknite na [Novo] za novo pravilo ali [Uredi] za urejanje že obstoječega
+      in spodaj se bodo pokazale opcije.<br><br>
+
+      <b>Prepoznavno imena</b><br>
+      To je samo ime pravila, ki ga urejate. Naj bo tako, da bo že iz imena
+      razvidno ja določa. Na primer: če označuje sporočila od vaše mame, naj se
+      imenuje "Od Mame".
+
+      <br><br>
+
+      <b>Barva</b><br>
+      To je barva ozadja, ki naj jo ima sporočilo. Lahko izbirate iz seznama
+      barv, ki smo ga izbrali za vas, lahko pa vnesete HEX kodo barve (npr: a6b492).
+      Če želite svojo barvo, morate označiti izbirno pred njo.
+      <br><br>
+
+      <b>Ustrezno</b><br>
+      Tukaj določite frazo, ki bo določila ali sporočila ustreza tamu pravilu ali ne.
+      V padajočem izbirniku izberite katero polje v zaglavju (od, za, naslov ...) mora
+      ustrezati tekstu, ki ga boste vpisali (mama@yahoo.com).
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Lastnosti mape
+   </title>
+   <description>
+      <b>Pot do mape</b><br>
+      Na nekaterih sistemih, ta opcija ne bo vidna in jo lahko mirno ignorirate. Na
+      ostalih sistemih je pa precej pomembna. Običajno je pravilna vrednost že vpisana
+      in pomeni mapo v vaši domači mapi (home directory), ker je vaša pošta. Če tega
+      ne razumete, pustite tako kot je.
+      <br><br>
+
+      <b>Mapa Smeti</b><br>
+      Tukaj lahko določite v katero mapo naj se prenesejo sporočila, ki jih pobrišete.
+      Če ne želite, da uporabljatimape za smeti, tukaj nastavite na "Ne uporabljaj Koša".
+      <br><br>
+
+      <b>Mapa poslano</b><br>
+      Tukaj nastavite v katero mapo se bo shranila vaša poslana pošta. Če ne želite
+      shranjevati poslane pošte nastavite na "Ne uporabljaj mape Poslano".
+      <br><br>
+
+      <b>Opozarjanje na neprebrano pošto</b><br>
+      Ta opcija določa kako prikazati neprebrana sporočila, v seznamu, ki je na desni
+      strani vašega brskalnika. Če tukaj nastavite na "Brez obveščanja", vas sistem ne
+      bo obveščal o neprebranih sporočilih. Če nastavite na "Samo PREJETO", bo mapa
+      prejeto postala poudarjena, zraven pa se bo izpisalo število novih sporočil. Če
+      pa nastavite na "Vse mape", se bo tako dogajalo pri vseh mapah. Če se vam zdi, da
+      je prikazovanje vsebine mape zares prepočasno nastavite to opcijo na "Samo prejeto"
+      ali "Brez obveščanja".
+      <br><br>
+
+      <b>Način obveščanja o neprebranih sporočilih</b><br>
+      Ko so v mapi nova sporočila, ta opcija določi kako vas sistem o tem obvesti.
+      <br><br>
+   </description>
+</section>

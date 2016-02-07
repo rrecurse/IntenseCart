@@ -1,0 +1,47 @@
+<?php
+/*
+  $Id: stats_customers.php,v 1.9 2002/03/30 15:03:59 harley_vb Exp $
+
+  
+  
+
+  Copyright (c) 2002 IntenseCart eCommerce
+
+  
+*/
+
+define('HEADING_TITLE', 'Verkaufs Report');
+
+define('TABLE_HEADING_CONVERSION', 'Total Verkäufe');
+define('TABLE_HEADING_CONV_PER_ORDER', 'Durchschn. Bestellungen');
+define('TABLE_HEADING_ORDERS', '# Bestellungen');
+define('TEXT_MONTH', 'Monat');
+define('TEXT_WEEK', 'Woche');
+
+define('TABLE_HEADING_VARIANCE', 'Abweichung');
+
+define('AVERAGE_HOURLY_TOTAL', 'durchschnittliches Stunden Total:');
+define('AVERAGE_DAILY_TOTAL', 'durchschnittliches Tages Total:');
+define('AVERAGE_MONTHLY_TOTAL', 'durchschnittliches Monats Total:');
+define('AVERAGE_WEEKLY_TOTAL', 'durchschnittliches Wochen Total:');
+define('AVERAGE_YEARLY_TOTAL', 'durchschnittliches Jahres Total:');
+
+define('AVERAGE_ORDER', 'Durchschnittliche Bestellung:');
+
+define('TODAY_TO_DATE', 'Tages Total:');
+define('WEEK_TO_DATE', 'Wochen Total:');
+define('MONTH_TO_DATE', 'Monats Total:');
+define('YEAR_TO_DATE', 'Jahres Total:');
+define('YEARLY_TOTAL', 'Total Verkäufe:');
+
+define('REPORT_TYPE_HOURLY', 'Stündlich');
+define('REPORT_TYPE_DAILY', 'Täglich');
+define('REPORT_TYPE_WEEKLY', 'Wöchentlich');
+define('REPORT_TYPE_MONTHLY', 'Monatlich');
+define('REPORT_TYPE_YEARLY', 'Jährlich');
+
+define('FULL_DATE_FORMAT', 'M. d, Y');
+define('FROM_DATE_FORMAT', 'M. d');
+define('TO_DATE_FORMAT', 'd, Y');
+
+?>

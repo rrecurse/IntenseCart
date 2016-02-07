@@ -1,0 +1,160 @@
+<chapter>
+   <title>
+      Branje elektronske pošte
+   </title>
+   <summary>
+      Zmožnost branja elektrnoske popte je najosnovnejša lastnost vsakega
+      odjemalca za elektrnosko pošto. SquirrelMail ima poleg tega še precej
+      dodatnih možnosti. To poglaje jih podrobneje predstavi.
+   </summary>
+   <description>
+      <p>
+      Kliknite na naslov določenega sporočila in to sporočilo bo prikazano.
+      Opazili boste, da so naslovi elektronske pošte in internetne povezave
+      delujoči in s klikom na njih lahko pošljete pošto, ali odprete internetno
+      stran. Naslednja ras priročna značilnost je ta, da so sporočila barvno
+      označena glede na vsebino. Standard pri odgovarjanju je, da se citat
+      prejšnjega sporočila označi ">" pred vsako vrstico. SquirrelMail jih zazna,
+      in jih barvno označi. Odgovorjeno sporočilo bo imelo drugo barvo za citiran
+      tekst in drugo za novo vsebino. to deluje dva nivoja globoko.
+        Nad sporočilo je prikazana tudi dodatna vrstica z menijem. Na levi strani
+      lahko izbrišete ali se vrnete v seznam, na sredini je možna navigacija med
+      sooročili, na desni pa so različne možnosti za elektronsko pošto.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Sezna sporočil
+   </title>
+   <description>
+      <p>
+      Kliknite na to povezavo za povratek v mapo iz katere ste prišli.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Briši
+   </title>
+   <description>
+      <p>
+      Kliknite to povezavo, za vrisanje sporočila, ki ga pravkar pregledujete.
+      Vse priloge tega sporočila so prav tako pobrisane. Če priloge potrebujte
+      jih najprej prenesite na svoj računalnik (pojasnjeno kasneje v poglavju).
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Navigacija
+   </title>
+   <description>
+      <p>
+      Na sredini menija so navigacijski gumbi. "Prejšnje" je aktiven samo, če
+      sporočilo ni prvo. Klik na to povezavo bo pokazal prejšnje sporočilo, ne
+      da bi bilo treba v seznam sporočil.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Naslednje
+   </title>
+   <description>
+      <p>
+      Kliknite na to povezavo za prikaz naslednjega sporočila. Povezava je
+      aktivna samo, če sporočilo ni zadnje.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Posreduj
+   </title>
+   <description>
+      <p>
+      Na desni strani: povezava "posreduj" odpre okno "Novo sporočilo" z
+      vsebino prejšnjega sporočila pod oznako "--Originalno sporočilo--".
+      "Fwd:" je dodan na začetek originalnega naslova in postavljen v pravo
+      polje. Več polj čaka še na vaš vnos. Tekst lahko vpišete tudi nad
+      originalno sporočilo, če ga želite komentirati. Lahko dodate tudi
+      priloge.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Odgovori
+   </title>
+   <description>
+      <p>
+      Kliknite to povezavo, če želite odgovoriti pošiljatelju sporočila.
+      Na začetek naslova je dodana oznaka "Re:". Tekst originalnega
+      sporočila je citiran v polju za tekst. Tokrat je pred vsako vrstico
+      dodan znak ">". Nekatere vrstice ne bodo imele te oznake, to je zaradi
+      preloma teksta in je neizogibno. Temu se lahko izognete tako, da
+      povečate vrednost <i>Prelomi prihajajoči tekst pri</i> na stani z
+      nastavitvami. Komentarje lahko vpisujete kjerkoli v tekstovnem polju.
+      Lahko dodate tudi priloge.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Odgovori vsem
+   </title>
+   <description>
+      <p>
+      Enako kot "Odgovori", le da bodo odgovor dobili vse naslovniki in ne
+      samo pošiljatelj sporočila.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Pregled celotnega zaglavja
+   </title>
+   <description>
+      <p>
+      Ta povezave prikaže celotno zaglavje sporočila. To ključuje pot, po kateri
+      je sporočilo prišlo in še veliko drugih podrobnosti o samem sporočilu.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Prenesi to kot datoteko
+   </title>
+   <description>
+      <p>
+      Ta povezave se nahaja na dnu, tiki nad spodnjim menijem. S klikom nanjo
+      lahko to sporočilo preneste na svoj računalnik in ga shranite kot tekstovno
+      datoteko. Poenostavljeno zaglavje bo pripeto na začetku sporočila.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Priloge
+   </title>
+   <description>
+      <p>
+      Vse priloge poslane s prejetim soročilom bodo prikazane na dnu sporočila
+      v obarvanem okvirčku. Datoteka je prikazana kot povezava z opisom vrste
+      datoteke na desni. Klik na datoteko bo vsebino pokazal ali pa odprl okno
+      za prenos, odvisno od vsebine. Če želite datoteko prenesti na svoj
+      računalnik kliknite povezavo "download", ki je na desni.
+      </p>
+   </description>
+</section>

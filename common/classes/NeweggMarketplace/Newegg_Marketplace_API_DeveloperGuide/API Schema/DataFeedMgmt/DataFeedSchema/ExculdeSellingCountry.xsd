@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="NeweggEnvelope">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocumentVersion" fixed="1.0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MessageType" type="xs:string" fixed="ExcludeSellingCountry" />
+        <xs:element name="Message">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ExcludeSellingCountryList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ExcludeSellingCountry" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SellerPartNumber" type="xs:string" />
+                          <xs:element name="NeweggItemNumber" type="xs:string" minOccurs="0" />
+                          <xs:element name="CountryList">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Country">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="AUS" />
+                                      <xs:enumeration value="IND" />
+                                      <xs:enumeration value="IRL" />
+                                      <xs:enumeration value="NLD" />
+                                      <xs:enumeration value="NZL" />
+                                      <xs:enumeration value="POL" />
+                                      <xs:enumeration value="SGP" />
+                                      <xs:enumeration value="GBR" />
+                                      <xs:enumeration value="ALL" />
+                                      <xs:enumeration value="NULL" />
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

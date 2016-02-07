@@ -1,0 +1,140 @@
+<link rel="stylesheet" type="text/css" href="js/common.css"/>
+<link rel="stylesheet" type="text/css" href="js/lists.css"/>
+<style type="text/css"><!--
+	.statusbox {
+		font-size: 13px;
+		font-family: Monaco, monospace;
+		width: 15em;
+	}
+	ul.boxy li { margin: 0px; }
+	#phonetics td {
+		margin: 0px;
+		padding: 0px 1em;
+		vertical-align: top;
+		width: 100px;
+	}
+	#phonetic1 li, #phonetic2 li, #phonetic3 li { margin: 0px; }
+	#phonetic2 li {
+		margin-bottom: 4px;
+	}
+	#phonetic3 { margin-top: -4px; }
+	#phonetic3 li { margin-top: 4px; }
+	#phoneticlong {
+		margin-bottom: 1em;
+	}
+	#phoneticlong li, #buttons li {
+		margin-bottom: 0px;
+		margin-top: 4px;
+	}
+
+	#boxes {
+		font-family: Arial, sans-serif;
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
+		width: 300px;
+	}
+	#boxes li {
+		cursor: move;
+		position: relative;
+		float: left;
+		margin: 2px 2px 0px 0px;
+		width: 33px;
+		height: 28px;
+		border: 1px solid #000;
+		text-align: center;
+		padding-top: 5px;
+		background-color: #eeeeff;
+	}
+
+	#twolists td {
+		width: 300px;
+		vertical-align: top;
+	}
+	#twolists1 li {
+		font-family: sans-serif;
+	}
+	#twolists2 {
+		border: 1px dashed #fff;
+	}
+	#twolists2 li {
+		font-family: serif;
+		background-color: #eedddd;
+	}
+	.inspector {
+		font-size: 11px;
+	}
+	//-->
+</style>
+
+<script language="JavaScript" type="text/javascript" src="js/dragsort/core.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/dragsort/events.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/dragsort/css.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/dragsort/coordinates.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/dragsort/drag.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/dragsort/dragsort.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/dragsort/cookies.js"></script>
+
+<script language="JavaScript" type="text/javascript"><!--
+	var dragsort = ToolMan.dragsort()
+	var junkdrawer = ToolMan.junkdrawer()
+
+	window.onload = function() {
+		junkdrawer.restoreListOrder("numeric")
+		junkdrawer.restoreListOrder("phonetic1")
+		junkdrawer.restoreListOrder("phonetic2")
+		junkdrawer.restoreListOrder("phonetic3")
+		junkdrawer.restoreListOrder("phoneticlong")
+		junkdrawer.restoreListOrder("boxes")
+		junkdrawer.restoreListOrder("buttons")
+		//junkdrawer.restoreListOrder("twolists1")
+		//junkdrawer.restoreListOrder("twolists2")
+
+		dragsort.makeListSortable(document.getElementById("numeric"),
+				verticalOnly, saveOrder)
+
+		dragsort.makeListSortable(document.getElementById("phonetic1"),
+				verticalOnly, saveOrder)
+		dragsort.makeListSortable(document.getElementById("phonetic2"),
+				verticalOnly, saveOrder)
+		dragsort.makeListSortable(document.getElementById("phonetic3"),
+				verticalOnly, saveOrder)
+		dragsort.makeListSortable(document.getElementById("phoneticlong"),
+				verticalOnly, saveOrder)
+
+		dragsort.makeListSortable(document.getElementById("boxes"),
+				saveOrder)
+
+		dragsort.makeListSortable(document.getElementById("buttons"),
+				saveOrder)
+
+		/*
+		dragsort.makeListSortable(document.getElementById("twolists1"),
+				saveOrder)
+		dragsort.makeListSortable(document.getElementById("twolists2"),
+				saveOrder)
+		*/
+	}
+
+	function verticalOnly(item) {
+		item.toolManDragGroup.verticalOnly()
+	}
+
+	function speak(id, what) {
+		var element = document.getElementById(id);
+		element.innerHTML = 'Clicked ' + what;
+	}
+
+	function saveOrder(item) {
+		var group = item.toolManDragGroup
+		var list = group.element.parentNode
+		var id = list.getAttribute("id")
+		if (id == null) return
+		group.register('dragend', function() {
+			ToolMan.cookies().set("list-" + id, 
+					junkdrawer.serializeList(list), 365)
+		})
+	}
+
+	//-->
+</script>

@@ -1,0 +1,91 @@
+<?php
+class dash_box_overstock_summary 
+	{
+		var $table_cols=1;
+	 	var $table_rows=1;
+		var $title="Overstock.com &#8482;";
+
+  		function render() 
+		{
+?>
+<div style="width:283px; overflow-x:hidden"><table width="283" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="3" style="height:1px; background-color:#8CA9C4"></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="height:1px; background-color:#FFFFFF"></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="height:1px; background-color:#8CA9C4;"></td>
+      </tr>
+      <tr>
+        <td width="79" style="height:20px; padding-left:4px; background-color:#6295FD;"><img src="images/overstock-icon-sm.gif" width="77" height="15" alt=""></td>
+        <td width="182" style="background-color:#6295FD;"><span style="font:bold 12px arial;color:#FFFFFF;">&nbsp;Overstock.com&#8482;</span></td>
+        <td width="22" align="right" style="padding-right:7px; background-color:#6295FD;"><div class="helpicon" onMouseover="ddrivetip('<font class=featuredpopName><b>Tool Tips</b></font><br><br>More Tools Tips About This Tool Tip<br>')" onMouseout="hideddrivetip()"> </div></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="height:2px; background-color:#FFFFFF;"></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding-top:1px; background-color:#DEEAF8; height:20px;"><table width="283" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="67" align="center"><span style="font:bold 12px arial; color:#0B2D86;"><?=date('M Y')?>
+            </span></td>
+            <td width="46" align="center">Live</td>
+            <td width="90" align="center"><a href="#"># of Bids:</a></td>
+            <td width="80" align="center">Net Totals</td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding-top:3px; background-color:#F0F5FB; height:120px;"><table width="283" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="67" align="center" class="tableinfo_right-btm"><a href="#">eBay:</a></td>
+            <td width="46" align="center" class="tableinfo_right-btm">0</td>
+            <td width="90" align="center" class="tableinfo_right-btm">0</td>
+            <td width="80" align="center" class="tableinfo_right-end"><a href="#">$0</a></td>
+          </tr>
+          <tr>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><a href="#">YouBid:</a></td>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-end"><a href="#">$0</a></td>
+          </tr>
+          <tr>
+            <td align="center" class="tableinfo_right-btm"><a href="#">Buy Now: </a></td>
+            <td align="center" class="tableinfo_right-btm">0</td>
+            <td align="center" class="tableinfo_right-btm">0</td>
+            <td align="center" class="tableinfo_right-end"><a href="#">$0</a></td>
+          </tr>
+          <tr>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><a href="#">Inquiries:</a></td>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+            <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-end"><a href="#">$0</a></td>
+          </tr>
+          <tr>
+            <td colspan="4" align="center" style="padding:5px;"><table border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td><img src="images/gavel-icon.gif" width="22" height="13"></td>
+                  <td style="padding-left:6px;"><a href="#">open auction manager</a></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></div>
+
+	<script language="javascript">
+	<!--
+<?
+	include_once(DIR_FS_DASH_BOX_JS."main_dash.js");
+	include_once(DIR_FS_DASH_BOX_JS."ext_dash.js");
+?>
+	// -->
+	</script>
+<?
+  }
+}
+?>
+
+

@@ -1,0 +1,30 @@
+<?php
+/*
+  $Id: index.php,v 1.01 2006/09/23 09:00:01 dgw_ Exp $
+
+  IntenseCart, E-Commerce and Internet Marketing Solutions
+  http://www.intensecart.com
+
+  Copyrights (c) 2006 IntenseCart Inc.
+
+  Redistribution without explicit written consent is forbidden under US and International Copyright Laws
+
+  */
+?>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+         <tr>
+           <td width="180" align="center" valign="top" style="padding-top:25px; padding-bottom:15px"><img src="images/logo-btm.gif" width="132" height="38"alt=""></td>
+           <td width="580" align="center" valign="top" style="padding-top:25px; padding-bottom:15px"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+             <tr>
+               <td width="72%" align="center" valign="top" style="padding-left:15px;"><p style="color:#000000">&copy; Copyrights 2006 - IntenseCart
+                   LLC - All rights reserved world-wide<br>
+                     <br>
+                 All logos and trade names are the property of there respective
+                 owners.</p>
+                <p><a href="#">Disclaimer</a> - <a href="#">Terms of Use</a> - <a href="#"> Investors</a></p></td>
+               <td width="28%" valign="top"><img src="images/livehelp.gif" width="157" height="49"alt=""></td>
+             </tr>
+           </table>
+           </td>
+         </tr>
+       </table>

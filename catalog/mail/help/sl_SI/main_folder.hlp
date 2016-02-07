@@ -1,0 +1,46 @@
+<chapter>
+   <title>
+      Seznam sporočil
+   </title>
+   <summary>
+      To je seznam sporočil, ki so v posamezni mapi.
+   </summary>
+</chapter>
+
+<section>
+   <title>
+      Seznam Sporočil
+   </title>
+   <description>
+      <p>
+      Potem ko kliknete na ime mape, boste v desnem okviru dobili seznam sporočil.
+      To je seznam samo tistih sporočil, ki so v izbrani mapi. Pod menijem je vrstica,
+      ki vam pove zaporedno številko e-sporočila, ki ga trenutno berete in skupno
+      število vseh sporočil.
+      </p><p>
+      Na primer: Pregled spročila B>20</B> do <B>30</B> (45 skupno).
+      </p><p>
+      Število neprebranih sporočil je lahko drugačno od števila neprebranih sporočil,
+      ki je na desno strani glavne mape.
+      </p><p>
+      Naslednja je vrstica s tremi gumbi. Na levi je padajoči izbirnik. V njem so
+      naštete mape, na katere ste trenutno naročeni. Vsa označena sporočila bodo
+      premaknjena v izbrano mapo, če boste pritisnili gumb premakni. Na desni strani
+      je gumb za brisanje označenih sporočil. Neželeno pošto lahko označite in potem
+      pobrišete z enim klikom.
+      </p><p>
+          Vrstica treh polj (Od, Datum in Naslov) je naslednja. To je glava vsake
+          strani, ki razdeli tabelo sporočil na logične enote. Teko lahko že iz samega
+          seznama sporočil vidite Kdo, Kdaj in Kaj vam je poslal.
+          <B>Opomba</B> Med kolonama Datum in Naslov je še ena manjša kolona, ki nima
+          svojega naslova. Pri nekaterih sporočil so tam lahko oznake:"+", če ima
+          sporočilo priponke, "!" če je sporočilo označeno kot nujno in "A", če ste
+          na sporočilo že odgovorili.
+      </p><p>
+      Kar ostane je seznam s sporočili. Opazili boste, da so neprebrana sporočila
+      <B>povdarjena</B>, medtem ko so že prebrana sporočila v normalnem besedilu.
+      Na levi strani je označevalno polje, s katerim označite sporočila, ki lahko
+      brišete ali pa premaknete.
+      </p>
+   </description>
+</section>

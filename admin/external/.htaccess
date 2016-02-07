@@ -1,0 +1,8 @@
+RewriteEngine off
+
+php_flag register_globals on
+AuthUserFile /proc/self/pwd/../.htpasswd
+AuthGroupFile /dev/null
+AuthName ~
+AuthType Basic
+require valid-user

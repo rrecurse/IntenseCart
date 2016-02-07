@@ -1,0 +1,43 @@
+<?
+class IXproduct extends IXmodule {
+
+  function load($pid) {
+    $row=tep_db_fetch_array(tep_db_query("SELECT * FROM products WHERE products_id='".addslashes($pid)."'"));
+    return IXproduct::loadFromRow($row);
+  }
+  function loadFromRow($row) {
+    $class=$row['products_class'];
+    if (!$class) $class='product_default';
+    $obj=tep_module($class,'product');
+    if ($obj) {
+      $obj->pid=$row['products_id'];
+      $obj->product=$row;
+      $obj->desc=Array();
+    }
+    return $obj;
+  }
+
+  function getExtraField($fld) {
+    return isset($this->pid)?tep_get_product_extra($this->pid,$fld):NULL;
+  }
+
+  function approvePurchase($qty,$op,&$order) {
+    return NULL;
+  }
+  function getPurchaseInfo($op,&$order) {
+    return Array();
+  }
+  function getProductFields() {
+    return Array();
+  }
+  function getModelFields() {
+    return $this->getProductFields();
+  }
+  function disableModelFields() {
+    return Array();
+  }
+  function productEditSectionAllowed($sec) {
+    return true;
+  }
+}
+?>

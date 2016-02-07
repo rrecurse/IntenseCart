@@ -1,0 +1,68 @@
+<?php
+class dash_box_PayPerClick_performance 
+	{
+		var $table_cols=1;
+	 	var $table_rows=1;
+		var $title="Pay-Per-Click Performance";
+
+  		function render() 
+		{
+?>
+<div class="smallArticle" dragableBox="true" id="ppctable_perform">
+<div style="width:283px; overflow-x:hidden"><table width="283" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="2" style="height:1px; background-color:#FFFFFF"></td>
+      </tr>
+	  <tr>
+        <td colspan="2" style="height:1px; background-color:#8CA9C4"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="height:1px; background-color:#FFFFFF"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="height:1px; background-color:#8CA9C4;"></td>
+      </tr>
+      <tr>
+        <td width="261" style="height:20px; background-color:#6295FD; font:bold 12px arial;color:#FFFFFF;">&nbsp; Pay-Per-Click Performance:</td>
+        <td width="22" align="right" style="padding-right:7px; background-color:#6295FD;"><div class="helpicon" onMouseover="ddrivetip('<font class=featuredpopName><b>Tool Tips</b></font><br><br>More Tools Tips About This Tool Tip<br>')" onMouseout="hideddrivetip()"> </div></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="height:2px; background-color:#FFFFFF;"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding-top:1px; background-color:#DEEAF8; height:20px;"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center" valign="top" style="padding-top:3px; background-color:#F0F5FB;"><table width="283" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td style="padding-left:9px"></td>
+                        </tr>
+                        <tr>
+                          <td height="90" align="center" style="padding:5px;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td height="25" align="center" style="padding:5px;"><table border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td><img src="images/graph-icon.jpg" width="16" height="15"></td>
+                              <td style="padding-left:6px;"><a href="#">view
+                                  full report</a></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                  </table></td>
+      </tr>
+    </table></div></div>
+	<script language="javascript">
+	<!--
+<?
+	include_once(DIR_FS_DASH_BOX_JS."main_dash.js");
+	include_once(DIR_FS_DASH_BOX_JS."ext_dash.js");
+?>
+	// -->
+	</script>
+<?
+  }
+}
+?>
+
+

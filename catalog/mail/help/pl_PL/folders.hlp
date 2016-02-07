@@ -1,0 +1,107 @@
+<chapter>
+   <title>   
+      Foldery
+   </title>   
+   <summary>
+       W Wiewiórczej poczcie można przechowywać pocztę w różnych folderach.
+	Jest to użyteczne zwłaszcza przy otrzymywaniu dużych ilości poczty:
+	łatwiej jest utrzymać porządek. Opcja <i>Foldery</i> umożliwia
+	przeprowadzanie operacji na folderach.
+   </summary>
+</chapter>
+
+<section>
+   <title>
+      Subskrybowane foldery i lewa ramka
+   </title>
+   <description>
+      <p>
+ 	Obecnie subskrybowane (użytkowane) foldery są wyświetlane w
+	kolorowej ramce po lewej stronie; istniej możliwość ustawienia na
+	stronie <i>Konfiguracji</i> automatycznego jej odświeżania. Na górze
+	lewej ramki znajduje się duży, pogrubiony nagłówek "Foldery". Pod nim odsyłacz
+	zatytułowany "(odśwież listę folderów)", służący do ręcznego
+	odświeżania informacji o folderach.
+      </p><p>
+ 	Pierwszy wyświetlony folder zawiera otrzymane wiadomości. Po jego
+	prawej stronie, obramowana nawiasami "()", znajduje się liczba
+	określająca ilość <i>nieprzeczytanych</i> wiadomości. Liczba ta
+	prawdopodobnie różni się od liczby wszystkich wiadomości widniejącej
+	w prawej ramce. W folderze głównym mogą znajdować się inne foldery
+	lub podfoldery. Kolory tych folderów zmieniają się wraz ze zmianą
+	schematów kolorów na stronie <i>Konfiguracji</i>.
+      </p>
+   </description>
+</section>   
+
+<section>
+   <title>
+     Usuń
+   </title>
+   <description>
+      <p>
+ 	Usunąć można każdy folder wyświetlany w polu wyboru foldera (po
+	lewej stronie przycisku <i>Usuń</i>). Jednak lista ta <b>nie</b>
+	zawiera wszystkich folderów: specjalne ("Wysłane",
+	"Kosz", "Inbox") nie mogą zostać usunięte.
+      </p>
+   </description>
+</section>
+
+
+<section>
+   <title>
+      Utwórz
+   </title>
+   <description>
+      <p>
+ 	Foldery tworzy się przez wpisanie nazwy w polu tekstowym i
+	kliknięcie przycisku <i>Utwórz</i>. Istniejący folder może być
+	określony jako podfolder innego za pomocą przycisku wyświetlającego dostępne
+	foldery, znajdującego się pod wierszem "jako podfolder".
+      </p>
+      <p>
+ 	Na niektórych serwerach pocztowych występują dwa rodzaje folderów:
+	zawierające wiadomości oraz zawierające inne foldery. Wybierając
+	opcję "Niech ten folder zawiera podfoldery" tworzy się folder,
+	mogący pomieścić inne foldery, lecz nie wiadomości. W przeciwnym
+	wypadku w folderze będzie można przechowywać wiadomości, lecz nie
+	foldery.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Zmień nazwę foldera
+   </title>
+   <description>
+      <p>
+ 	Umożliwia zmianę nazwy folderów wyświetlanych w polu wyboru foldera
+	(po lewej stronie przycisku <i>Zmień nazwę</i>). <b>Nie</b> wszystkie
+	istniejące foldery są tam wyświetlane - z oczywistych względów nie
+	ma możliwości zmiany nazwy folderów: "Wysłane", "Kosz",
+	"Inbox".
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Anuluj subskrypcję/Dokonaj subskrypcji
+   </title>
+   <description>
+      Definicje:<br>
+     <i>Dokonanie subskrypcji</i>: rejestracja (utworzenie) foldera dla serwera
+	poczty, pozwalająca na wyświetlanie foldera w polu wyboru
+	foldera.<br>
+	<i>Anulowanie subskrypcji</i>: odwrotność dokonania subskrypcji,
+	anulowanie rejestracji foldera dla serwera poczty.<br>
+      <br><p>
+ 	Można wybrać dowolną liczbę folderów z pól dokonywania lub
+	anulowania subskrypcji, następnie kliknąć przycisk pod polem w
+	celu potwierdzenia. Foldery zostaną przeniesione do odpowiednich
+	pól. Teraz można ponowić ich subskrypcję lub jej anulowanie.
+      </p>
+   </description>
+</section>

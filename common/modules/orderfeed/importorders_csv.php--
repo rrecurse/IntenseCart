@@ -1,0 +1,1575 @@
+<?php
+  /**
+  * Manages CSV profiles for orders, and imports orders from CSV files.
+  * Public methods:
+  * - {@link editProfile}()
+  * - {@link saveProfile}()
+  * - {@link loadProfile}()
+  * - {@link getProfiles}()
+  * - {@link importOrders}()
+  * @author Bogdan Stancescu <bogdan@moongate.ro>
+  */
+  class importorders_csv extends IXmodule
+  {
+    /**
+    * Private. Current file pointer.
+    * @var string
+    */
+    var $fp=NULL;
+
+    /**
+    * Must be equal or greater than the length of the longest line in the file to be processed
+    * @var integer
+    */
+    var $maxLineLength=1024;
+
+    /**
+    * Private. Human-readable file type (e.g. "TAB-delimited", "comma-delimited", etc)
+    * @var string
+    */
+    var $ftype;
+
+    /**
+    * CSV delimiter (see {@link http://www.php.net/manual/en/function.fgetcsv.php})
+    * @var string
+    */
+    var $fdelimiter;
+
+    /**
+    * CSV enclosure (see {@link http://www.php.net/manual/en/function.fgetcsv.php})
+    * @var string
+    */
+    var $enclosure='"';
+
+    /**
+    * Protected. The current profile name.
+    * @var string
+    * @see loadProfile()
+    * @see saveProfile()
+    * @see editProfile()
+    */
+    var $profileName='';
+
+    /**
+    * Private. Associative array describing the passed values.
+    * @var array
+    * @see addPassValue()
+    */
+    var $passValues=array();
+
+    /**
+    * Private. This object's errors.
+    * Set errors with {@link addError}(); retrieve the list of errors with {@link getErrors}()
+    * @var string
+    */
+    var $error='';
+
+    /**
+    * Private. The current column mapping.
+    * @var array
+    * @see parseMapping()
+    */
+    var $columnMapping=array();
+
+    /**
+    * Private. Human-readable configuration string describing
+    * an association between internal keys, conventional strings
+    * shown by {@link doColumnMapping}() in the interface, and
+    * the legitimate types of CSV columns these can be mapped on.
+    * These internal keys match the internal keys in $rawOrderFieldsMapping.
+    * This string is parsed into a computer-friendly array by {@link getOrderFieldInfo}().
+    * @var string
+    * @see getOrderFieldInfo()
+    * @see $rawOrderFieldsMapping
+    */
+    var $rawOrderFields="
+      ordernum,    Order Number,        none/unique
+      custemail,   Customer Email,      none/unique
+      phone,       Phone,               none/unique
+      d_fname,     Delivery First Name, none/unique
+      d_lname,     Delivery Last Name,  none/unique
+      d_addr1,     Delivery Address,    none/unique
+      d_addr2,     Delivery Address2,   none/unique
+      d_city,      Delivery City,       none/unique
+      d_state,     Delivery State,      none/unique
+      d_pcode,     Delivery Postcode,   none/unique
+      d_country,   Delivery Country,    none/unique
+      b_fname,     Billing First Name,  none/unique
+      b_lname,     Billing Last Name,   none/unique
+      b_addr1,     Billing Address,     none/unique
+      b_addr2,     Billing Address2,    none/unique
+      b_city,      Billing City,        none/unique
+      b_state,     Billing State,       none/unique
+      b_pcode,     Billing Postcode,    none/unique
+      b_country,   Billing Country,     none/unique
+      s_method,    Shipping Method,     none/unique
+      s_cost,      Shipping Cost,       none/unique
+      p_upc,       Product UPC,         none/unique/numbered
+      p_name,      Product Name,        none/unique/numbered
+      p_price,     Product Price,       none/unique/numbered
+      p_qty,       Product Quantity,    none/unique/numbered
+      p_tax,       Product Tax,         none/unique/numbered
+      dsc_reason,  Discount Reason,     none/unique/numbered
+      dsc_amt,     Discount Amount,     none/unique/numbered
+      total_amt,   Order Total Amount,  none/unique
+    ";
+
+    /**
+    * Private. Human-readable configuration string describing
+    * an association between internal keys and actual order/product
+    * fields.
+    * This string is parsed into a computer-friendly array by {@link getOrderFieldMapping}().
+    * That array is used by {@link saveOrder}() to re-arrange the array
+    * describing the order built by {@link importOrders}() into values
+    * used for saving the order.
+    * These internal keys match the internal keys in $rawOrderFields.
+    * @var string
+    * @see getOrderFieldMapping()
+    * @see $rawOrderFields
+    */
+    var $rawOrderFieldsMapping="
+      ordernum,    void
+      custemail,   shipdata.email_address + billdata.email_address
+      phone,       shipdata.telephone     + billdata.telephone
+      d_fname,     d_name.fname
+      d_lname,     d_name.lname
+      d_addr1,     shipdata.street_address
+      d_addr2,     shipdata.suburb
+      d_city,      shipdata.city
+      d_state,     shipdata.state
+      d_pcode,     shipdata.postcode
+      d_country,   shipdata.country
+      b_fname,     b_name.fname
+      b_lname,     b_name.lname
+      b_addr1,     billdata.street_address
+      b_addr2,     billdata.suburb
+      b_city,      billdata.city
+      b_state,     billdata.state
+      b_pcode,     billdata.postcode
+      b_country,   billdata.country
+      s_method,    shipxtra.method
+      s_cost,      shipxtra.cost
+      p_upc,       itemdata.upc
+      p_name,      itemdata.name
+      p_price,     itemdata.price
+      p_qty,       itemdata.qty
+      p_tax,       itemdata.tax
+      dsc_reason,  discount.reason
+      dsc_amt,     discount.amount
+      total_amt,   total_amount
+      numbered_discount, numbered_discount
+      numbered_item,     numbered_item
+    ";
+
+    /**
+    * Constructor.
+    * No logic in here, just includes the order class.
+    */
+    function importorders_csv()
+    {
+      require_once(dirname(dirname(dirname(dirname(__FILE__))))."/catalog/includes/classes/order.php");
+      $this->readPassedValues();
+    }
+
+    /**
+    * Adds an error to the current object.
+    * Read existing errors with {@link getErrors}()
+    * @param string $message the error message
+    * @return boolean true unconditionally
+    * @see $error
+    * @see getErrors()
+    */
+    function addError($message)
+    {
+      $this->error.="$message\n";
+      return true;
+    }
+
+    /**
+    * Retrieve this object's list of errors.
+    * Add errors with {@link addError}()
+    * @return string HTML-formatted string
+    * @see $error
+    * @see addError()
+    */
+    function getErrors()
+    {
+      return nl2br($this->error);
+    }
+
+    /**
+    * Private. Processes values passed from one page to the next while
+    * editing a profile.
+    * This method calls {@link readPOSTvalues}() and
+    * {@link parsePassedValues}().
+    * @return boolean true on success or false on failure
+    */
+    function readPassedValues()
+    {
+      if (!$this->readPOSTvalues()) {
+        return false;
+      }
+      return $this->parsePassedValues();
+    }
+
+    /**
+    * Private. Reads POST values passed from one page to the next while
+    * editing a profile, and adds them to the list of passed variables.
+    * @return boolean true on success or false if no relevant POST data is available
+    */
+    function readPOSTvalues()
+    {
+      if (!isset($_POST['importorders_csv']) || !is_array($_POST['importorders_csv'])) {
+        return NULL;
+      }
+      $return=true;
+      foreach($_POST['importorders_csv'] as $key=>$value) {
+        if (get_magic_quotes_gpc()) {
+          $value=stripslashes($value);
+        }
+        $this->addPassValue($key,$value);
+      }
+      return true;
+    }
+
+    /**
+    * Private. Populates object properties from passed values.
+    * Errors can be retrieved with {@link getErrors}().
+    * @return boolean true on success or false if any errors have been encountered
+    */
+    function parsePassedValues()
+    {
+      $return=true;
+      foreach($this->passValues as $key=>$value) {
+        $xkey=explode('_',$key);
+        switch($xkey[0]) {
+          case 'delimiter':
+            $this->fdelimiter=chr($value);
+            break;
+          case 'ftype':
+            $this->ftype=$value;
+            break;
+          case 'profile':
+            $this->profileName=$value;
+            break;
+          case 'mapping':
+            $db_key=substr($key,8);
+            $xcsv=explode('_',$value);
+            $csv_key=implode('_',array_slice($xcsv,1));
+            $this->columnMapping[$db_key]=$csv_key;
+            break;
+          case 'confirm':
+            switch($xkey[1]) {
+              case 'edit':
+                $this->editConfirmed=$value;
+                break;
+              case 'mapping':
+                $this->mappingConfirmed=$value;
+                break;
+              case 'delimiter':
+                $this->delimiterConfirmed=$value;
+                break;
+              default:
+                $this->addError("Unknown confirmation: $key");
+                $return=false;
+            }
+            break;
+          default:
+            $this->addError("Unknown field: $key");
+            $return=false;
+        }
+      }
+      return $return;
+    }
+
+    /**
+    * Private. Adds a new value to pass from one page to the next while editing profiles
+    * @param string $var the name of the variable to pass
+    * @param string $val the value of the variable
+    * @return string the value of the variable, exactly as it was passed
+    */
+    function addPassValue($var,$val)
+    {
+      $this->passValues[$var]=$val;
+      return $val;
+    }
+
+    /**
+    * Private. Reads one CSV line from the current CSV file, according to the current rules,
+    * and returns the result.
+    * The current CSV file is opened by {@link initFile}().
+    * The current rules are stored in variables {@link $maxLineLength}, {@link $fdelimiter},
+    * and {@link $enclosure}. They are typically populated from a profile data
+    * via {@link loadProfile}().
+    * @return array|false an array representing the current CSV line, or false on EOF
+    */
+    function readCSVLine()
+    {
+      return fgetcsv($this->fp,$this->maxLineLength,$this->fdelimiter,$this->enclosure);
+    }
+
+    /**
+    * Private. Reads one line from the current CSV file.
+    * The current CSV file is opened by {@link initFile}().
+    * This method is typically used only by {@link parseHeading}().
+    * @return string|false a string representing the current line in the CSV file, or false on EOF
+    */
+    function readRawLine()
+    {
+      return fgets($this->fp,$this->maxLineLength);
+    }
+
+    /**
+    * Private. Parses the heading of the current CSV file and tries to determine its format.
+    * Used internally while editing profiles, typically called by {@link findDelimiter}().
+    * On success, it populates the format information in all the right places in this object
+    * (both in the object properties and in passed values).
+    * It also processes POST values resulted from a previous call to {@link renderDelimiterSelector}(),
+    * if that's the case.
+    * @return true if it succeeds in determining the format, false otherwise
+    */
+    function parseHeading()
+    {
+      $line=$this->readRawLine();
+      rewind($this->fp);
+      if (strpos($line,"\t")) {
+        $this->ftype="TAB-delimited";
+        $this->fdelimiter="\t";
+      } elseif (strpos($line,",")) {
+        $this->ftype="Comma-delimited";
+        $this->fdelimiter=",";
+      } elseif (strpos($line,";")) {
+        $this->ftype="Semi-colon delimited";
+        $this->fdelimiter=";";
+      } elseif ($_POST['delimiter']) {
+        $this->addPassValue('confirm_delimiter',1);
+        $this->ftype="Custom delimiter";
+        $d=$_POST['delimiter'];
+        if (get_magic_quotes_gpc()) {
+          $d=stripslashes($d);
+        }
+        if (preg_match("/^\\(([0-9]+)\\)$/",$d,$m)) {
+          $this->fdelimiter=chr($m[1]);
+        } elseif (preg_match("/^\\\\x([0-9A-Fa-f]{1,2})$/",$d,$m)) {
+          $this->fdelimiter=chr(hexdec($m[1]));
+        } else {
+          $this->fdelimiter=substr($d,0,1);
+        }
+      } else {
+        return false;
+      }
+      $this->addPassValue('delimiter',ord($this->fdelimiter));
+      $this->addPassValue('ftype',$this->ftype);
+      return true;
+    }
+
+    /**
+    * Private. Parses the CSV header in order to determine which fields are static and which are numbered.
+    * Used while editing a profile
+    * @param array $data an array of values as the one returned by {@link readCSVline}().
+    * @return array an indexed array with the same keys as $data which describes the fields
+    */
+    function parseHeaderFields($data)
+    {
+      $fields=array();
+      foreach($data as $atom) {
+        $field=array();
+        if (preg_match("/^(.+?)([0-9]+)$/",$atom,$matches)) {
+          $field['type']='numbered';
+          $field['prefix']=$matches[1];
+          $field['no']=$matches[2];
+        } else {
+          $field['type']='unique';
+        }
+        $field['name']=$atom;
+        $fields[]=$field;
+      }
+      return $fields;
+    }
+
+    /**
+    * Private. Initializes the current file.
+    * Opens a file and populates {@link $fp} with a pointer to it.
+    * If errors are encountered, they are available via {@link getErrors}().
+    * @param string $file the path to the file to open
+    * @param string $mode the type of access (see {@link http://www.php.net/manual/en/function.fopen.php PHP's fopen()})
+    * @return boolean true on success or false on failure.
+    */
+    function initFile($file,$mode='r')
+    {
+      if ($mode=='r' && !is_file($file)) {
+        $this->addError("File $file doesn't exist!");
+        return false;
+      }
+      if ($mode=='r' && !is_readable($file)) {
+        $this->addError("Not enough permissions to open file $file!");
+        return false;
+      }
+      if (
+        ($mode=='a' || $mode=='w') &&
+        (!is_writable($file) && !is_writable(dirname($file)))
+      ) {
+        $this->addError("Can't write to file $file!");
+        return false;
+      }
+      $this->fp=fopen($file,$mode);
+      if (!$this->fp) {
+        $this->addError("Failed opening file $file for an unknown reason!");
+        return false;
+      }
+      return true;
+    }
+
+    /**
+    * Private. Triggers the logic for identifying the basic parameters
+    * of a CSV file during profile editing.
+    * Typically called by {@link editProfile}().
+    * Tries to automatically determine the delimiter using {@link parseHeading}(),
+    * calls {@link renderDelimiterSelector}() on failure and sets a confirmation
+    * flag as a passed value on success, so future calls to {@link editProfile}()
+    * will retrieve data from passed values directly.
+    * @param string $file the path to the CSV file to parse
+    * @return boolean|string true on success, false on failure or the HTML controls to be rendered
+    *   if it was unable to automatically determine the delimiter.
+    */
+    function findDelimiter($file)
+    {
+      if (!$this->initFile($file)) {
+        // No need to complain here, initFile already has.
+        return false;
+      }
+      $headingData=$this->parseHeading();
+      if (!$headingData) {
+        return $this->renderPage($this->renderDelimiterSelector());
+      }
+      $this->addPassValue('confirm_delimiter',1);
+      return true;
+    }
+
+    /**
+    * Private. Processes {@link $rawOrderFieldsMapping} and returns an array
+    * describing it.
+    * @return array the order fields mapping
+    */
+    function getOrderFieldMapping()
+    {
+      if ($this->cachedOrderMappingInfo) {
+        return $this->cachedOrderMappingInfo;
+      }
+      $mapping_info=array();
+      $raw_fields=explode("\n",$this->rawOrderFieldsMapping);
+      foreach($raw_fields as $raw_field) {
+        $raw_field=trim($raw_field);
+        if (!$raw_field) {
+          continue;
+        }
+        $raw_data=explode(",",$raw_field);
+        $raw_mappings=explode("+",trim($raw_data[1]));
+        $mappings=array();
+        foreach($raw_mappings as $mapping) {
+          $mappings[]=explode(".",trim($mapping));
+        }
+        $mapping_info[trim($raw_data[0])]=$mappings;
+      }
+      $this->cachedOrderMappingInfo=$mapping_info;
+      return $mapping_info;
+    }
+
+    /**
+    * Private. Processes {@link $rawOrderFields} and returns an array
+    * describing it.
+    * @return array the order fields
+    */
+    function getOrderFieldInfo()
+    {
+      if ($this->cachedOrderFieldInfo) {
+        return $this->cachedOrderFieldInfo;
+      }
+      $field_info=array();
+      $raw_fields=explode("\n",$this->rawOrderFields);
+      foreach($raw_fields as $raw_field) {
+        $raw_field=trim($raw_field);
+        if (!$raw_field) {
+          continue;
+        }
+        $raw_data=explode(",",$raw_field);
+        $raw_options=explode("/",trim($raw_data[2]));
+        $options=array();
+        foreach($raw_options as $raw_option) {
+          $options[$raw_option]=true;
+        }
+        $field_info[]=array(
+          'name'=>trim($raw_data[0]),
+          'display'=>trim($raw_data[1]),
+          'options'=>$options
+        );
+      }
+      $this->cachedOrderFieldInfo=$field_info;
+      return $field_info;
+    }
+
+    /**
+    * Private. Pre-processes the fields returned by {@link parseHeaderFields}()
+    * for use in {@link doColumnMapping}().
+    * It converts the discrete list of fields in the CSV header
+    * into a more compact form, better suited for rendering in a <SELECT>.
+    * @param array $fields an array of fields as the one returned by {@link parseHeaderFields}()
+    * @return array a more compact array describing the same structure
+    */
+    function makeCanonicalFields($fields)
+    {
+      $result=array();
+      $processed=array();
+      $xtra=array();
+      foreach($fields as $field) {
+        if ($field['type']!='numbered') {
+          $result[]=$field;
+          continue;
+        }
+        $idx=array_search($field['prefix'],$processed);
+        if ($idx!==false) {
+          $xtra[$idx].=", ".$field['no'];
+          continue;
+        }
+        $field['xtra']=count($xtra);
+        $xtra[]=$field['no'];
+        $processed[]=$field['prefix'];
+        unset($field['name']);
+        unset($field['no']);
+        $result[]=$field;
+      }
+      foreach($result as $key=>$val) {
+        if (isset($val['xtra'])) {
+          $val['name']=$val['prefix']." (".$xtra[$val['xtra']].")";
+          $val['value']=$val['prefix'];
+          unset($val['xtra']);
+        } else {
+          $val['value']=$val['name'];
+        }
+        $result[$key]=$val;
+      }
+      return $result;
+    }
+
+    /**
+    * GUI -- renders an HTML SELECT tag based on the input data.
+    *
+    * The input array is an indexed array of associative arrays of
+    * the following form:
+    * <code>
+    * array(
+    *   #(*) => array(
+    *     'value'=>$value,
+    *     'display'=>$display
+    *   )
+    * )
+    * </code>
+    * where each resulting OPTION element is of the form
+    * <code>
+    * <OPTION value=$value>$display</OPTION>
+    * </code>
+    *
+    * @param string $name the name of the element
+    * @param array $data the data to populate the SELECT
+    * @param string $selected the value of the selected entry
+    * @return string the HTML representation of the SELECT
+    */
+    function renderSelect($name,$data,$selected=NULL)
+    {
+      $result="";
+      $result.="<select name='$name'>\n";
+      foreach($data as $option) {
+        $result.="<option value='".addslashes($option['value'])."'";
+        if ($option['value']==$selected) {
+          $result.=" selected";
+        }
+        $result.=">".htmlspecialchars($option['display'])."</option>\n";
+      }
+      $result.="</select>\n";
+      return $result;
+    }
+
+    /**
+    * Private. Parses the POST variables incoming from a previous call to {@link confirmEdit}()
+    * into {@link @columnMapping}.
+    * @return boolean true on success or false on failure
+    */
+    function parseMapping()
+    {
+      $mapping=array();
+      $ofi=$this->getOrderFieldInfo();
+      $legit=array();
+      foreach($ofi as $field) {
+        $legit[]=$field['name'];
+      }
+      $ok=true;
+      foreach($_POST['mapping'] as $db_field=>$csv_field) {
+        if (!$csv_field) {
+          continue;
+        }
+        $this->addPassValue("mapping_$db_field",$csv_field);
+        $csv_field=substr($csv_field, strpos($csv_field,"_")+1);
+        if (!in_array($db_field,$legit)) {
+          $ok=false;
+          $this->addError("Unknown field \"$db_field\"");
+          continue;
+        }
+        $mapping[$db_field]=$csv_field;
+      }
+      $this->columnMapping=$mapping;
+      return $ok;
+    }
+
+    /**
+    * Private. Triggers the column mapping logic used during profile editing.
+    * Typically called by {@link editProfile}().
+    * Parses the header fields using {@link parseHeaderFields}(),
+    * pre-processes them with {@link makeCanonicalFields}(),
+    * corroborates them with the order field info retrieved via
+    * {@link getOrderFieldInfo}(), renders the appropriate controls,
+    * calls {@link parseMapping}() if incoming data is already available
+    * and if that call is successful it adds a flag to avoid future calls
+    * from {@link editProfile}() on this object.
+    * @return boolean|string boolean true if mapping is complete, or HTML string representing the controls otherwise.
+    */
+    function doColumnMapping()
+    {
+      if ($_POST['mapping'] && is_array($_POST['mapping'])) {
+        if ($this->parseMapping()) {
+          $this->addPassValue('confirm_mapping',1);
+          return true;
+        }
+      }
+      $file_fields=$this->parseHeaderFields($this->readCSVLine());
+      $canonical_file_fields=$this->makeCanonicalFields($file_fields);
+      $ofi=$this->getOrderFieldInfo();
+      $table=array();
+      foreach($ofi as $field) {
+        $options=$field['options'];
+        $select=array();
+        $selected='';
+        if ($options['none']) {
+          $select[]=array(
+            'value'=>'',
+            'display'=>'n/a'
+          );
+        } else {
+          $select[]=array(
+            'value'=>'',
+            'display'=>'Please select:'
+          );
+        }
+        foreach($canonical_file_fields as $ff) {
+          if (in_array($ff['type'],array_keys($options))) {
+            $ffval=$ff['type'].'_'.$ff['value'];
+            if ($ff['value']==$this->columnMapping[$field['name']]) {
+              $selected=$ffval;
+            }
+            $select[]=array(
+              'value'=>$ffval,
+              'display'=>$ff['name']
+            );
+          }
+        }
+        $table[]=array(
+          $field['display'],
+          $this->renderSelect(
+            "mapping[".$field['name']."]",
+            $select,
+            $selected
+          )
+        );
+      }
+      return $this->renderPage($this->renderFormTable($table));
+    }
+
+    /**
+    * Private. Renders the field mapping confirmation screen during profile editing.
+    * There's not much logic in this method: it just renders that page
+    * and includes a confirmation flag as a passed value -- if the form is
+    * submitted, the confirmation flag is recognized by {@link editProfile}
+    * and this method is not called again.
+    * @return string the HTML page confirming the field mapping.
+    */
+    function confirmEdit()
+    {
+      $table=array();
+      $ofi=$this->getOrderFieldInfo();
+      $names=array();
+      foreach($ofi as $field) {
+        $names[$field['name']]=$field['display'];
+      }
+      foreach($this->columnMapping as $db_key=>$csv_key) {
+        $table[]=array(
+          $names[$db_key],
+          $csv_key
+        );
+      }
+      $this->addPassValue('confirm_edit',1);
+
+      return $this->renderPage(
+        "<h1>Confirm profile</h1>\n".
+        $this->renderFormTable($table)
+      );
+    }
+
+    /**
+    * Private. Performs the logic related to populating the profile name
+    * if {@link editProfile}() is called without the $profile parameter.
+    * It renders the form which allows the user to input a profile name,
+    * and populates {@link $profileName} if that form has already been
+    * submitted.
+    * @return boolean|string true if a profile name has been populated, or the HTML page with the profile name input otherwise
+    */
+    function profileInput()
+    {
+      if ($_POST['profileName']) {
+        $profileName=$_POST['profileName'];
+        if (get_magic_quotes_gpc()) {
+          $profileName=stripslashes($profileName);
+        }
+        $this->profileName=$profileName;
+        return true;
+      }
+      $result='';
+      $result.="<h1>Profile name</h1>\n";
+      $result.=$this->renderFormTable(array(
+        array(
+          'Profile name',
+          "<input type=text name='profileName'>"
+        )
+      ));
+      return $this->renderPage($result);
+    }
+
+    /**
+    * Public. Triggers all the logic related to editing a profile.
+    * The $file parameter is mandatory and must be the path to an existing,
+    * local, regular, readable CSV file (technically, it MAY also be remote or not regular, but
+    * expect calls to PHP's {@link http://www.php.net/manual/en/function.rewind.php rewind()}
+    * to take place on it -- if PHP supports calls to rewind() on your type of file, then it should work).
+    *
+    * The $profile parameter is optional -- if not passed, the class will render controls to
+    * gather it from the user.
+    *
+    * The method must be called as many times as required, until it returns boolean
+    * true; until then, its output must be shown in the browser.
+    *
+    * Example:
+    * <code>
+    * $data=$mod->editProfile($csv_file,$profile_name);
+    *
+    * if ($data===true) {
+    *   $mod->saveProfile();
+    *   echo "Done.";
+    * } else {
+    *   echo $data;
+    * }
+    * </code>
+    *
+    * The method relies on flags passed as "passed variables" via {@link addPassValue}() to determine
+    * the current object's state. Depending on its state, it does the following:
+    * - if the profile name is not available, it calls {@link profileInput}()
+    * - if the above doesn't apply, and the delimiter hasn't been determined, it calls {@link findDelimiter}()
+    * - if none of the above applies, and the mapping hasn't been filled in, it calls {@link doColumnMapping}()
+    * - if none of the above applies, and the mapping hasn't been confirmed, it calls {@link confirmEdit}()
+    * - if none of the above applies, it returns boolean true (i.e. the object is all set)
+    *
+    * As shown in the example above, a successful call to this method is
+    * typically followed by a call to {@link saveProfile}() on the same object.
+    *
+    * If a profile named $profile doesn't already exist, this method provides the controls
+    * for creating it from scratch, and {@link saveProfile}() creates it in the database.
+    * If a profile named $profile already exists, this method provides the controls for
+    * editing it based on its existing form, and {@link saveProfile}() replaces it with
+    * the current settings in the database.
+    * If $profile isn't specified then the value specified by the user via interface
+    * is used instead, with the same effects as above.
+    *
+    * @param string $file the path to a CSV file
+    * @param string $profile the profile name
+    * @return boolean|string boolean true if the profile is complete and ready for saving,
+    *   or an HTML string representing the controls to be rendered.
+    */
+    function editProfile($file,$profile=NULL)
+    {
+      if ($profile===NULL) {
+        $profile=$this->profileName;
+      } else {
+        $this->profileName=$profile;
+      }
+      if (!$profile) {
+        if (($result=$this->profileInput())!==true) {
+          return $result;
+        }
+        $profile=$this->profileName;
+      }
+      $this->addPassValue('profile',$profile);
+      if (!$this->delimiterConfirmed) {
+        $this->loadProfile($profile);
+        if (($result=$this->findDelimiter($file))!==true) {
+          return $result;
+        }
+      }
+      if (!$this->mappingConfirmed) {
+        if (($result=$this->doColumnMapping())!==true) {
+          return $result;
+        }
+      }
+      if (!$this->editConfirmed) {
+        if (($result=$this->confirmEdit())!==true) {
+          return $result;
+        }
+      }
+      return true;
+    }
+
+    /**
+    * Private. GUI -- renders a form around arbitrary HTML.
+    * The form point to PHP_SELF. This method is used internally
+    * to render the forms which pass values from one page to the
+    * next during profile editing.
+    * @param string $content the HTML to put inside the form
+    * @return string the form containing $content
+    */
+    function renderForm($content)
+    {
+      $result="<form method='POST' action='".$_SERVER['PHP_SELF']."'>\n";
+      foreach($this->passValues as $name=>$value) {
+        $result.="<input type='hidden' name=\"importorders_csv[".addslashes($name)."]\" value=\"".addslashes($value)."\">\n";
+      }
+      $result.=$content;
+      $result.="</form>\n";
+      return $result;
+    }
+
+    /**
+    * Private. GUI -- renders an HTML table.
+    * Used internally while editing profiles. It takes a 2D indexed array
+    * and returns an HTML table representing it.
+    * @param array $table the table data
+    * @return string the HTML table
+    */
+    function renderTable($table)
+    {
+      $result='<table border=1>';
+      $maxcount=0;
+      foreach($table as $row) {
+        $count=0;
+        $result.="<tr>\n";
+        foreach($row as $cell) {
+          $count++;
+          $result.="  <td>\n";
+          $result.="    ".$cell."\n";
+          $result.="  </td>\n";
+        }
+        $result.="</tr>\n";
+        $maxcount=max($count,$maxcount);
+      }
+      $result.="</table>\n";
+      $this->_maxtablecount=$maxcount;
+      return $result;
+    }
+
+    /**
+    * Private. GUI -- combines a call to {$link renderTable}() with a call
+    * to {@link renderForm}().
+    * It effectively renders an HTML form containing an HTML table
+    * based on the input array. Used while editing profiles.
+    * @param array $table the table data (see {$link renderTable}())
+    * @return string the HTML representation of a form wrapped around a table
+    */
+    function renderFormTable($table)
+    {
+      $result=$this->renderTable($table);
+      $result=substr($result,0,-9);
+      $result.="<tr>\n";
+      $result.="  <td colspan={$this->_maxtablecount} align=center><input type='submit' name='submit' value='Submit'></td>\n";
+      $result.="</tr>\n";
+      $result.="</table>\n";
+
+      return $this->renderForm($result);
+    }
+
+    /**
+    * Private. GUI -- renders the controls for manually providing a field delimiter.
+    * Called by {@link findDelimiter}() when it can't automatically determine
+    * the field separator while editing a profile.
+    * @return string the controls rendered as HTML
+    */
+    function renderDelimiterSelector()
+    {
+      $return="<h1>Delimiter</h1>\n";
+      $return.="<div><i>Please provide the field delimiter manually:</i></div>\n";
+      $return.="<div><small>".
+        "(For special characters, use &quot;(nnn)&quot; for character nnn (decimal), ".
+        "or &quot;\\xNN&quot; for character NN (hex).)".
+        "</small></div>\n";
+      $return.=$this->renderFormTable(array(
+        array('Delimiter',"<input type='text' name='delimiter' value='' size=5>")
+      ));
+      return $return;
+    }
+
+    /**
+    * Private. GUI -- wraps the HTML page start, header boxes and page end around
+    * arbitrary HTML content.
+    * Used while editing profiles. It calls {@link renderPageStart}(),
+    * {@link renderHeaderBoxes}() and {@link renderPageEnd}(), sandwiching
+    * $content between them.
+    * @param string $content the HTML body of the page
+    * @return string a full HTML representation of the page
+    */
+    function renderPage($content,$title=NULL)
+    {
+      $result='';
+      $result.=$this->renderPageStart($title);
+      $result.=$this->renderHeaderBoxes();
+      $result.=$content;
+      $result.=$this->renderPageEnd();
+      return $result;
+    }
+
+    /**
+    * Private. GUI -- renders the HTML page start (DOCTYPE, starts the HTML tag,
+    * renders the HEAD tag, and starts the BODY tag).
+    * Used by {@link renderPage}(), typically while editing profiles.
+    * @return string a static string representing the HTML page start
+    */
+    function renderPageStart($title=NULL)
+    {
+      if (!$title) {
+        $title="Edit CSV import profile";
+      }
+      $result='';
+      $result.="<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
+      $result.="<HTML>\n";
+      $result.="<HEAD>\n";
+      $result.="  <TITLE>$title</TITLE>\n";
+      $result.="</HEAD>\n";
+      $result.="<BODY>\n";
+      return $result;
+    }
+
+    /**
+    * Private. GUI -- renders the HTML page end (closes the BODY and HTML tags).
+    * Used by {@link renderPage}(), typically while editing profiles.
+    * @return string a static string representing the HTML page end
+    */
+    function renderPageEnd()
+    {
+      $result='';
+      $result.="</BODY>\n";
+      $result.="</HTML>\n";
+      return $result;
+    }
+
+    /**
+    * Private. GUI -- renders the page header boxes showing the current status
+    * of a profile edit operation.
+    * Typically used by {@link renderPage}(), it conditionally
+    * calls {@link renderProfileNameBox}() and {@link renderDelimiterBox}(),
+    * depending on the current status of this object, runs {@link renderTable}()
+    * on the result of the previous calls, and returns the final result.
+    * @return string HTML string
+    */
+    function renderHeaderBoxes()
+    {
+      $result=array();
+      if ($this->profileName) {
+        $result=array_merge($result,$this->renderProfileNameBox());
+      }
+      if ($this->fdelimiter) {
+        $result=array_merge($result,$this->renderDelimiterBox());
+      }
+      if ($result) {
+        return $this->renderTable($result)."<br>";
+      } else {
+        return '';
+      }
+    }
+
+    /**
+    * Private. GUI -- renders the current profile's name into an array
+    * suitable for use with {@link renderTable}().
+    * Typically called by {@link renderHeaderBoxes}() during
+    * profile editing.
+    * @return array indexed array, as described
+    */
+    function renderProfileNameBox()
+    {
+      return array(
+        array("Profile name",$this->profileName)
+      );
+    }
+
+    /**
+    * Private. GUI -- renders the information related to delimiters into an array
+    * suitable for use with {@link renderTable}().
+    * This is used by {@link renderHeaderBoxes}() to render part of
+    * the page headers while editing profiles.
+    * @return array indexed array, as described
+    */
+    function renderDelimiterBox()
+    {
+      $result=array(
+        array(
+          "Delimiter type",
+          $this->ftype
+        )
+      );
+      if ($this->ftype=="Custom delimiter") {
+        $result[]=array(
+          "Delimiter",
+          $this->fdelimiter." (ASCII ".ord($this->fdelimiter).")"
+        );
+      }
+      return $result;
+    }
+
+    /**
+    * Public. Saves the current profile into the database.
+    * Uses the inherited IXmodule::setExtra() to save all data related to 
+    * this profile in the database.
+    * The method basically saves all of this object's passed variables
+    * (minus confirmation flags) into extra data, as follows:
+    * <code>
+    * $this->setExtra('profile',$this->profileName,$passed['name'],$passed['value']);
+    * </code>
+    * Since passed variables completely describe this profile following
+    * an edit confirmation (see {@link confirmEdit}()), we have a complete description
+    * of this object ready to be stored.
+    * To load a profile use {@link loadProfile}().
+    * On failure you can use {@link getErrors}() to determine the errors.
+    * @return boolean true on success, false on failure
+    */
+    function saveProfile()
+    {
+      if(!$this->profileName || !$this->columnMapping || !$this->fdelimiter) {
+        $this->addError("Can't save incomplete profile.");
+        return false;
+      }
+      foreach($this->passValues as $name=>$value) {
+        $xname=explode("_",$name);
+        if ($xname[0]=='confirm' || $passed['name']=='profile' || $xname[0]=='edit') {
+          continue;
+        }
+        $this->setExtra('profile',$this->profileName,$name,$value);
+      }
+      return true;
+    }
+
+    /**
+    * Public. Loads a profile from the database.
+    * The opposite of {@link saveProfile}() -- it reads passed values
+    * from the database using the inherited IXmodule::getExtra()
+    * as follows:
+    * <code>
+    * $this->getExtra('profile',$profile);
+    * </code>
+    * The resulting values are passed to {@link addPassValue}(),
+    * and finally a call to {@link parsePassedValues}() is made.
+    * On failure you can use {@link getErrors}() to determine the errors.
+    * @return boolean true on success, false on failure
+    */
+    function loadProfile($profile)
+    {
+      if (!$profile) {
+        $this->addError("Can't load unnamed profile!");
+        return false;
+      }
+      $data=$this->getExtra('profile',$profile);
+      if (!$data) {
+        $this->addError("Can't load profile \"$profile\" -- no data available.");
+        return false;
+      }
+      foreach($data as $key=>$value) {
+        $this->addPassValue($key,$value);
+      }
+      return $this->parsePassedValues();
+    }
+
+    /**
+    * Public. Returns an indexed array containing all existing profiles.
+    * To load a profile, use {@link loadProfile}().
+    * @return array indexed array listing all profiles currently stored in the database
+    */
+    function getProfiles()
+    {
+      return array_keys($this->getExtra('profile'));
+    }
+
+    /**
+    * Public. Imports orders from a CSV file based on an import profile.
+    * Profiles can be loaded with {@link loadProfile}(), saved with
+    * {@link saveProfile}(), modified using {@link editProfile}(),
+    * and listed with {@link getProfiles}().
+    * Parameter $file must be the path to a CSV file compatible with
+    * the profile identified by the second parameter.
+    * This method reads data from the file, correlates it with the
+    * mapping stored in the profile, aggregates multiple orders if
+    * needed and decides when to actually save the order, by calling
+    * {@link saveOrder}(), which then saves the order unconditionally.
+    * On failure you can use {@link getErrors}() to determine the errors.
+    * @param string $file the path to the CSV file
+    * @param string $profile the profile to use for importing
+    * @return boolean true on success, false on failure
+    */
+    function importOrders($file,$profile)
+    {
+      if(!$this->loadProfile($profile)) {
+        $this->addError("Can't import orders -- failed loading profile \"$profile\".");
+        return false;
+      }
+      if(!$this->initFile($file)) {
+        $this->addError("Can't import orders -- failed opening file!");
+        return false;
+      }
+      $header=$this->readCSVLine();
+      if (!$header) {
+        $this->addError("Can't import orders -- failed reading header line from file!");
+        return false;
+      }
+      $heading_data=$this->parseHeaderFields($header);
+      $mapping=array();
+      $usedFields=array();
+      foreach($heading_data as $CSV_key=>$CSV_field) {
+        foreach($this->columnMapping as $mapKey=>$mapVal) {
+          if (
+            ($CSV_field['type']=='numbered' && $CSV_field['prefix']==$mapVal) ||
+            ($CSV_field['type']=='unique' && $CSV_field['name']==$mapVal)
+          ) {
+            $mapping[$CSV_key]=$mapKey;
+            if (!isset($usedFields[$mapKey])) {
+              $usedFields[$mapKey]=1;
+            } else {
+              $usedFields[$mapKey]++;
+            }
+            // We do NOT break here, because we want to allow re-using columns
+            //break;
+          }
+        }
+      }
+      $usedCount=0;
+      $ok=true;
+      foreach($this->columnMapping as $mapKey=>$mapVal) {
+        if (!isset($usedFields[$mapKey])) {
+          $this->addError("Field $mapVal ($mapKey) required by the profile not found in this file!");
+          ob_start();
+          echo "<pre>";
+          var_dump($usedFields);
+          echo "</pre>";
+          $this->addError(ob_get_clean());
+          $ok=false;
+        }
+        if ($usedFields[$mapKey]>1) {
+          if ($usedCount==0) {
+            $usedCount=$usedFields[$mapKey];
+          } elseif ($usedCount!=$usedFields[$mapKey]) {
+            $this->addError("Numbered fields used incorrectly! (The same number of numbered fields must be used for all such fields in each row.)");
+            $ok=false;
+          }
+        }
+      }
+      if (!$ok) {
+        return false;
+      }
+      $last_order_id=false;
+      $lastorder=array();
+//@debug      echo "<table border=1>\n";
+      $ofi=$this->getOrderFieldInfo();
+      $recordNo=0;
+      while($line=$this->readCSVLine()) {
+        $recordNo++;
+//@debug        echo "<tr>\n";
+        $corder=array();
+        $count=0;
+        foreach($line as $k=>$v) {
+          $count++;
+          $myofi=NULL;
+          foreach($ofi as $cofi) {
+            if ($cofi['name']==$mapping[$k]) {
+              $myofi=$cofi;
+              break;
+            }
+          }
+          if (!$myofi) {
+            $this->addError("Internal error: internal mapping mismatch! ({$mapping[$k]})");
+            continue;
+          }
+//@debug          echo "<td bgcolor='#F0F0F0'>";
+//@debug          $cmapping=$mapping[$k]; // used only for debugging
+//@debug          if (!$cmapping) {
+//@debug            $cmapping='[ignored]';
+//@debug          } elseif ($heading_data[$k]['type']=='numbered') {
+//@debug            $cmapping.="[".$heading_data[$k]['no']."]";
+//@debug          }
+//@debug          echo "<small>".$cmapping."</small><br>";
+//@debug          echo $v;
+          if ($myofi['options']['numbered']) {
+            if (substr($mapping[$k],0,4)=='dsc_') {
+              // Discount-related
+              $corder['numbered_discount']['r_'.$recordNo.'.'.$heading_data[$k]['no']][$mapping[$k]]=$v;
+            } else {
+              // Item-related
+              $corder['numbered_item']['r_'.$recordNo.'.'.$heading_data[$k]['no']][$mapping[$k]]=$v;
+            }
+          } elseif ($mapping[$k]) {
+            $corder[$mapping[$k]]=$v;
+          }
+//@debug          echo "</td>\n";
+        }
+        $saved=false;
+//@debug        echo "</tr>\n";
+//@debug        echo "<tr><td colspan=$count>";
+        if (isset($corder['ordernum']) && $last_order_id===$corder['ordernum']) {
+          $lastorder['numbered_item']=array_merge($lastorder['numbered_item'],$corder['numbered_item']);
+          $lastorder['numbered_discount']=array_merge($lastorder['numbered_discount'],$corder['numbered_discount']);
+          $corder=$lastorder;
+//@debug          echo "Same order ID as the previous one, aggregating data.";
+//@debug          $debug_aggregated=" (with aggregated data from earlier records)";
+        } else {
+          if ($lastorder) {
+            $order_object=$this->saveOrder($lastorder);
+//@debug            echo "<b>Different order ID, saving previous order$debug_aggregated:</b><pre>";
+//@debug            var_dump($order_object);
+//@debug            echo "</pre>";            
+            $saved=true;
+//@debug          } else {
+//@debug            echo "<b>First record, storing data.</b><br>Data is always saved when a record with a different order ID is encountered (otherwise data from multiple records is aggregated).<br> Since this is the first record in the CSV file, we simply store the data and move on.";
+          }
+          $lastorder=$corder;
+          $last_order_id=$corder['ordernum'];
+          $debug_aggregated="";
+        }
+//@debug        echo "</td></tr>\n";
+      }
+      if ($lastorder) {
+        $this->saveOrder($lastorder);
+//@debug        echo "<tr><td colspan=$count>";
+//@debug        echo "<b>This was the last record, saving previous order$debug_aggregated:</b><pre>";
+//@debug        var_dump($this->saveOrder($lastorder));
+//@debug        echo "</pre>";
+//@debug        echo "</table>\n";
+      }
+      return true;
+    }
+
+    /**
+    * Private. Saves an order described by an array built by {@link importOrders}().
+    * This method receives an array describing the order from a CSV/mapping
+    * point of view, and does all the logic related to saving the order in
+    * the database -- it uses {@link getOrderFieldMapping}() to determine
+    * how the internal keys are mapped on the order/product objects, and
+    * proceeds to saving the data in the database using order::create(),
+    * order::addProduct() and order::saveOrder().
+    * @param array $order_data an array describing the order
+    * @return object order the instantiated order object, after saving
+    */
+    function saveOrder($order_data)
+    {
+      $ofm=$this->getOrderFieldMapping();
+      $order_total_amount=false;
+      $shipdata=$billdata=$itemdata=$orderinfo=$bname=$dname=$shipxtra=array();
+      $itemdata=$items=$discount=array();
+      $numbered_data=$numbered_discount=array();
+/*
+      echo "<font color=red><b>order_data</b><pre>";
+      var_dump($order_data);
+      echo "</pre></font>";
+*/
+      foreach($order_data as $field=>$value) {
+        if (!$ofm[$field]) {
+          $this->addError("Unknown field type \"$field\" (value=$value)");
+          continue;
+        }
+        foreach($ofm[$field] as $map) {
+          switch($map[0]) {
+            case 'void':
+              break;
+            case 'shipdata':
+              $shipdata[$map[1]]=$value;
+              break;
+            case 'billdata':
+              $billdata[$map[1]]=$value;
+              break;
+            case 'info':
+              $orderinfo[$map[1]]=$value;
+              break;
+            case 'bname':
+              $bname[$map[1]]=$value;
+              break;
+            case 'dname':
+              $dname[$map[1]]=$value;
+              break;
+            case 'itemdata':
+              $itemdata[$map[1]]=$value;
+              break;
+            case 'discount':
+              $discountdata[$map[1]]=$value;
+              break;
+            case 'numbered_item':
+              $numbered_data=$value;
+              break;
+            case 'numbered_discount':
+              $numbered_discount=$value;
+              break;
+            case 'total_amount':
+              $order_total_amount=$value;
+              break;
+            case 'shipxtra':
+              $shipxtra[$map[1]]=$value;
+              break;
+          }
+        }
+      }
+/*
+      echo "<b>Discount</b><pre>";
+      var_dump($numbered_discount);
+      echo "</pre>";
+*/
+      if ($itemdata) {
+        $items=array($itemdata);
+      }
+      foreach($numbered_data as $itemdata) {
+        $citemdata=array();
+        foreach($itemdata as $field=>$value) {
+          if (!$ofm[$field]) {
+            $this->addError("Unknown item field type \"$field\" (value=$value)");
+            continue;
+          }
+          foreach($ofm[$field] as $map) {
+            switch($map[0]) {
+              case 'itemdata':
+                $citemdata[$map[1]]=$value;
+                break;
+              default:
+                $this->addError("Only item data should be stored in numbered order data -- ".
+                  $map[1]." (internal error, this error should never be issued)"
+                );
+            }
+          }
+        }
+        $items[]=$citemdata;
+      }
+      if ($discountdata) {
+        $discount=array($discountdata);
+      }
+      foreach($numbered_discount as $discountitem) {
+        $cdiscountitem=array();
+        foreach($discountitem as $field=>$value) {
+          if (!$ofm[$field]) {
+            $this->addError("Unknown discount field type \"$field\" (value=$value)");
+            continue;
+          }
+          foreach($ofm[$field] as $map) {
+            switch($map[0]) {
+              case 'discount':
+                $cdiscountitem[$map[1]]=$value;
+                break;
+              default:
+                $this->addError("Only discount data should be stored in numbered_discount order data -- ".
+                  $map[1]." (internal error, this error should never be issued)"
+                );
+            }
+          }
+        }
+        $discount[]=$cdiscountitem;
+      }
+      $bname=$this->processName($bname);
+      if ($bname) {
+        $billdata['name']=$bname;
+      }
+      $dname=$this->processName($dname);
+      if ($dname) {
+        $shipdata['name']=$dname;
+      }
+      $order=new order;
+      $order->create(NULL,$shipdata,$billdata);
+      $order->info=$orderinfo;
+
+      // These are initialized outside the loop in order to allow inheritance
+      // (i.e. allowing any of these to be static fields, while any of the others
+      // can be numbered)
+      $price=NULL;
+      $qty=1;
+      $item_id=0;
+      
+      foreach($items as $item) {
+        if ($item['qty']) {
+          $qty=$item['qty'];
+          unset($item['qty']);
+        }
+        if ($item['price']) {
+          $price=$item['price'];
+          unset($item['price']);
+        }
+        if ($item['upc']) {
+          // Must determine item_id!
+          $item_id=$item['upc'];
+          unset($item['upc']);
+        }
+        $order->addProduct($item_id,$qty,$item,$price);
+      }
+
+      foreach($discount as $key=>$value) {
+        if ($value['reason'] && $value['amount']) {
+          $order->setPromo(
+            NULL,
+            Array(
+              'reason'=>$value['reason'],
+              'amount'=>abs($value['amount'])
+            )
+          );
+        }
+      }
+
+      if ($shipxtra && $shipxtra['method'] && $shipxtra['cost']) {
+        $order->setShipping(
+          'dummy',
+          Array(
+            'name'=>$shipxtra['method'],
+            'cost'=>$shipxtra['cost']
+          )
+        );
+      }
+
+      if ($order_total_amount!==false) {
+        $cprice=$order->getSubTotal();
+        $diff=$order_total_amount-$cprice;
+        //$order->addProduct([fake id],1,array(),$diff);
+      }
+
+      $order->saveOrder();
+      return $order;
+    }
+
+    /**
+    * Private. Processes an array describing a name into a string.
+    * A simple method to parse an associative array of the
+    * form
+    * <code>
+    * array(
+    *   'fname'=>'John',
+    *   'lname'=>'Doe'
+    * )
+    * </code>
+    * into the string "John Doe", given that any of the
+    * two fields in the array may be missing.
+    * Typically used by {@link saveOrder}() for processing
+    * the billing/shipping person's name (in the CSV names come as
+    * two distinct fields, and in the database we store them as one string).
+    * @param array associative array describing a name
+    * @return string the string representation of the same name
+    */
+    function processName($name)
+    {
+      if (!$name) {
+        return NULL;
+      }
+      if ($name['fname'] && $name['lname']) {
+        $name=$name['fname'].' '.$name['lname'];
+      } elseif ($name['fname']) {
+        $name=$name['fname'];
+      } elseif ($name['lname']) {
+        $name=$name['lname'];
+      } else {
+        $name=NULL;
+      }
+      return $name;
+    }
+
+    function writeCSVline($data)
+    {
+      return fputcsv($this->fp,$data,$this->fdelimiter,$this->enclosure);
+    }
+
+    function exportHeader()
+    {
+      $line=array_values($this->columnMapping);
+      return $this->writeCSVline($line);
+    }
+
+    function exportOrders($ids,$file,$profile)
+    {
+      if (!is_array($ids) || !$ids) {
+        $this->addError("No orders to export!");
+        return false;
+      }
+      if (!$this->loadProfile($profile)) {
+        $this->addError("Can't export orders -- failed loading profile \"$profile\"!");
+        return false;
+      }
+      if (!$this->initFile($file,'w')) {
+        return false;
+      }
+      if (!$this->exportHeader()) {
+        return false;
+      }
+      $ofi=$this->getOrderFieldInfo();
+      $options=array();
+      foreach($ofi as $fi) {
+        $options[$fi['name']]=$fi['options'];
+      }
+      foreach($ids as $id) {
+        $line=array();
+        // We need to increment at the beginning of the loop as to avoid messing around when we continue within the block
+        $i=-1;
+        foreach($this->columnMapping as $mapKey=>$mapVal) {
+          $i++;
+          if ($options[$mapKey]['numbered']) {
+            // We do these later
+            continue;
+          }
+          $line[$i]=$this->getOrderData($id,$mapKey);
+        }
+        $items=$this->getOrderItems($id);
+        $lines=array();
+        foreach($items as $item) {
+          $myLine=$line;
+          $i=-1;
+          foreach($this->columnMapping as $mapKey=>$mapVal) {
+            $i++;
+            $keyX=explode("_",$mapKey);
+            if (!$keyX[0]!='p') {
+              continue;
+            }
+            $myLine[$i]=$item[$keyX[1]];
+          }
+          $lines[]=$myLine;
+        }
+        // Should do some smartness to fit in the discount(s), if required
+        foreach($lines as $line) {
+          if (!$this->writeCSVline($line)) return false;
+        }
+      }
+      return true;
+    }
+
+    function getOrderData($orderID,$field)
+    {
+      return 'order_data';
+    }
+
+    function getOrderItems($orderID)
+    {
+      return array(
+        array(
+          'name'=>'foo',
+          'price'=>'bar'
+        ),
+        array(
+          'name'=>'baz',
+          'price'=>'foobar'
+        )
+      );
+    }
+  }
+
+  if(!function_exists('fputcsv')) {
+    function fputcsv($fp,$data,$delimiter=",",$enclosure='"')
+    {
+      return @fputs($fp,$enclosure.implode($data,$enclosure.$delimiter.$enclosure).$enclosure."\n");
+    }
+  }
+?>

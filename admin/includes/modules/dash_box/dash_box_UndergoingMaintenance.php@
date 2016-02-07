@@ -1,0 +1,89 @@
+<?php
+class dash_box_UndergoingMaintenance 
+	{
+
+  		var $table_cols=2;
+ 		var $table_rows=1;
+		var $title="Dashboard Undergoing Maintenance";
+
+ 		function render() 
+		{
+ ?>
+<div style="overflow-x:hidden; width:571px;" id="focusme"><a id="focuschild" href="javascript:void(null)" style="cursor: default"></a><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                     <tr>
+                       <td style="height:1px; background-color:#8CA9C4"></td>
+                     </tr>
+                     <tr>
+                       <td style="height:1px; background-color:#FFFFFF"></td>
+                     </tr>
+                     <tr>
+                       <td style="height:1px; background-color:#8CA9C4;"></td>
+                     </tr>
+                     <tr>
+                       <td style="height:16px; background-color:#6295FD; font:bold 11px arial; color:#FFFFFF;">&nbsp; Dashboard Undergoing Maintenance ...</td>
+                     </tr>
+                     <tr>
+                       <td style="height:1px; background-color:#19487E;"></td>
+                     </tr>
+                     <tr>
+                       <td style="height:1px; background-color:#FFFFFF;"></td>
+                     </tr>
+                     <tr>
+                       <td style="height:1px; background-color:#8CA9C4;"></td>
+	      </tr>
+                     <tr>
+                       <td height="45" align="center" style="padding-top:3px;">&nbsp;Check back soon ...</td>
+                     </tr>
+					 <tr>
+					 <td style="height:1px; background:url(images/dot-line.gif) repeat-x;"></td>
+					 </tr>
+					  <tr>
+					    <td style="height:20px; padding-top:4px; padding-bottom:5px; padding-left:5px;">&nbsp;</td>
+					  </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td style="padding-top:2px;">
+</td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td style="width:5px;"></td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+  <td valign="top" style="height:1px; background-color:#FFFFFF;"></td>
+  </tr>
+  <tr>
+  <td valign="top"><table width="571" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="285" valign="top">&nbsp;</td>
+    <td width="2" style="width:5px;"></td>
+    <td width="284" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td style="width:5px;"></td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+</table></td>
+  </tr>
+</table></div>
+	<script language="javascript">
+	<!--
+<?
+	include_once(DIR_FS_DASH_BOX_JS."main_dash.js");
+?>
+	// -->
+	</script>
+<?
+  }
+}
+?>

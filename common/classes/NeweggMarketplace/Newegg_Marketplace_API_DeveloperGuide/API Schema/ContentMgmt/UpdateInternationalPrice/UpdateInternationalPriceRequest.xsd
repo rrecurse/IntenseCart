@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ItemPriceInfo">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Condition" default="1" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Type">
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+							<xs:enumeration value="0"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Value">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="40"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="PriceList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Price" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="CountryCode">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="USA"/>
+													<xs:enumeration value="AUS"/>
+													<xs:enumeration value="IND"/>
+													<xs:enumeration value="IRL"/>
+													<xs:enumeration value="NLD"/>
+													<xs:enumeration value="NZL"/>
+													<xs:enumeration value="POL"/>
+													<xs:enumeration value="SGP"/>
+													<xs:enumeration value="GBR"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Currency">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="INR"/>
+													<xs:enumeration value="EUR"/>
+													<xs:enumeration value="NZD"/>
+													<xs:enumeration value="PLN"/>
+													<xs:enumeration value="SGD"/>
+													<xs:enumeration value="AUD"/>
+													<xs:enumeration value="GBP"/>
+													<xs:enumeration value="USD"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Active" type="xs:integer" minOccurs="0"/>
+										<xs:element name="MSRP" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="MAP" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="CheckoutMAP" type="xs:integer" minOccurs="0"/>
+										<xs:element name="SellingPrice" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="EnableFreeShipping" type="xs:integer" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

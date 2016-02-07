@@ -1,0 +1,143 @@
+<?php
+
+include_once(DIR_FS_ADMIN.'apility/apility.php');
+
+class dash_box_PayPerClick_summary 
+	{
+	  var $table_cols=1;
+ 	  var $table_rows=1;
+	  var $title="Pay-Per-Click Search Summary & Costs";
+
+  	  function render() 
+	  {
+?>
+
+<div style="width:283px; overflow-x:hidden"><table width="283" border="0" cellspacing="0" cellpadding="0">
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#8CA9C4"></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#FFFFFF"></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#8CA9C4;"></td>
+                     </tr>
+                     <tr>
+                       <td width="260" style="height:20px; background-color:#6295FD; font:bold 12px arial;color:#FFFFFF;">&nbsp; Pay-Per-Click Search Summary & Costs</td>
+                       <td width="23" align="right" style="padding-right:7px; background-color:#6295FD;"><div class="helpicon" onMouseover="ddrivetip('<font class=featuredpopName><b>Tool Tips</b></font><br><br>More Tools Tips About This Tool Tip<br>')" onMouseout="hideddrivetip()"> </div></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:2px; background-color:#FFFFFF;"></td>
+                     </tr>
+                    <tr>
+                       <td colspan="2" style="padding-top:1px; background-color:#DEEAF8; height:20px;"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                         <tr>
+                           <td><table width="283" border="0" cellpadding="0" cellspacing="0">
+                             <tr>
+                               <td width="71" align="center" style="font:bold 12px Arial;"><b>Yesterday:</b></td>
+                               <td width="53" align="center">Google</td>
+                               <td width="53" align="center">Yahoo</td>
+                               <td width="53" align="center">Other</td>
+                               <td width="53" align="center">Totals</td>
+                             </tr>
+                           </table></td>
+                         </tr>
+</table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" valign="top" style="padding-top:3px; background-color:#F0F5FB;"><?
+
+  $stats=Array();
+  foreach(Array('adwords','overture','other') AS $scope) $stats[$scope]=Array(avail=>0,clicks=>0,conv=>0,cost=>0.0);
+  $date_today=date('Y-m-d',time());
+  $date_yesterday=date('Y-m-d',time()-86400);
+  $ppc_cache_query=tep_db_query("SELECT * FROM ppc_stats WHERE start_date='$date_yesterday' AND finish_date='$date_today'");
+  while ($ppc_cache=tep_db_fetch_array($ppc_cache_query)) {
+    $stats[$ppc_cache['ppc_source']]['clicks']=$ppc_cache['ppc_clicks'];
+    $stats[$ppc_cache['ppc_source']]['cost']=$ppc_cache['ppc_cost'];
+    $stats[$ppc_cache['ppc_source']]['conv']=$ppc_cache['ppc_conversions'];
+    $stats[$ppc_cache['ppc_source']]['avail']=$stats[$ppc_cache['ppc_source']]['cache']=1;
+  }
+
+  if (!$stats['adwords']['avail']) {
+    $campaign_objs=APIlity_getAllCampaigns();
+    if (is_array($campaign_objs)) {
+      $stats['adwords']['avail']=1;
+      foreach ($campaign_objs AS $c) {
+        $camp_stats=$c->getCampaignStats(date('Y-m-d',time()-86400),date('Y-m-d',time()));
+        $stats['adwords']['clicks']+=$camp_stats['clicks'];
+        $stats['adwords']['cost']+=$camp_stats['cost'];
+        $stats['adwords']['conv']+=$camp_stats['conversions'];
+      }
+    }
+  }
+  foreach ($stats AS $scope=>$stats_row) {
+    if (!isset($stats_row['cache']) && $stats_row['avail']) {
+      tep_db_query("INSERT IGNORE INTO ppc_stats (start_date,finish_date,ppc_source,ppc_clicks,ppc_cost,ppc_conversions) VALUES ('$date_yesterday','$date_today','$scope','".$stats_row['clicks']."','".$stats_row['cost']."','".$stats_row['conv']."')");
+    }
+  }
+  $stats_total=Array('avail'=>0);
+  foreach ($stats AS $stats_row) {
+    if ($stats_row['avail']) {
+      $stats_total['avail']=1;
+      foreach ($stats_row AS $stats_key=>$stats_val) $stats_total[$stats_key]+=$stats_val;
+    }
+  }
+  $stats['total']=&$stats_total;
+  
+?><table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td width="71" align="center" class="tableinfo_right-btm">Click Cost:</td>
+						  <? foreach ($stats AS $scope=>$st) { ?>
+                          <td width="53" align="center" class="tableinfo_right-btm" id="ppc_yesterday_<?=$scope?>_clickcost"><?=$st['avail']?($st['clicks']?sprintf("$%.2f",$st['cost']/$st['clicks']):'-'):'n/a'?></td>
+						  <? } ?>
+                        </tr>
+                        <tr>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"># of Clicks</td>
+						  <? foreach ($stats AS $scope=>$st) { ?>
+						  <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm" id="ppc_yesterday_<?=$scope?>_clicks"><?=$st['avail']?(sprintf("%d",$st['clicks'])):'n/a'?></td>
+						  <? } ?>
+                        </tr>
+                        <tr>
+                          <td align="center" class="tableinfo_right-btm">Conv. Rate</td>
+						  <? foreach ($stats AS $scope=>$st) { ?>
+                          <td align="center" class="tableinfo_right-btm" id="ppc_yesterday_<?=$scope?>_convrate"><?=$st['avail']?($st['clicks']?sprintf("%.2f%%",$st['conv']/$st['clicks']*100):'-'):'n/a'?></td>
+						  <? } ?>
+                        </tr>
+                        <tr>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">Cost / Conv.</td>
+						  <? foreach ($stats AS $scope=>$st) { ?>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm" id="ppc_yesterday_<?=$scope?>_convcost"><?=$st['avail']?($st['conv']?sprintf("%.2f",$st['cost']/$st['conv']):'-'):'n/a'?></td>
+						  <? } ?>
+                        </tr>
+                      </table>
+
+		      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="padding:5px; background-color:#F0F5FB"><table border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td><img src="images/graph-icon.jpg" width="16" height="15"></td>
+                          <td style="padding-left:6px;"><a href="#">view
+                              full report</a></td>
+                        </tr>
+                    </table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="background-color:#FFFFFF; height:3px;"></td>
+                    </tr>
+                   </table></div>
+	<script language="javascript">
+	<!--
+<?
+	include_once(DIR_FS_DASH_BOX_JS."main_dash.js");
+	include_once(DIR_FS_DASH_BOX_JS."ext_dash.js");
+?>
+	// -->
+	</script>
+<?
+  }
+}
+?>
+
+

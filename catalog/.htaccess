@@ -1,0 +1,124 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* index.php
+
+php_value session.auto_start off
+php_value register_long_arrays on
+php_value register_globals on
+
+SetEnvIfNoCase User-Agent .*AccServer.* bad_bot
+SetEnvIfNoCase User-Agent .*acapbot.* bad_bot
+SetEnvIfNoCase User-Agent .*Aboundex.* bad_bot
+SetEnvIfNoCase User-Agent .*ADmantX.* bad_bot
+SetEnvIfNoCase User-Agent .*ahrefsbot.* bad_bot
+SetEnvIfNoCase User-Agent .*aranhabot.* bad_bot
+SetEnvIfNoCase User-Agent .*amobee.* bad_bot
+SetEnvIfNoCase User-Agent .*AntBot.* bad_bot
+SetEnvIfNoCase User-Agent .*AraTurka.* bad_bot
+SetEnvIfNoCase User-Agent .*Apache-HttpClient.* bad_bot
+SetEnvIfNoCase User-Agent .*asynchttp.* bad_bot
+SetEnvIfNoCase User-Agent .*avira.* bad_bot
+SetEnvIfNoCase User-Agent .*Baidu.* bad_bot
+SetEnvIfNoCase User-Agent .*betaBot.* bad_bot
+SetEnvIfNoCase User-Agent .*bitlybot.* bad_bot
+SetEnvIfNoCase User-Agent .*CCBot.* bad_bot
+SetEnvIfNoCase User-Agent .*CFNetwork.* bad_bot
+SetEnvIfNoCase User-Agent .*ChangeDetection.* bad_bot
+SetEnvIfNoCase User-Agent .*ClarityDailyBot.* bad_bot
+SetEnvIfNoCase User-Agent .*Cliqzbot.* bad_bot
+SetEnvIfNoCase User-Agent .*cmscrawler.* bad_bot
+SetEnvIfNoCase User-Agent .*Coallbot.* bad_bot
+SetEnvIfNoCase User-Agent .*CoinCornerBot.* bad_bot
+SetEnvIfNoCase User-Agent .*CrystalSemanticsBot.* bad_bot
+SetEnvIfNoCase User-Agent .*Dispatch.* bad_bot
+SetEnvIfNoCase User-Agent .*dotbot.* bad_bot
+SetEnvIfNoCase User-Agent .*DomainSigmaCrawler.* bad_bot
+SetEnvIfNoCase User-Agent .*DuckDuckGo-Favicons.* bad_bot
+SetEnvIfNoCase User-Agent .*Dispatch.* bad_bot
+SetEnvIfNoCase User-Agent .*exabot.* bad_bot
+SetEnvIfNoCase User-Agent .*Findxbot.* bad_bot
+SetEnvIfNoCase User-Agent .*gigabot.* bad_bot
+SetEnvIfNoCase User-Agent .*github.* bad_bot
+SetEnvIfNoCase User-Agent .*Gimme60bot.* bad_bot
+SetEnvIfNoCase User-Agent .*Gluten.* bad_bot
+SetEnvIfNoCase User-Agent .*hotbot.* bad_bot
+SetEnvIfNoCase User-Agent .*Insitesbot.* bad_bot
+SetEnvIfNoCase User-Agent .*ips-agent.* bad_bot
+SetEnvIfNoCase User-Agent .*JCE.* bad_bot
+SetEnvIfNoCase User-Agent .*KomodiaBot.* bad_bot
+SetEnvIfNoCase User-Agent .*linkdexbot.* bad_bot
+SetEnvIfNoCase User-Agent .*linkCheck.* bad_bot
+SetEnvIfNoCase User-Agent .*linkfluence.* bad_bot
+SetEnvIfNoCase User-Agent .*masscan.* bad_bot
+SetEnvIfNoCase User-Agent .*MegaIndex.* bad_bot
+SetEnvIfNoCase User-Agent .*mj12bot.* bad_bot
+SetEnvIfNoCase User-Agent .*MJ12bot.* bad_bot
+SetEnvIfNoCase User-Agent .*netscan.* bad_bot
+SetEnvIfNoCase User-Agent .*NetLyzer.* bad_bot
+SetEnvIfNoCase User-Agent .*NetcraftSurveyAgent.* bad_bot
+SetEnvIfNoCase User-Agent .*NerdyBot.* bad_bot
+SetEnvIfNoCase User-Agent .*NING.* bad_bot
+SetEnvIfNoCase User-Agent .*NimbusBot.* bad_bot
+SetEnvIfNoCase User-Agent .*Nutch.* bad_bot
+SetEnvIfNoCase User-Agent .*OpenHoseBot.* bad_bot
+SetEnvIfNoCase User-Agent .*OrangeBot.* bad_bot
+SetEnvIfNoCase User-Agent .*Owler.* bad_bot
+SetEnvIfNoCase User-Agent .*PageBot.* bad_bot
+SetEnvIfNoCase User-Agent .*PagesInventory.* bad_bot
+SetEnvIfNoCase User-Agent .*PageGetter.* bad_bot
+SetEnvIfNoCase User-Agent .*panscient.* bad_bot
+SetEnvIfNoCase User-Agent .*PG Crawler.* bad_bot
+SetEnvIfNoCase User-Agent .*PG Image Crawler.* bad_bot
+SetEnvIfNoCase User-Agent .*Probe.* bad_bot
+SetEnvIfNoCase User-Agent .*proximic.* bad_bot
+SetEnvIfNoCase User-Agent .*PycURL.* bad_bot
+SetEnvIfNoCase User-Agent .*Python.* bad_bot
+SetEnvIfNoCase User-Agent .*Qwantify.* bad_bot
+SetEnvIfNoCase User-Agent .*rogerbot.* bad_bot
+SetEnvIfNoCase User-Agent .*Ruby.* bad_bot
+SetEnvIfNoCase User-Agent .*radian6.* bad_bot
+SetEnvIfNoCase User-Agent .*RavenCrawler.* bad_bot
+SetEnvIfNoCase User-Agent .*Schenkerianbot.* bad_bot
+SetEnvIfNoCase User-Agent .*Screaming Frog.* bad_bot
+SetEnvIfNoCase User-Agent .*Scrapy.* bad_bot
+SetEnvIfNoCase User-Agent .*SemrushBot.* bad_bot
+SetEnvIfNoCase User-Agent .*shuber.* bad_bot
+SetEnvIfNoCase User-Agent .*sitebot.* bad_bot
+SetEnvIfNoCase User-Agent .*SMTBot.* bad_bot
+SetEnvIfNoCase User-Agent .*Sogou.* bad_bot
+SetEnvIfNoCase User-Agent .*Spillo.* bad_bot
+SetEnvIfNoCase User-Agent .*spray-can.* bad_bot
+SetEnvIfNoCase User-Agent .*startmebot.* bad_bot
+SetEnvIfNoCase User-Agent .*StatsInfo.* bad_bot
+SetEnvIfNoCase User-Agent .*SurdotlyBot.* bad_bot
+SetEnvIfNoCase User-Agent .*sukibot.* bad_bot
+SetEnvIfNoCase User-Agent .*SurveyBot.* bad_bot
+SetEnvIfNoCase User-Agent .*TelegramBot.* bad_bot
+SetEnvIfNoCase User-Agent .*TurnitinBot.* bad_bot
+SetEnvIfNoCase User-Agent .*Typhoeus.* bad_bot
+SetEnvIfNoCase User-Agent .*uMBot.* bad_bot
+SetEnvIfNoCase User-Agent .*URLChecker.* bad_bot
+SetEnvIfNoCase User-Agent .*voltron.* bad_bot
+SetEnvIfNoCase User-Agent .*Vorboss.* bad_bot
+SetEnvIfNoCase User-Agent .*WebTarantula.* bad_bot
+SetEnvIfNoCase User-Agent .*WeCrawlForThePeace.* bad_bot
+SetEnvIfNoCase User-Agent .*WeLikeLinks.* bad_bot
+SetEnvIfNoCase User-Agent .*Wget.* bad_bot
+SetEnvIfNoCase User-Agent .*woobot.* bad_bot
+SetEnvIfNoCase User-Agent .*WordPress.* bad_bot
+SetEnvIfNoCase User-Agent .*Mechanize.* bad_bot
+SetEnvIfNoCase User-Agent .*Xenu.* bad_bot
+SetEnvIfNoCase User-Agent .*XoviBot.* bad_bot
+SetEnvIfNoCase User-Agent .*Yandex.* bad_bot
+SetEnvIfNoCase User-Agent .*YFF35.* bad_bot
+SetEnvIfNoCase User-Agent .*yoozBot.* bad_bot
+SetEnvIfNoCase User-Agent .*ZumBot.* bad_bot
+SetEnvIfNoCase User-Agent .*200PleaseBot.* bad_bot
+
+<Limit GET POST HEAD>
+Order Allow,Deny
+Allow from all
+Deny from env=bad_bot
+</Limit>
+
+Options -Indexes

@@ -1,0 +1,130 @@
+<chapter>
+   <title>
+       Nowa wiadomość
+   </title>
+   <summary>
+       Opcja umożliwiająca wysyłanie, za pomocą Wiewiórczej poczty, wiadomości do innych osób.
+   </summary>
+   <description>
+      <p>
+ 	Wybranie odsyłacza <i>Nowa wiadomość</i> z paska wyboru, otwiera
+	stronę tworzenia nowej wiadomości, w której znajduje się kilka pól i
+	przycisków. W zależności od sposobu, w jaki doszło do otworzenia tej
+	strony, niektóre z tych pól mogą być już wypełnione.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Do
+   </title>
+   <description>
+      <p>
+ 	Pierwszym jest pole "Do:". W nim powinien zostać wpisany adres
+	poczty elektronicznej osoby lub osób, do których wiadomość jest wysyłana.
+	Można wpisać dowolną liczbę adresów, oddzielając je przecinkami, jak
+	również kliknąć przycisk <i>Adresy</i>, by skorzystać z książki adresowej.
+	Szerokość pola jest ustalona i niezmienna, więc cały adres może nie być
+	widoczny. Nie należy tym sie martwić - by sprawdzić całkowitą
+	zawartość pola wystarczy przewinąć je z lewej strony na prawą.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Cc
+   </title>
+   <description>
+      <p>
+	Niżej znaduje się pole "CC:" (CC jest skrótem od
+      angielskiego wyrażenia <b>C</b>arbon <b>C</b>opy). W tym polu określa się
+      osoby, do których zostanie przesłana kopia wiadomości. W polach
+      "Do:", "CC:" oraz "BCC:" można umieścić dowolną
+      liczbę adresatów. W polu "Do:" powinny znajdować się tylko te
+      osoby, do których wiadomość skierowana jest bezpośrednio. Odbiorcy,
+      dla których ma ona tylko znaczenie informacyjne, powinni być
+      umieszczeni w polach "CC:" lub "BCC:".
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Bcc
+   </title>
+   <description>
+      <p>
+ 	BCC to skrót od <b>B</b>lind <b>C</b>arbon <b>C</b>opy. Na adresy
+	umieszczone w tym polu wysłana zostanie kopia wiadomości
+	<i>bez</i> wiedzy pozostałych adresatów, umieszczonych w polach
+	"Do:" oraz "CC:". Krótko mówiąc, jest to niewidzialna kopia.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Temat
+   </title>
+   <description>
+      <p>
+       Należy wpisać odpowiedni dla wiadomości nagłówek. Jest to ważne,
+	gdyż odpowiedni temat wiadomości ułatwia życie odbiorcy; zawczasu informuje
+	go o zawartości przesyłki.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Adresy
+   </title>
+   <description>
+      <p>
+ 	Przycisk otwiera książkę adresową wraz z polem wyszukiwania.
+	Aby otrzymać rezlutat wyszukiwania, należy umieścić w tym polu pewną
+	wartość. Chcąć wykorzystać wszystkie adresy zawarte w książce, 
+	należy w polu umieścić spację i kliknąć przycisk <i>Szukaj</i>.
+	Książka adresowa posiada własną sekcję pomocy - rozdział "Adresy".
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Tekst wiadomości
+   </title>
+   <description>
+      <p>
+ 	To duże puste pole służy do umieszczenie tekstu wiadomości. W
+	przypadku uprzedniego zachowania pliku sygnaturki (podpisu), jej tekst
+	pojawi się w tym polu.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Załącznik
+   </title>
+   <description>
+      <p>
+ 	Opcja ta, do której odsyłacz umieszczony jest na samym dole strony,
+	pozwala na dołączenie do
+	wiadomości pliku, znajdującego się na maszynie <i>lokalnej</i> lub
+	dostępnej w sieci. Obecny jest przycisk <i>browse</i>, pozwalający na
+	przeszukiwanie struktury katalogów oraz załączenie pliku poprzez
+	proste kliknięcie. Ewentualnie można wpisać pełną ścieżkę
+	do pliku w polu załącznika. Na koniec wystarczy nacisnąć
+	przycisk <i>Dodaj</i>, by dodać wybrany plik jako załącznik; zostanie on
+	wyświetlony poniżej.
+      </p>
+      <p>
+ 	Gdy jakiś plik zostanie wybrany jako załącznik, pojawi się
+	kolejny przycisk <i>Usuń zaznaczone załączniki</i>, służący - jakże
+	by śmiał inaczej - do usuwania niechcianych załączników.
+      <p>
+   </description>
+</section>

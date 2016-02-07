@@ -1,0 +1,108 @@
+<chapter>
+   <title>
+      Naslovi
+   </title>
+   <summary>
+      Adresar vam lahko prihrani veliko časa pri pisanju elektronskih sporočil.  Vanj lahko vpišete naslove ljudi, ki jim pišete večkrat.
+   </summary>
+   <description>
+      <p>
+      Adresar vam prihrani veliko časa. Naslove ki jih uporabljate velikokrat so lahko
+      shranjeni tukaj. LDAP strežniki (največkrat se uporablja v podjetjih in univerzah
+      da so naslovi organizacije na voljo širom sveta) so tudi podprti.
+      </p>
+      <p>
+      Le vaš brskalnik podpira Javascript potem si lahko omogočite v Nastavitvah adresar ki je napisan v Javi.
+      Je zelo majhen programček ki se odpre v novem oknu. Listi HTML naslovi so tudi podprti in jih lahko
+      uporabite kadar vaš brskalnik ne podpira Javascript in tako SquirrelMail ostane v celoti funkcionalen.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Vzdevek
+   </title>
+   <description>
+      <p>
+      Vpišite vaš vzdevek ki ga uporabljate.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Email Naslov
+   </title>
+   <description>
+      <p>
+      Tukaj mora biti vpisan pravilen email naslov. Email naslov je sestavljen iz
+      treh delov. Prvi je naslovnik, kot npr. "katja", nato je del domene afna "@"
+      nazadnje pride pa top level domena, ki je pa lahko ena izmed milijonov
+      kot primer au, cc, us, com, org, net ali celo edu.  No, in sedaj če vse te tri dele
+      združimo v eno celoto dobimo email naslov katja@taylor.net. Le ta naslov ne bo pravilen,
+      potem elektronska pošta ne bo sprejeta in bo zavržena.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Info
+   </title>
+   <description>
+      <p>
+      To je še eno polje, kjer lahko vpišete karkoli kar vas spominja
+	  na to osebo. To polje je mišljeno za dolga besedila. Na primer, če imeli zmenek
+	  z Lauro, lahko napišete "Zmenek z Lauro"
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Uredi ali Izbriši
+   </title>
+   <description>
+      <p>
+      Ta dva gumba vam omogočata da izbere en naslov in spremenite polja,
+      ali izbrišete vpis.  Dovoljeno vam je izbrati samo en vpis.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Dodaj v Adresar
+   </title>
+   <description>
+      <p>
+      Izpolnite polja kot je napisano.  Prvi trije (Vzdevek,
+      E-mail naslov, in Ime) morajo biti izpolnjeni.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      LDAP
+   </title>
+   <description>
+      <p>
+      LDAP je protokol za centralno shranjevanje in za oddaljen dostop do
+      informacij. Na primer: univerza bi naj uporabljala LDAP kot unikatno mesto
+      kjer vse študentje, osebje shranijo email naslove in jih imajo na voljo.
+      Le konfigurirano za uporabo univerzitetnega LDAP strežnika, SquirellMail
+	  bo potem imel možnost narediti seznam vseh email naslovov ( skupaj s tistimi ki
+	  so v Adresarju ).Squirrelmaila je močno orodje ko <I>kombinira</I>
+      Vaš lokalni adresar in LDAP strežnik ki Vam nudi veliko več naslovov
+	  kot bi bilo v enem samem Adresarju.
+      </p><p>
+      LDAP nastavitve se lahko nastavljajo pri uporabi kateregakoli LDAP strežnika, ali onemogočijo
+	  v nastavitvah. Morali se boste pogovoriti z sistemskim administratorjem o takšnih možnostih.
+      </p><p>
+      LDAP nastavitve vplivajo na celoten SquirrelMail sistem; kot rezultat morajo biti nastavljeni
+	  ali spremenjeni z privilegiji administratorja.
+      </p>
+   </description>
+</section>

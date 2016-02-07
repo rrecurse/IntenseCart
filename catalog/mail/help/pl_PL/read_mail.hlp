@@ -1,0 +1,171 @@
+<chapter>
+   <title>
+      Czytanie wiadomości
+   </title>
+   <summary>
+      Możliwość czytania listów poczty elektronicznej jest jedną z
+	podstawowych funkcji każdego klienta pocztowego. Tutaj opisano
+	tą funkcję.
+   </summary>
+   <description>
+      <p>
+       Treść wiadomości zostaje wyświetlona po kliknięciu jej tematu.
+      Klikając zawarty w wiadomości adres strony WWW, można ją otworzyć w
+      przeglądarce; klikając adres poczty elektronicznej można wysłać wiadomość.
+      Kolejną zmyślną cechą jest kolorowanie wątków wiadomości. Standardowo
+      przy odpowiedzi cytowana jest poprzednia wiadomość za pomocą
+      znaku ">" na początku każdej linii. Wiewiórcza poczta koloruje te
+      linie, czyli w odpowiedzi na wiadomość tekst cytowany będzie miał inny kolor
+      niż tekst nowy. Właściwość ta działa na dwie warstwy cytowania -
+      pewnym kolorem wyświetlone są linie zawierające jeden znak ">", a innym
+      wszystkie zawierające dwa lub więcej. Pod głównym paskiem wyboru pojawia się
+      kolejny, podzielony na trzy sekcje. Po lewej można usunąć wiadomość oraz
+      powrócić do listy wiadomości. Środkowa pozwala przemieszczać się między
+      kolejnymi wiadomościami, prawa zawiera dodatkowe funkcje programu.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Lista wiadomości
+   </title>
+   <description>
+      <p>
+ 	Kliknięcie pozwala na powrót do foldera z wiadomościami.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+     Usuń
+   </title>
+   <description>
+      <p>
+ 	Usunięcie przeglądanej obecnie wiadomości wraz z załącznikami.
+	Zapobiec skasowaniu załączników można przez uprzednie ich
+	zapisanie, co jest wyjaśnione w dalszej części rozdziału.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+     Nawigacja
+   </title>
+   <description>
+      <p>
+	W środkowej części paska wyboru znajdują się przyciski nawigacyjne.
+      <i>Poprzedni</i> będzie aktywnym odsyłaczem w przypadku istnienia
+      poprzedniej wiadomości, w przeciwnym wypadku odsyłacz pozostanie
+      nieaktywny. Kliknięcie na aktywny odsyłacz wyświetli treść poprzedniej
+      wiadomości bez potrzeby uprzedniego powrotu do <i>listy wiadomości</i>.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Następny
+   </title>
+   <description>
+      <p>
+ 	Wybranie tego odsyłacza pozwala na przejście do wiadomości
+	następującej po obecnie przeglądanej. W przypadku braku następnej
+	wiadomości, odsyłacz <i>Następny</i> pozostanie nieaktywny.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Prześlij do...
+   </title>
+   <description>
+      <p>
+ 	Odsyłacz <i>Prześlij do...</i> otwiera stronę <i>Nowa wiadomość</i> z 
+	cytowanym tekstem przeglądanej wiadomości w oknie tekstowym pod
+	wierszem "-- Oryginalna wiadomosc --". Tematem odpowiedzi jest temat 
+	wiadomości oryginalnej poprzedzony oznaczeniem "Fwd:". Pole adresata jest
+	puste; gotowe do wypełnienia. Można umieścić kursor w oknie
+	tekstowym i dodać komentarz do już istniejącego tekstu, jak
+	również dodać do wiadomości załącznik.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Odpowiedz
+   </title>
+   <description>
+      <p>
+ 	Odsyłacz ten pozwala na wysłanie odpowiedzi do autora przeglądanej
+	wiadomości. Tematem odpowiedzi zostaje temat wiadomości oryginalnej z
+	dopiskiem "Re:" na początku. Ponownie tekst wiadomości oryginalnej
+	jest cytowany w oknie tekstowym za pomocą znaku ">" na początku
+	linii. Zdarza się, że symbol ten nie występuje przed częścią
+	cytowanego tekstu. Przyczyną jest łamanie linii.
+	W celu rozwiązania problemu należy zwiększyć liczbową wartość opcji
+	<i>Zawijaj wiersze wiadomości po</i> w <i>Konfiguracji</i>.
+	W oknie tekstu wiadomości - w dodatku do cytowanego listu - można wpisywać
+	własne komentarze. Istnieje również opcja dodania do wiadomości załącznika.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+       Odpowiedz wszystkim
+   </title>
+   <description>
+      <p>
+ 	To samo, co w <i>Odpowiedz</i>, z tym że odpowiedź zostanie wysłana
+	na wszystkie adresy występujące w nagłówku wiadomości.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Pokaż pełen nagłówek
+   </title>
+   <description>
+      <p>
+ 	Wyświetlenie całego nagłówka wiadomości, czyli bardziej dokładne
+	informacje o samej wiadomości oraz o trasie, którą pokonała.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Zapisz to jako plik
+   </title>
+   <description>
+      <p>
+ 	Odsyłacz ten znajduje się na dole strony, tuż nad paskiem wyboru.
+	Kliknięcie pozwoli na zapisanie wiadomości na dysk twardy maszyny lokalnej
+	w postaci pliku tekstowego. Najważniejsze informacje z nagłówka wiadomości
+	zostaną dołączone do pliku.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Załączniki (</b>ang. <b>Attachments)
+   </title>
+   <description>
+      <p>
+ 	Każdy załącznik przysłany wraz z otrzymaną pocztą zostanie
+	wyświetlony na dole wiadomości w kolorowym oknie. Plik ten jest
+	reprezentowany jako odsyłacz wraz z jego opisem. Kliknięcie na nazwę
+	pliku wyświetli zawartość załącznika lub też okno dialogowe
+	zapisywania pliku, w zależności od jego rodzaju. Zamiast
+	wyświetlać zawartości pliku można, klikając odsyłacz <i>ściągnij</i>,
+	zapisać go bezpośrednio.
+      </p>
+   </description>
+</section>

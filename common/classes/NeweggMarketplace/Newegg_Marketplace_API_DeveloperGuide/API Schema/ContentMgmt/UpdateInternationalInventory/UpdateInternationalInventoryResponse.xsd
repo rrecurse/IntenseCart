@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by as13 (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="UpdateInventoryResult">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ItemNumber" type="xs:string"/>
+				<xs:element name="SellerID" type="xs:string"/>
+				<xs:element name="SellerPartNumber" type="xs:string"/>
+				<xs:element name="InventoryList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Inventory" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="WarehouseLocation" type="xs:string"/>
+										<xs:element name="AvailableQuantity" type="xs:integer"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

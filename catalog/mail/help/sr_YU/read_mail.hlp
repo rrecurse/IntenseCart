@@ -1,0 +1,178 @@
+<chapter>
+   <title>
+      Čitanje poruke
+   </title>
+   <summary>
+      Mogućnost čitanja pošte je jedna od osnovnih funkcija svakog email klijenta.
+      No, SquirrelMail ima još dodatnih mogućnosti da vam pomogne dok čitate poštu.
+      Ovde su objašnjenja tih opcija i mogućnosti, i šta one rade.
+   </summary>
+   <description>
+      <p>
+      Kliknite na Temu određene poruke, i ta poruka će biti prikazana. Jedna od
+      stvari koju ćete primetiti je to da je email i web adresa živ link tako
+      da možete kliknuti na njih i poslati im poštu ili posetiti web stranu.
+      Još jedna zgodna stvar je to da je poruka različito obojena. Standard pri
+      odgovaranju na poruku je da se prethodna poruka citira sa ">" ispred svake
+      linije. SquirrelMail ovo boji različitim bojama da bi se lakše razlikovalo. 
+      Svaki nivo odgovora će imati različitu boju i drugačiju od novog teksta.
+      Ovo radi u dva nivoa dubine. Još jedan meni je prikazan ispod glavnog menija.
+      Ovaj meni ima tri sekcije. Na levoj strani možete obrisati poštu ili vratiti
+      se na listu poruka. Na sredini je omogućena direktna navigacija između poruka.
+      Na desnoj strani, prikazane su različite mail funkcije.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Lista poruka
+   </title>
+   <description>
+      <p>
+      Kliknite na ovaj link, da se vratite u direktorijum iz kog ste došli.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Obriši
+   </title>
+   <description>
+      <p>
+      Kliknite na ovaj link da obrišete poruku koju trenutno gledate.
+      Ovim će biti obrisani i svi dodaci koji su stigli uz poruku. Možete sprečiti
+      gubitak dodataka tako što ćete ih prvo preuzeti na svoj računar (detaljnije objašnjeno
+      kasnije).<BR>
+      U ovom kontekstu, brisanje, znači premeštanje poruke u Trash (Kantu)
+      Ukoliko želite da zadržite ipak tu poštu idite u direktorijum Trash i vratite
+      poruku nazad.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Navigacija
+   </title>
+   <description>
+      <p>
+      Na sredini menija su linkovi za navigaciju. Link za prethodnu poruku će
+      biti aktivan ukoliko postoji prethodna poruka, ili običan tekst u suprotnom. 
+      Pritiskom na ovaj link, otići ćete na prethodnu poruku bez potrebe da se vrati 
+      u listu poruka. Isto važi i za link Sledeća koji će vas prebaciti na sledeću poruku
+      u nizu u odnosu na ovu koju čitate.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Prosledi
+   </title>
+   <description>
+      <p>
+      Ukoliko pritisnete link Prosledi s desne strane, otvoriće vam se 
+      prozor za pisanje nove poruke, sa starom porukom u telu ispred koje
+      će pisati "--Originalna Poruka--".  "Fwd:" se dodaje na temu poruke 
+      ispred originalne teme. Različita polja će ostati nepopunjena koja bi 
+      trebalo da popunite pre slanja. Možete postaviti kursor u telo poruke 
+      i dodati komentare ukoliko je neophodno. Takođe, možete koristiti i
+      mogućnost prikačinjanja drugih dokumenata uz poruku (attachments)
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Odgovori
+   </title>
+   <description>
+      <p>
+      Kliknite na ovaj link da biste odgovorili pošiljaocu tekuće poruke. Na
+      originalnu temu poruke se dodaje "Re:" i stavlja u polje Tema. Opet će,
+      celokupni sadržaj originalne poruke biti prepisan u ovu novu poruku samo
+      što će ispred svakog reda biti postavljen i znak ">". Možete primetiti da
+      neke od linija originalnog teskta neće imati ovaj znak. To je zbog prelamanja 
+      teksta i može da se desi da je ta situacija neizbežna. Pokušajte da postavite
+      vrednost <i>Prelomi tekst na:</i> na veći broj, može da pomogne. Komentari se
+      mogu dodavati bilo gde u tekstu uz citiranu poruku. Takodje možete i prikačiti 
+      neki dodatni fajl ili dokument uz poruku. 
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Odgovori Svima
+   </title>
+   <description>
+      <p>
+      Ista priča kao i sa "Odgovori" samo što će ovog puta svi primaoci originalne
+      poruke biti izlistani i u odgovoru na poruku.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Pregled celog zaglavlja
+   </title>
+   <description>
+      <p>
+      Ova opcija će uključiti prikazivanje celokupnog zaglavlja poruke. U to su
+      uključene putanja kojom je poruka prošla i mnoge detaljnije informacije
+      o samoj poruci. 
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Pregled vrijante pripremljene za štampu
+   </title>
+   <description>
+      <p>
+      Ukoliko želite da odštampate poruku, onda želite prvo da kliknete ovaj link. On
+      će otvoriti novi prozor koji sadrži celu poruku s tim što su sve nebitne informacije 
+      i linkovi uklonjeni. Neće biti menija, niti dodatnih informacija i poruka je spremna
+      za štampu. Kad kliknete na dugme Štampaj, vaša poruka će biti odštampana. Posle toga
+      možete kliknuti na "Zatvori prozor" da biste zatvorili taj prozor. Ukoliko ne vidite 
+      ova dva dugmenceta, može biti da vam u Opcijama nije uključen JavaScript ili da vaš
+      browser ne podržava prikazivanje stranica sa JavaScriptom. I u tom slučaju možete 
+      odštampati poruku iz menija za štampu vašeg internet browsera. 
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Snimi kao fajl
+   </title>
+   <description>
+      <p>
+      Na samom dnu poruke ćete videti link koji vam omogućava da pregledanu poruku 
+      snimite na vaš tvrdi disk (hard disk) u vidu obične tekstualne datoteke. 
+      Jednostavno zaglavlje će biti uključeno u tu datoteku takođe.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Dodaci:
+   </title>
+   <description>
+      <p>
+      Bilo koji dodatak koji je stigao uz poruku će biti prikazan ovde.  
+      Datoteka uz poruku je predstavljena u obliku linka koji možete pritisnuti
+      uz opis datoteke s desne strane. Pritiskom na link otvorićete dodatak ili 
+      snimiti na vaš disk u zavisnosti od toga koji je tip datoteke u pitanju.
+      Ukoliko želite da snimite datoteku na vaš lokalni disk, a ne da je pregledate
+      kliknite na link "preuzmi dodatak" koji se nalazi s desne strane.<BR>
+      Ukoliko vaš brower podržava prikazivanje određenog tipa datoteke kliknite
+      na link "pregled" koji že prikazati dodatak direktno u vašem browseru.
+      </p>
+   </description>
+</section>

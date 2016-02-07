@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="NeweggAPIResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="IsSuccess">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="true"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OperationType" type="xs:string" fixed="GetWarehouseResponse"/>
+				<xs:element name="SellerID" type="xs:string"/>
+				<xs:element name="ResponseBody">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="WarehouseList">
+								<xs:complexType>
+									<xs:sequence minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="Warehouse">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="WarehouseCode">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="06"/>
+																<xs:enumeration value="07"/>
+																<xs:enumeration value="08"/>
+																<xs:enumeration value="10"/>
+																<xs:enumeration value="12"/>
+																<xs:enumeration value="14"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="AllowBulkItem">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:enumeration value="0"/>
+																<xs:enumeration value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="AllowSmallItem">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:enumeration value="0"/>
+																<xs:enumeration value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ShipToAddress1" type="xs:string"/>
+													<xs:element name="ShipToAddress2" type="xs:string" minOccurs="0"/>
+													<xs:element name="ShipToCityName" type="xs:string"/>
+													<xs:element name="ShipToStateCode" type="xs:string"/>
+													<xs:element name="ShipToZipCode" type="xs:string"/>
+													<xs:element name="ShipToCountryCode" type="xs:string"/>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

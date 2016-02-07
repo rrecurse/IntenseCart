@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="NeweggEnvelope">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Header">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DocumentVersion" fixed="1.0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MessageType" type="xs:string" fixed="ItemPromotion"/>
+				<xs:element name="Message">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Item" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TabID" type="xs:string" minOccurs="0"/>
+										<xs:element name="SellerPartNumber" type="xs:string"/>
+										<xs:element name="NeweggItemNumber" type="xs:string" minOccurs="0"/>
+										<xs:element name="PromoMSRP" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:fractionDigits value="2"/>
+													<xs:minInclusive value="0.00"/>
+													<xs:maxInclusive value="99999.00"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PromoSellingPrice">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:fractionDigits value="2"/>
+													<xs:minInclusive value="0.00"/>
+													<xs:maxInclusive value="99999.00"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PromoShipping">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Default"/>
+													<xs:enumeration value="Free"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PromoStartDate" type="xs:date" />
+										<xs:element name="PromoEndDate" type="xs:date" />
+										<xs:element name="LimitQty" type="xs:integer" minOccurs="0"/>
+										<xs:element name="MaxQty" type="xs:integer" minOccurs="0"/>
+										<xs:element name="MinInventory" type="xs:integer" minOccurs="0"/>
+										<xs:element name="InventoryLocked">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Yes"/>
+													<xs:enumeration value="No"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Note" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

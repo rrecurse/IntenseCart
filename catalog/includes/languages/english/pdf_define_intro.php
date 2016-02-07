@@ -1,0 +1,1 @@
+This option is not used and this text will not printed to PDF catalog. To enable this option, you have to change the file admin/pdf_config.php

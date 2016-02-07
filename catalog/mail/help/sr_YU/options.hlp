@@ -1,0 +1,312 @@
+<chapter>
+   <title>
+      Opcije
+   </title>
+   <summary>
+      Možete podesiti kako SquirrelMail izgleda i ponaša se na vaše
+      komande menjajući razna podešavanja u ovom delu.
+   </summary>
+   <description>
+      <p>
+      Jedna od sjajnih stvari kod SquirrelMail-a je nivo do kog se može sve podešavati.
+      U zavisnosti od konfiguracije, možete imati više izbora Tema, jezika, direktorijuma
+      i drugih podešavanja. Sva od podešavanja se mogu učiniti i zasebno ne utičući na druge 
+      korisnike na sistemu. Postoji bar pet glavnih delova u Opcijama:
+      Lične Informacije, Opcije prikaza, Označavanje poruka, prikaz direktorijuma i Redosled 
+      indeksa </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Lične informacije
+   </title>
+   <description>
+      <b>Puno ime</b><br>
+      Ovde bi trebalo upisati puno ime i prezime. Na primer "Petar Markovic" i to ime se
+      prikazuje ljudima kojima pošaljete poruku. Oni će, dakle, videti da je poruka stigla
+      od osobe s imenom "Petar Markovic". Ukoliko ne popunite ovo polje, prikazaće se samo vaša email adresa, npr.
+      "petarm@negde.org"
+      <br><br>
+      
+      <b>E-Mail Adresa</b><br>
+      <i>Opciono</i> - Ukoliko je vaša email adresa drugačija od one automatski dodeljene
+      to podešavanje možete namestiti ovde.
+      <br><br>
+      
+      <b>Odgovori na</b><br>
+      <i>Opciono</i> - Ovo polje sadrži email adresu na koju će ljudi slati odgovor kada
+      odgovaraju na vašu poruku. Ako je ova adresa drugačija od one s koje šaljete, onda 
+      je možete uneti ovde. Ovo je posebno korisno ukoliko želite da vam ljudi odgovaraju na
+      neki drugi privatni nalog, ili vašu kućnu email adresu, rađe nego na poslovnu. 
+      <br><br>
+      
+      <b>Više Identiteta</b><BR>
+      Kliknite na ovaj link da biste podesili druge identite koje možda koristite
+      na mail serveru. Na primer, možete koristiti različita polja "Od:" za različite poruke
+      koje šaljete različitim osobama. Na primer, želite da imate različite adrese s kojih
+      šaljete poštu prijateljima ili poslovnim partnerima. Na stranici koja se pojavi, možete
+      dodati koliko god vam identiteta treba. Biće vam ponuđena ova lista kasnije i pri pisanju
+      novih poruka.<br><br>
+      
+      <b>Stil citata pri odgovoru</b><BR>
+      Ukoliko pritisnete Odgovori na poruku, biće vam prikazan prozor sa novom porukom
+      u kojoj će stara poruka biti citirana. Pre citirane poruke može stajati tekst kao
+      na primer <TT>Marko Petrovic je napisao:</TT> tačno ispred citirane poruke, pod uslovom 
+      da odgovarate na poruku od Marka Petrovica. Ovo se zove linija citata. Znači ovde 
+      možete odrediti kako će ta linija izgledati.<BR>
+      <UL>
+      <LI><B>Bez Citata</B><br>
+      Ne prikazuje nikakav citat pri odgovoru.<br><br>
+      <LI><B>Autor je rekao</B><br>
+      Ovo kreira liniju: <TT>Marko Petroivcje napisao:</TT> gde ce Marko Petrovic biti zamenjen
+      imenom osobe koja vam je poslala poštu na koju odgovarate.<br><br>
+      <LI><B>Citiraj kao XML (quote who=)</B><br>
+      Ovo će napraviti liniju: <TT>&lt;quote who="Marko Petrovic"&gt;</TT>.<br><br>
+      <LI><B>Korisnički definisano</B><br>
+      Omogućava da sami napišete stil citata pri odgovoru. Možete napisati početak i
+      kraj citata kako vama odgovara. Između ovih polja biće unešeno ime pošiljaoca
+      na čiji mail vi odgovarate.
+      </UL><br><br>
+      
+      <b>Potpis</b><br>
+      <i>Opciono</i> - Potpisi se dodaju na kraju vaših email poruka. Ukoliko želite
+      da koristite potpis, budite sigurni da je kućica u kojoj piše "koristi potpis"
+      uključena (čekirana), i onda popunite polje ispod potpisom koji želite da prikačite
+      na poštu.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Opcije prikaza
+   </title>
+   <description>
+      <b>Tema</b><br>
+      SquirrelMail pruža različite kombinacije boja radi vašeg zadovoljstva. Možete
+      birati bilo koju od izlistanih tema, ukoliko želite.
+      <br><br>
+
+      <b>Custom Stylesheet</b><br>
+      Promenom teme, menjate samo boje, a uz pomoć stilova u mogućnosti ste da promenite
+      mnogo više, kao što je na primer i veličina slova u SquirrelMailu.
+      <br><br>
+
+      <b>Jezik</b><br>
+      Ukoliko vam maternji jezik nije srpski, vrlo lako možete promeniti jezik u 
+      kom se većina stvari prikazuje. Pronađite željeni jezik iz liste, izaberite ga i svaklo 
+      vaše sledeće prijavljivanje na mail će značiti prikazivanje na izabranom jeziku.
+      Ovo se, naravno, ne odnosi na primljenu poštu i imena direktorijuma.
+      <br><br>
+
+      <b>Koristi Javascript</b><br>
+      Jedan od glavnih ciljeva pri kreiranju SquirrelMaila nam je bio pravljenje 
+      programa bez JavaScripta. No neki od ljudi koji su radili na projektu, napravili
+      su jako dobre pretraživače adresara koji koriste JavaScript. Tako da smo dodali i
+      JavaScript funkcije. Umesto da ga uklonimo, dajemo vam mogućnost da izberete
+      da li ćete koristiti čisti HTML ili i JavaScript. 
+      Ukoliko ne znate šta sve ovo znači, najsigurnije vam je da izaberete auto-detekciju.
+      <br><br>
+      
+      <b>Broj poruka za indeksiranje</b><br>
+      Ovo je broj poruka koje će se prikazati u jednom trenutku pri prelgedanju pošte. 
+      Ukoliko direktorijum sadrži više od broja koji ste naveli, pojaviće se linkovi
+      "Prethodna" i "Sledeća" iznad liste uz pomoć koje se možete šetati kroz stranice.
+      <br><br>
+      
+      <b>Uključi izbor stranica</b><br>
+      Ukoliko ovo postavite na "Da", pojaviće se brojevi stranica iznad direktorijuma
+      koji vam pomažu da se brže krećete kroz stranice s poštom. <B>Najveći broj strana koji se prikazuje</B>
+       ograničava broj stranica koji se prikazuje iznad liste poruka.<br><br>
+      
+      <b>Prelomi tekst na</b><br>
+      Koliko ćemo slova dozvoliti da se ispiše pre nego što prebacimo tekst u novi red. 
+      Ovo pomaže da se poruke lepo i čitko ispisuju na ekranu, da ne pobegnu van vidljivog dela.
+      Obično je sigurno da se ostavi vrednost od 86 ovde, ali vi možete koristiti i drugačije
+      podešavanje ukoliko vam odgovara<br><br>
+      
+      <b>Veličina prozora za  pisanje</b><br>
+      Koliko širok želite da vam bude prozor u kome pišete poruku. Ovde se upisuje broj 
+      karaktera koji možete upisati u jedan red pre nego što se tekst prelomi na drugi red. 
+      <br><br>
+      
+      <b>Položaj dugmića pri pisanju poruke</b><br>
+      Gde se nalaze dugmići Adrese, Snimi Draft i Pošalji?<br><br>
+      
+      <b>Format prikazivanja adresara</B><br>
+      Izaberite kako želite da vam bude ispisan adresar. Ako biste hteli najveću
+      kompatibilnost sa svim browserima izaberite HTML, a ukoliko znate da vaš 
+      browser podržava JavaScript, uključite ga i dobićete lepši prikaz adresara.
+      <br><br>
+      
+      <b>Prikaži HTML kao default</b><br>
+      Ukoliko je poruka koja je primljena, pisana i u HTML formatu i običnom tesktu
+      možete izabrati da prvo vidite HTML verziju (Da) ili tekst verziju (Ne) pri
+      otvaranju poruke.<br><br>
+      
+      <b>Uključi i mene u Kopiju kada šaljem odgovor svima</b><br>
+      Odgovori svima šalje vaš odgovorima svim primaocima originalne poruke,
+      uključujući i vas. Da biste izostavili vašu adresu iz slanja, podesite ovo
+      polje na Ne.
+      <br><br>
+      
+      <b>Uključi prikazivanje mailer-a</b><BR>
+      Pri pregledanju poruke, ova opcija prikazuje koji je program za slanje pošte
+      koristio pošiljalac.
+      <br><br>
+      
+      <b>Prikaži priložene slike uz poruku</b><br>
+      Ukoliko vam neko pošalje poruku sa jednom ili više slika prikačenih uz tekst
+      i vi ste podesili ovu opciju na Da, ove slike će odmah po otvaranju poruke 
+      biti prikazane.
+      <br><br>
+      
+      <b>Omogući link za pregled ta štampu</b><br>
+      Ovo će odrediti kako će izgledati link prikaza verzije za štampu.
+      <br><br>
+      
+      <b>Uključi čist prikaz za štampu</b><br>
+      Ova opcija će očistiti vašu poruku tako da pri štampi izgleda lepše.
+      <br><br>
+      
+      <b>Druge Opcije</b><br>
+      U zavisnosti od konfiguracije SquirrelMaila, neke dodatne opcije mogu biti 
+      prikazane. Te opcije bi trebalo da su same po sabi jasne.
+      <br><br>
+      
+   </description>
+</section>
+
+<section>
+   <title>
+      Markiranje Poruka
+   </title>
+   <description>
+      Ideja za ovako nešto se rodila zbog potrebe da se lakše razlikuje dolazna 
+      pošta ukoliko ste pretplaćeni na neke mailing liste. Sa markiranjem poruka
+      možete imati različite pozadine za dolaznu poštu u zavisnosti od toga ko je 
+      poslao ili sa koje liste dolazi.<br><br>
+
+      Samo kliknite na [Novo] da kreirate novo pravilo ili [Promeni] da biste podesili već
+      postojeće i opcije će se prikazati ispod.<br><br>
+      
+      <b>Identifikacija</b><br>
+      Ovo je u stvari ime koje je prikazano da bi ste znali o čemu se radi.
+      Na primer, ako menjate poruke koje stižu od vaše mame, možete napisati
+      recimo "Od Mame".
+      <br><br>
+      
+      <b>Boja</b><br>
+      Ovo je boja u kojoj će biti pozadina kada dođe poruka koju želite da markirate.
+      Već postoji lista pre-definisanih boja, no možete i sami uneti boju koja vam se 
+      dopada u HEX kodu, na primer (a6b492).  Ako želite da unesete svoju boju, pre toga kliknite
+      na okruglo dugmence ispred polja za upisivanje boje, tako da se pri završetku vaša boja
+      izabere.
+      <br><br>
+      
+      <b>Jednako</b><br>
+      Ovde stavljate kriterijum po kome se poruke markiraju. Iz padajućeg menija
+      izaberite po čemu ćete tražiti (Prima, Od, Tema...) i u tekst polju upišite
+      frazu koja vas interesuje i koja se traži (mama@yahoo.com). 
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Opcije prikaza direktorijuma
+   </title>
+   <description>
+      <b>Putanja do direktorijuma</b><br>
+      Na nekim sistemima ovo polje neće biti prikazano. Ukoliko ne vidite opciju, ignorišite
+      ovo što piše. Na drugim sistemima ovo je prilično važno podešavanje. Obično, ono što je
+      već upisano bi trebalo i ostaviti tamo. To je direktorijum u vašem home direktorijumu
+      koji čuva sve vaše mail direktorijume. Ako ne razumete šta to znači, nemojte dirati ovo
+      podešavanje.
+      <br><br>
+
+      <b>Kanta (trash)</b><br>
+      Možete izabrati gde će otići poruke koje izbrišete. Ako ne želite da obrisane prouke
+      idu u kantu, postavite ovde "Ne upotrebljavaj kantu (trash)".
+      <br><br>
+      
+      <b>Poslato</b><br>
+      Možete podesiti u koji direktorijum će ići kopija poslate pošte. Ukoliko ne želite
+      ovu funkciju, podesite ovo polje na "Ne upotrebljavaj Sent direktorijum".
+      <br><br>
+
+      <b>Draft direktorijum</b><br>
+      Možete izabrati gde će ići vaša draft (započeta a nezavršena) pošta.
+      Ukoliko ne želite ovu opciju, podesite "Ne upotrebljavaj Drafts".
+      <br><br>
+      
+      <b>Pozicija liste direktorijuma</b><br>
+      Određuje da li je lista direktorijuma s leve ili desne strane vašeg prozora.
+      
+      <br><br>
+      
+      <b>Širina liste direktorijuma</b><br>
+      Uz pomoć ove opcije možete podesiti koliko je široka lista direktorijuma. 
+      Ukoliko imate jako dugačka imena direktorijuma, ili prevelika slova, podesite
+      ovaj broj na prilično velik. U suprotnom, ostavite niskim da ne biste zauzimali 
+      bespotrebno prostor. 
+      <br><br>
+      
+      <b>Automatsko osvežavanje direktorijuma</b><br>
+      SquirrelMail poseduje funkciju da automatski osvežava listu direktorijuma s leve
+      strane vašeg prozora. Ovo će, takođe, prikazati i broj nepročitanih poruka u svakom
+      od direktorijuma. Ovo je dobar način za proveravanje novopristigle ili nepročitane
+      pošte, bez potrebe da stalno pritiskate na INBOX link.
+      <br><br>
+
+      <b>Uključi obaveštenje o nepročitanim porukama</b><br>
+      Ova opcija određuje kako će nepročitane poruke biti prikazane u listi direktorijuma
+      na desnoj strani vašeg mail prozora. Ukoliko postavite na Bez Obaveštenja, nećete
+      biti obaveštenipri pristizanju nove pošte. Ako postavite na INBOX, ime INBOX će postati
+      masnije napisano, i broj će se prikazati s desne strane objašnjavajući koliko je 
+      novih poruka stiglo. Ako postavite na Svi Direktorijumi ovo ponašanje će se odnositi
+      na sve direktorijume. Ako primetite da je učitavanje liste direktorijuma jako sporo
+      možete postaviti ovu opciju na Samo INBOX ili Bez Obaveštenja da biste malko ubrzali.
+      <br><br>
+      
+      <b>Tip obaveštenja o nepročitanim porukama</b><br>
+      Kada se nalazi nova pošta u direktorijumu, ova opcija govori
+      da li će se prikazati samo broj nepročitanih poruka, ili će prikazati
+      i ukupan broj poruka u tom direktorijumu.
+      <br><br>
+      
+      <b>Uključi prikazivanje direktorijuma u više nivoa</b><br>
+      Direktorijumi u više nivoa vam dozvoljavaju da "skupite" direktorijume koji
+      sadrže poddirektorijume radi preglednosti. Možete skupiti direktorijum pritiskom
+      na znak "-" koji se nalazi pored imena, i opet ga proširiti pritiskom na "+".
+      Ako ovo želite da isključite, podesite na Ne.
+      <br><br>
+      
+      <b>Prikaži sat u listi direktorijuma</b><br>
+      Izaberite ukoliko želite da se prikaže mali sat u listi direktorijuma i 
+      kako bi on trebalo da izgleda (Y=godina, D=dan, H=sat, M=minut, S=sekund). Opcija
+      <B>Format Sata</B> ispod daje močućnost prikazivanja 12-časovnog ili 24-časovnog sata.
+      <br><br>
+      
+      <b>Pretraživanje memorije</b><br>
+      Ukoliko pretražujete mailbox, ovo pretraživanje će biti sačuvano za kasnije da
+      bi neko sledeće traženje išlo brže. Broj koji podesite je broj pretraživanja koji 
+      će se čuvati u memoriji<br><br>
+      
+   </description>
+</section>
+
+<section>
+   <title>
+      Redosled Indeksa
+   </title>
+   <description>
+      Ova sekcija vam daje kontrolu nad prikazom lista poruka. Možete izabrati 
+      koliko informacija o pristigloj pošti će biti prikazano u listi i kako bi
+      trebalo da bude ispisana.
+      <br><br>
+      Koristite linkove "gore" i "dole" da biste pomerali kolone, Obriši da biste
+      obrisali kolonu i Dodaj da biste dodali novu.
+   </description>
+</section>

@@ -1,0 +1,51 @@
+<chapter>
+   <title>
+      Uvod u SquirrelMail
+   </title>
+   <summary>
+      SquirrelMail vam pruža mogućnost provere vašeg E-maila putem WWW-a
+    </summary>
+   <description>
+      <p>
+      Dakle, šta je u stvari<A HREF="http://www.squirrelmail.org/index.php3?from=1">SquirrelMail</A>?
+      To je web interfejs za pristup e-mailu napisan u <A HREF="http://www.php.net">PHP4</A>.
+      Dizajniran je da dozvoli e-mail pristup s vašeg servera iz bilo kog kraja
+      sveta putem WWW-a. Više informacija o tome kako radi, i
+      o IMAP protokolu možete naći <A HREF="http://imap.org">ovde</A>.
+      </p>
+   </description>
+</chapter>   
+
+<section>
+   <title>
+      Osnove
+   </title>
+   <description>
+      <p>
+      Ukoliko imate neko kratko pitanje, možda bi vam pomogao pregled često postavljanih pitanja. (FAQ)
+      </p>
+      <p>
+      SquirrelMail je raspoređen u dve glavne sekcije zvane frejmovi (okviri). Levi
+      frejm izlistava vaše direktorijume, koje trenutno koristite. Više informacija o 
+      levom frejmu, možete naći u sekciji "Direktorijumi" ove dokumentacije.
+      </p>
+      <p>
+      Na desnoj strani je mesto gde se odvija najviše akcije. Na vrhu strane je lista menija.
+      Odjavljivanje će vas sigurnim putem odjaviti sa servera pošto ste završili čitanje i 
+      slanje pošte. Trenutni direktorijum označava u kom se 
+      direktorijumu, od onih izlistanih s leve strane, trenutno nalazite.
+      Pri logovanju u vaš email, osnovni direktorijum koji je prikazan s desne strane je INBOX.
+      </p>
+      <p>
+      Ispod trake na vrhu se nalaze razni meniji:
+         <ul>
+            <li><b>Nova poruka</b> - Sastavite i pošaljite poruku koja može sadržati i dodatke.
+            <li><b>Adrese</b> - Čuva listu adresa koje se nalaze u vašem ličnom adresaru.
+            <li><b>Direktorijumi</b> - Sve radnje s direktorijumima se odvijaju ovde. Možete brisati, kreirati, preimenovati, dodavati i oduzimati direktorijume.
+            <li><b>Opcije</b> - Promenite razna podešavanja u vezi izgleda i funkcionalnosti SquirrelMai-a
+            <li><b>Pretraživanje</b> - Uz pomoć ovog alata možete tražiti određenu poštu u vašem mail sandučetu po zadatim kriterijumima.
+            <li><b>Pomoć</b> - Upravo ste ovde! 
+         </ul>
+      </p>
+   </description>
+</section>   

@@ -1,0 +1,111 @@
+<chapter>
+   <title>
+      Izdelava sporočila
+   </title>
+   <summary>
+      Ta funkcija, vam omogoča da napišete novo sporočilo in jo pošljete različnim osebam.
+   </summary>
+   <description>
+      <p>
+      Ob kliku vas prenese na stran kjer napišete novo sporočilo. Videli boste veliko polj 
+	  in nekaj gumbov.
+	  </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Prejme (To)
+   </title>
+   <description>
+      <p>
+      Najprej je polje <B>Prejme:</B>.  V to polje vpišete email naslov osebe, kateri
+	  je namenjeno to sporočilo. Naslovov lahko vpišete kolikor želite, ampak se morajo
+	  končati z vejico. En način je tudi da kliknete na gumb "Adresar". Ne skrbite če
+	  se celoten naslov ne vidi.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kopija (cc)
+   </title>
+   <description>
+      <p>
+      Naslednje je <B>Kopija (cc:)</B> polje.  CC je krajšava za <B>C</B>arbon <B>C</B>opy.
+      Če želite poslati to enako sporočilo še komu, potem je to polje za vas. Vpišete lahko
+      neomejeno število email naslovov, enako kot pri <B>Prejme(To):</B>
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+     Osebna kopija (Bcc)
+   </title>
+   <description>
+      <p>
+      BCC je krajšava za <B>B</B>lind <B>C</B>arbon <B>C</B>opy.
+      Uporabite to polje če želite poslati še nekomu kopijo sporočila <I>ne da bi</I>
+      prejemnik v <B>Prejme (To):</B> ali <B>Kopija(CC):</B> vedel za to.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Naslov
+   </title>
+   <description>
+      <p>
+      Napišite naslov tukaj.  Zapomnite si, email vam lahko prihrani veliko časa
+      in dober, logičen in zapeljiv naslov je velik korak.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Adresar Gumb
+   </title>
+   <description>
+      <p>
+      Ta gumb vam odpre Adresar po iskalnem polju.
+      Nekaj morate vpsiati v iskalno polje da bi dobili kakšne rezultate.
+      Če so potrebni vsi naslovi iz Adresarja, vpišite prostor tukaj in kliknite Iskanje gumb.
+      Dodatne informacije so na voljo v "Naslovi" razdelku.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Telo Sporočila
+   </title>
+   <description>
+      <p>
+      Velik prazen prostor je namenjen za karkoli. Če ste si shranili podpis, bo ta
+     podpisen viden tukaj. To polje je namenjeno za pisanje vsebine sporočila.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Priloži
+   </title>
+   <description>
+      <p>
+      Ta funkcija je namenjena da lahko priložite zraven sporočila kakšno datoteko.
+	  Datoteka mora biti na <i>lokalnem</i> ali mrežnem računalniku. Browse gumb ima funkcijo
+	  da preiščete direktorije za vašo datoteko in nato kliknte da jo priložite.
+	  V polje priloži lahko tudi ročno vpišete pot do datoteke. Nato enostavno
+	  kliknite Dodaj gumb da se bo ta datotka priložila k sporočilu.
+      </p>
+      <p>
+      Takoj ko je datoteka pripeta, se pojavi nov gumb za pripenjanje nove datoteke.
+	  Brisanje priložene datoteke se izvrši ob izbiri datoteke, in nato kliknemo gumb "Pobriši izbrani dodatek".
+      <p>
+   </description>
+</section>

@@ -1,0 +1,20 @@
+<?php
+/*
+  $Id: header.php,v 1.19 2002/04/13 16:11:52 hpdl Exp $
+
+*/
+
+  if ($messageStack->size > 0) {
+    echo $messageStack->output();
+  }
+?>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="padding:5px;"><?php echo tep_image(DIR_WS_IMAGES . 'logo.gif',  TITLE, '', '50'); ?></td>
+    <td align="right"><?php echo '<a href="' . tep_href_link(FILENAME_DEFAULT, '', 'NONSSL') . '" class="topLink">' . HEADER_TITLE_ADMINISTRATION . '</a> &nbsp;|&nbsp; <a href="' . tep_catalog_href_link() . '" class="topLink">' . HEADER_TITLE_ONLINE_CATALOG . '</a> &nbsp;|&nbsp; <a href="mailto:support@intensecart.com" class="topLink">' . HEADER_TITLE_SUPPORT_SITE . '</a>'; ?>&nbsp;&nbsp;</td>
+  </tr>
+  <tr class="headerBar">
+    <td class="headerBarContent">&nbsp;&nbsp;<?php echo '<a href="' . tep_href_link(FILENAME_DEFAULT, '', 'NONSSL') . '" class="headerLink">' . HEADER_TITLE_TOP . '</a>'; ?></td>
+    <td class="headerBarContent" align="right"><a href="/googlesitemap/index.php" class="headerLink" target="_BLANK">Update Google Sitemap</a> &nbsp;|&nbsp; <a href="/froogle.php" class="headerLink" target="_BLANK">Update Froogle</a> &nbsp;&nbsp;</td>
+  </tr>
+</table>

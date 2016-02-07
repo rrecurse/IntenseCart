@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Docs For Class GoogleSitemap</title>
+	<link rel="stylesheet" type="text/css" href="../media/style.css">
+	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+	<td class="header-top-left"><img src="../media/logo.png" border="0" alt="phpDocumentor " /></td>
+    <td class="header-top-right">Google-XML-Sitemap-Feed<br /><div class="header-top-right-subpackage"></div></td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td colspan="2" class="header-menu">
+  		  [ <a href="../classtrees_Google-XML-Sitemap-Feed.html" class="menu">class tree: Google-XML-Sitemap-Feed</a> ]
+		  [ <a href="../elementindex_Google-XML-Sitemap-Feed.html" class="menu">index: Google-XML-Sitemap-Feed</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td colspan="2" class="header-line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="195" class="menu">
+		<div class="package-title">Google-XML-Sitemap-Feed</div>
+      <b>Packages:</b><br />
+  <div class="package">
+              <a href="../li_Google-XML-Sitemap-Feed.html">Google-XML-Sitemap-Feed</a><br />
+      	</div>
+      <br />
+                        <b>Files:</b><br />
+        <div class="package">
+				<span style="padding-left: 1em;"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_index_php.html">index.php</a></span><br />
+			<span style="padding-left: 1em;"><a href="../Google-XML-Sitemap-Feed/_googlesitemap_sitemap_class_php.html">sitemap.class.php</a></span><br />
+	  </div>
+            <br />
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html">GoogleSitemap</a>    	 <br />
+	    		<a href="../Google-XML-Sitemap-Feed/MySQL_DataBase.html">MySQL_DataBase</a>    	 <br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: GoogleSitemap</h1>
+Source Location: sitemap.class.php<br />
+<br />
+
+<h2 class="class-name">Class GoogleSitemap</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Class Overview</div>
+	<div class="nav-bar">
+					<span class="disabled">Class Overview</span> |
+															<a href="#sec-var-summary">Properties Summary</a> | <a href="#sec-vars">Properties Detail</a>
+						|											<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+							</div>
+	<div class="info-box-body">
+		<table width="100%" border="0">
+		<tr><td valign="top" width="60%" class="class-overview">
+
+		<p align="center" class="short-description"><strong>Google Sitemap Base Class
+</strong></p>
+<span class="description"><p>The MySQL_Database class provides abstraction so the databaes can be accessed</p></span>
+		<p class="notes">
+			Located in <a class="field" href="_googlesitemap_sitemap_class_php.html">sitemap.class.php</a> [<span class="field">line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a218">218</a></span>]
+		</p>
+
+		
+		<pre></pre>
+
+		
+				<strong>Author(s):</strong>
+		<ul>
+		  			 		  			 			 
+		 		  			 		  		</ul>
+		
+		
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+			
+					<tr><td><strong>Link:</strong>&nbsp;&nbsp;</td><td><a href="http://www.google.com/webmasters/sitemaps/docs/en/about.html">About Google Sitemap</a></td></tr>
+				
+				<tr><td><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td></tr>
+				<tr><td><strong>License:</strong>&nbsp;&nbsp;</td><td><a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a></td></tr>
+	</table>
+		</td>
+
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_vars">Properties</a></strong></p>
+		<ul>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$base_url">$base_url</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$DB">$DB</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$filename">$filename</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#var$savepath">$savepath</a></li>
+		  		</ul>
+		</td>
+		
+				<td valign="top" width="20%" class="class-overview">
+		<p align="center" class="short-description"><strong><a href="#sec_methods">Methods</a></strong></p>
+		<ul>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGoogleSitemap">GoogleSitemap</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodCompressFile">CompressFile</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateCategorySitemap">GenerateCategorySitemap</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateProductSitemap">GenerateProductSitemap</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemap">GenerateSitemap</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSitemapIndex">GenerateSitemapIndex</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodGenerateSubmitURL">GenerateSubmitURL</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodReadGZ">ReadGZ</a></li>
+		  		  <li><a href="../Google-XML-Sitemap-Feed/GoogleSitemap.html#methodSaveFile">SaveFile</a></li>
+		  		</ul>
+		</td>
+		
+		</tr></table>
+		<div class="top">[ <a href="#top">Top</a> ]</div>
+	</div>
+</div>
+
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Property Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+									<span class="disabled">Property Summary</span> | <a href="#sec-vars">Properties Detail</a>
+												<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+		    				</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+			<table border="0" cellspacing="0" cellpadding="0" class="var-summary">
+							<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$base_url" title="details" class="var-name-summary">$base_url</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">$base_url is the URL for the catalog</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">object</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$DB" title="details" class="var-name-summary">$DB</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">$DB is the database object</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$filename" title="details" class="var-name-summary">$filename</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">$filename is the base name of the feeds (i.e. - 'sitemap')</td></tr>
+				</div>
+								<div class="var-title">
+					<tr><td class="var-title"><span class="var-type-summary">string</span>&nbsp;&nbsp;</td>
+					<td class="var-title"><a href="#$savepath" title="details" class="var-name-summary">$savepath</a>&nbsp;&nbsp;</td>
+					<td class="var-summary-description">$savepath is the path where the feeds will be saved - store root</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+																		<a href="#sec-var-summary">Properties Summary</a> | <a href="#sec-vars">Properties Detail</a>
+											    					<span class="disabled">Method Summary</span> | <a href="#sec-methods">Methods Detail</a>
+		</div>
+		<div class="info-box-body">
+			<div class="method-summary">
+				<table border="0" cellspacing="0" cellpadding="0" class="method-summary">
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">GoogleSitemap</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#GoogleSitemap" title="details" class="method-name">GoogleSitemap</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">GoogleSitemap class constructor</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">boolean</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#CompressFile" title="details" class="method-name">CompressFile</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to compress a normal file</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">boolean</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#GenerateCategorySitemap" title="details" class="method-name">GenerateCategorySitemap</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Funciton to generate category sitemap data</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">boolean</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#GenerateProductSitemap" title="details" class="method-name">GenerateProductSitemap</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to generate product sitemap data</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">boolean</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#GenerateSitemap" title="details" class="method-name">GenerateSitemap</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to generate sitemap file from data</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">boolean</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#GenerateSitemapIndex" title="details" class="method-name">GenerateSitemapIndex</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to generate sitemap index file</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">string</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#GenerateSubmitURL" title="details" class="method-name">GenerateSubmitURL</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Utility function to generate the submit URL</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">string</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#ReadGZ" title="details" class="method-name">ReadGZ</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Utility function to read and return the contents of a GZ formatted file</td></tr>
+				</div>
+								<div class="method-definition">
+											<tr><td class="method-definition"><span class="method-result">boolean</span>&nbsp;&nbsp;</td>
+										<td class="method-definition"><a href="#SaveFile" title="details" class="method-name">SaveFile</a>()&nbsp;&nbsp;</td>
+					<td class="method-definition">Function to save the sitemap data to file as either XML or XML.GZ format</td></tr>
+				</div>
+								</table>
+			</div>
+			<br /><div class="top">[ <a href="#top">Top</a> ]</div>
+		</div>
+	</div>
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Properties</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+													<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+			
+							|
+									<a href="#sec-method-summary">Method Summary</a> | <a href="#sec-methods">Methods Detail</a>
+							</div>
+		<div class="info-box-body">
+			<a name="var$base_url" id="$base_url"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$base_url</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a238">238</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>$base_url is the URL for the catalog
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$DB" id="$DB"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">object</span>&nbsp;&nbsp;
+			<span class="var-name">$DB</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a223">223</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>$DB is the database object
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$filename" id="$filename"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$filename</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a228">228</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>$filename is the base name of the feeds (i.e. - 'sitemap')
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="var$savepath" id="$savepath"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>&nbsp;&nbsp;
+			<span class="var-name">$savepath</span>
+						<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a233">233</a>]</span>
+		</span>
+	</div>
+
+	<p align="center" class="short-description"><strong>$savepath is the path where the feeds will be saved - store root
+</strong></p>
+	
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Class Overview</a> |
+									                |
+									<a href="#sec-var-summary">Property Summary</a> | <a href="#sec-vars">Properties Detail</a>
+																	| <a href="#sec-method-summary">Method Summary</a> | <span class="disabled">Methods Detail</span>
+					</div>
+		<div class="info-box-body">
+			<a name='method_detail'></a>
+<a name="methodGoogleSitemap" id="GoogleSitemap"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">Constructor GoogleSitemap</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a250">250</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>GoogleSitemap GoogleSitemap(
+string
+$host, string
+$user, string
+$db, string
+$pass&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>GoogleSitemap class constructor
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$host:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Database host setting (i.e. - localhost)</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$user:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Database user</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$db:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Database name</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$pass:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Database password</span>			</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodCompressFile" id="CompressFile"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">CompressFile</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a300">300</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>boolean CompressFile(
+string
+$file&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to compress a normal file
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$file:&nbsp;</span></td>
+				<td>
+							</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodGenerateCategorySitemap" id="GenerateCategorySitemap"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">GenerateCategorySitemap</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a417">417</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>boolean GenerateCategorySitemap(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Funciton to generate category sitemap data
+</strong></p>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodGenerateProductSitemap" id="GenerateProductSitemap"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">GenerateProductSitemap</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a377">377</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>boolean GenerateProductSitemap(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to generate product sitemap data
+</strong></p>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodGenerateSitemap" id="GenerateSitemap"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">GenerateSitemap</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a331">331</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>boolean GenerateSitemap(
+array
+$data, string
+$file&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to generate sitemap file from data
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">array</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$data:&nbsp;</span></td>
+				<td>
+							</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$file:&nbsp;</span></td>
+				<td>
+							</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodGenerateSitemapIndex" id="GenerateSitemapIndex"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">GenerateSitemapIndex</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a352">352</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>boolean GenerateSitemapIndex(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to generate sitemap index file
+</strong></p>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodGenerateSubmitURL" id="GenerateSubmitURL"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">GenerateSubmitURL</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a467">467</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>string GenerateSubmitURL(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Utility function to generate the submit URL
+</strong></p>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodReadGZ" id="ReadGZ"><!-- --></a>
+<div class="oddrow">
+
+<div class="method-header">
+	<span class="method-title">ReadGZ</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a455">455</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>string ReadGZ(
+string
+$file&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Utility function to read and return the contents of a GZ formatted file
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$file:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> File to open</span>			</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+<a name="methodSaveFile" id="SaveFile"><!-- --></a>
+<div class="evenrow">
+
+<div class="method-header">
+	<span class="method-title">SaveFile</span>&nbsp;&nbsp;<span class="smalllinenumber">[line <a href="..//__filesource/fsource_Google-XML-Sitemap-Feed__sitemap.class.php.html#a265">265</a>]</span>
+</div>
+<br />
+
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code-border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">&nbsp;
+		<code>boolean SaveFile(
+string
+$data, string
+$type&nbsp;
+)</code>
+    </td></tr></table>
+    </td></tr></table><br /></div>
+
+	<p align="center" class="short-description"><strong>Function to save the sitemap data to file as either XML or XML.GZ format
+</strong></p>
+
+			<strong>Parameters:</strong><br />
+			<table border="0" cellspacing="0" cellpadding="0">
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$data:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> XML data</span>			</td></tr>
+					<tr><td class="indent">
+				<span class="var-type">string</span>&nbsp;&nbsp;</td>
+				<td>
+				<span class="var-name">$type:&nbsp;</span></td>
+				<td>
+				<span class="var-description"> Feed type (index, products, categories)</span>			</td></tr>
+				</table>
+
+	<br />
+	
+<strong>Information Tags:</strong><br />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="indent"><strong>Version:</strong>&nbsp;&nbsp;</td><td>1.0</td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+	
+		<br />
+	<div class="top">[ <a href="#top">Top</a> ]</div>
+</div>
+		</div>
+	</div>
+
+
+        <div class="credit">
+		    <hr class="separator" />
+		    Documentation generated on Sat,  4 Jun 2005 23:45:59 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.3.0RC3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

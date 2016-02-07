@@ -1,0 +1,126 @@
+<chapter>
+   <title>
+      Adresy
+   </title>
+   <summary>
+      Książki adresowe pozwalają oszczędzać czas. Można w nich umieszczać
+	często używane adresy poczty elektronicznej. 
+   </summary>
+   <description>
+      <p>
+      Książki adresowe pozwalają oszczędzać czas. Można w nich umieszczać
+	często używane adresy poczty elektronicznej. Wiewiórcza poczta
+	posiada również opcję korzystania z serwerów LDAP (często używanych 
+	w firmach i uczelniach w celu łatwego dostępu do bazy adresów).
+      </p>
+      <p>
+ 	Jeżeli przeglądarka obsługuje Javascript, można umożliwić korzystanie z
+	opartej na nim książki adresowej (odsyłacz <i>Konfiguracja</i>).
+	Gdy przeglądarka nie posiada tej możliwości, do obsługi książki adresowej
+	wykorzystany zostanie, bez utraty funkcjonalności, czysty HTML.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Przydomek (</b>ang. <b>Nick)
+   </title>
+   <description>
+      <p>
+ 	Nadawanie osobie przezwiska pomagającego ją zidentyfikować i
+	zapamiętać. Można umieścić tu cokolowiek dającego dokładnie
+	wyobrażenie o osobie, do której dany adres poczty elektronicznej
+	 należy.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Adres poczty elektronicznej (</b>ang. <b>E-mail)
+   </title>
+   <description>
+      <p>
+       Musi to być konkretny, poprawny adres poczty elektronicznej. "Strzelanie" na
+	nic się tu nie przyda. Adres składa się z trzech części.
+	Pierwsza to identyfikator odbiorcy, taki jak "jasio". Kolejna to część
+	nazwy domenowej określająca serwer, na przykład "cogito". Ostatnia
+	określa wyższy poziom domeny i może wyglądać w ten sposób: "univ.gda.pl".
+	Identyfikator oddzielony jest od nazwy serwera tzw. małpką, symbolem
+	@, tłumaczonym jako przyimek "na". Składając wszystkie części razem, 
+	otrzymamy następujący adres: jasio@cogito.univ.gda.pl (użytkownik
+	jasio na serwerze cogito, znajdującym się na Uniwersytecie Gdańskim w Polsce)
+	Jeżeli adres jest niepoprawny, najprawdopodobniej poczta zostanie
+	zwrócona z informacją o nieznalezieniu odbiorcy.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Dodatkowe informacje
+   </title>
+   <description>
+      <p>
+ 	Kolejne pole, obok "Przydomka", pozwalające dokładniej
+	okreslić daną osobę, lecz za pomocą większej ilości informacji. Na
+	przykład, chcąć opisac osobę spotkaną w DKF-ie "Miłość Blondynki",
+	można w tym polu wpisać: "Spotkana w DKF-ie".
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Edytuj lub usuń zaznaczone
+   </title>
+   <description>
+      <p>
+ 	Te dwa przyciski umożliwiają wybranie adresu z książki adresowej, a
+	następnie jego usunięcie lub modyfikację któregoś z powyższych pól.
+	Do edycji można wybrać tylko jeden adres.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Dodaj adres
+   </title>
+   <description>
+      <p>
+ 	Wypełnienie pól i dodanie wpisu do książki adresowej. Pierwsze trzy
+	pola muszą być wypełnione ("Przydomek", "Email" oraz
+	"Imię"). Dodatkowo można wypełnić pola "Nazwisko" oraz "Dodatkowe
+	informacje".
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      LDAP
+   </title>
+   <description>
+      <p>
+ 	LDAP to protokół służący do centralnego zunifikowanego przechowywania
+	i udostępniania informacji. Dla przykładu: uczelnia może używać LDAP
+	jako jednego miejsca do przechowywania adresów poczty elektronicznej
+	wszystkich studentów i pracowników. Wiewórcza poczta, skonfigurowana
+	do korzystania z serwerem LDAP, jest zdolna do przeglądania
+	wszystkich adresów poczty elektronicznej na wydziale lub całej uczelni
+	 (wraz z innymi adresami zawartymi w książce adresowej). Wiewiórcza 
+	poczta łączy po prostu wszystkie adresy z osobistej książki adresowej
+	oraz udostępniane przez serwer LDAP i prezentuje je, jakby to była jedna
+	książka adresowa.
+      </p><p>
+ 	Ustawienia LDAP pozwalają na korzystanie z dowolnego serwera tego
+	typu lub na usunięcie tej funkcji. W przypadku wątpliwości lub
+	pytań, należy skontaktować się z administratorem systemu.
+      </p><p>
+ 	Jako że ustawienia LDAP mają wpływ na cały system Wiewiórczej
+	poczty, mogą być zmienianie wyłącznie przez administratora systemu.
+      </p>
+   </description>
+</section>

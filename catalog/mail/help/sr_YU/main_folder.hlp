@@ -1,0 +1,65 @@
+<chapter>
+   <title>
+      Indeks poruka
+   </title>
+   <summary>
+      Pod ovim menijem videćete listu poruka koje se nalaze u trenutnim 
+      direktorijumom, raspoređene određenim redosledom.
+	</summary>
+</chapter>
+
+<section>
+   <title>
+      Lista poruka
+   </title>
+   <description>
+      <p>
+      Pošto izaberete direktorijum, s desne strane će vam se prikazati lista
+      poruka u tom direktorijumu. Ispod menija se nalazi linija koja vas obaveštava
+      koje poruke gledate, numerički, i koliko ukupno poruka imate u tom direktorijumu.
+      </p><p>
+      Na primer: Pregled poruka: <B>20</B> do <B>30</B> (45 ukupno).
+      </p><p>
+      Primetićete da ukupan broj poruka može biti različit od broja nepročitanih
+      poruka prikazanih s desne strane glavnog direktorijuma.
+      </p><p>
+      Sledeće je meni s četiri dugmeta. S leve strane je lista u padajućem meniju.
+      Ova lista sadrži vaše aktivne direktorijume. Sve izabrane poruke će biti premeštene
+      u izabrani direktorijum kad se pritisne dugme Premesti. Može se prebacivati više
+      poruka odjednom. Na krajnjoj desnoj strani je dugme koje služi za brisanje izabranih 
+      poruka. Samo izaberite poruke koje vam ne trebaju i pritisnite dugme Obriši.
+      Levo od dugmeta za brisanje su dva dodatna dugmeta koji vam dozvoljavaju da obeležite
+      izabrane poruke kao pročitane ili nepročitane. 
+      </p><p>
+	  Sledeća je linija sa tri polja (Od, Datum, Naslov).  Ova polja dele
+	  listu poruka u logičke delove. Polje Od vam govori od koga je stigla poruka
+	  ili email adresu s koje je poslata. Datum prikazuje dan kada je poruka poslata
+	  i Naslov prikazuje šta je pošiljalac uneo kao temu poruke. <b>Primedba:</b> 
+	  Između polja sa datumom i naslova može da stoji malena kolona koja sadrži znake
+	   "+", "!" ili "A" a koja nije obeležena. Ako u tom polju stoji "+", to znači
+	  da ta poruka sadrži u sebi dodatke; ukoliko vidite slovo "A" to znači da ste 
+	  na tu poruku odgovorili; i ukoliko vidite znak "!" to znači da je ta poruka
+	  markirana od strane pošiljaoca kao hitna!  
+      </p><p>
+      Šta preostaje je u stvari lista konkretnih poruka. Primetićete da je nepročitana
+      pošta napisana <B>masnim</B> slovima, dok su pročitane poruke normalnog formata
+      teksta. Ova tabela se sastoji od četiri polja. S leve strane je kućica za biranje
+      poruka, ukoliko nju štiklirate time izabirate poruku s kojom posle možete raditi
+      malopre napomenute radnje (premeštanje, markiranje, i brisanje).
+      Link Promeni Sve vam dozvoljava da izaberete sve poruke koje su trenutno prikazane
+      na listi poruka.<BR>
+      Pod poljem Od su izlistani pošiljaoci
+      poruke. Iznenađujuće, zar ne? Ali vi ni ne morate da čitate ovo. Datum ide sledeće
+      i naravno na kraju Naslov poruke. 
+      </p>
+      <p>
+      Ukoliko vaše poštansko sanduče sadrži mnogo poruka, listanje poruka će biti podeljeno
+      na stranice, i prva stranica će biti prvo prikazana. Da bi se pregledale druge strane
+      postoje linkovi Prethodna i Sledeća, na dnu liste s porukama. Možete, takođe, skočiti 
+      direktno na određenu stranicu s porukama tako što ćete kliknuti na broj stranice ispisane 
+      na vrhu liste s porukama. Ukoliko pritisnete link Prikaži sve, isključićete podelu po 
+      stranicama i sve poruke će biti prikazane na jednoj stranici.
+      </p>
+      
+   </description>
+</section>

@@ -1,0 +1,225 @@
+/*
+  $Id: stylesheet.css,v 1.26 2003/06/30 20:03:50 hpdl Exp $
+
+  
+*/
+
+/* links */
+a:link, a:visited { font: normal 11px arial; color: #000; text-decoration: none; }
+a:active { font: normal 11px arial; color: #000; text-decoration: none; }
+a:hover { font: normal 11px arial; color: #CC6600; text-decoration: underline; }
+
+a.topLink:link, a.topLink:visited {font:bold 11px arial, sans-serif; color: #000; text-decoration: none;}
+a.topLink:active {font:bold 11px arial, sans-serif; color: #000; text-decoration: none;}
+a.topLink:hover {font:bold 11px arial, sans-serif; color: #000; text-decoration: underline; }
+
+a.headerLink:link, a.headerLink:visited {font:bold 10px arial, sans-serif; color: #FFF; text-decoration: none;}
+a.headerLink:active {font:bold 10px arial, sans-serif; color: #FFF; text-decoration: none;}
+a.headerLink:hover {font:bold 10px arial, sans-serif; color: #FFF; text-decoration: underline; }
+
+a.menuBoxHeadingLink:link, a.menuBoxHeadingLink:visited {font:bold 10px arial, sans-serif; color: #616060; text-decoration: none;}
+a.menuBoxHeadingLink:hover, a.menuBoxHeadingLink:active {font:bold 10px arial, sans-serif; color: #616060; text-decoration: none;}
+
+a.menuBoxContentLink:link, a.menuBoxContentLink:visited {font:normal 10px arial, sans-serif; color: #616060; text-decoration: none;}
+a.menuBoxContentLink:active {font:normal 10px arial, sans-serif; color: #616060; text-decoration: none;}
+a.menuBoxContentLink:hover {font:normal 10px arial, sans-serif; color: #616060; text-decoration: underline; }
+
+a.splitPageLink:link, a.splitPageLink:visited {font:normal 10px arial, sans-serif; color: #0000FF; text-decoration: none;}
+a.splitPageLink:active {font:normal 10px arial, sans-serif; color: #0000FF; text-decoration: none;}
+a.splitPageLink:hover {font:normal 10px arial, sans-serif; color: #0000FF; text-decoration: underline; background-color: #FFFF33;}
+
+/* menu box */
+.menuBoxHeading {font:normal 10px arial, sans-serif; color: #616060; background-color: #ffffff;}
+.menuBoxContent {font:normal 10px arial, sans-serif; color: #616060;}
+
+/* page */
+
+
+body { 
+	background-color: 
+	#ffffff; color: 
+	#000000; margin: 
+	0px; 
+	page-break-after: avoid;
+}
+
+.headerBar { background-color: #B3BAC5;}
+.headerBarContent {font:bold 10px arial, sans-serif; color: #ffffff; padding: 2px; }
+.columnLeft { background-color: #F0F1F1; border-color: #999999; border-width: 1px; border-style: solid; padding: 2px; }
+.pageHeading {font:bold 17px arial, sans-serif; color: #053389;}
+
+/* data table */
+.dataTableHeadingRow { 
+	background-color: #6295FD; font-weight:bold; 
+}
+
+.dataTableHeadingContent {
+	font:bold 11px arial, sans-serif; 
+	color: #ffffff; 
+	border-bottom:solid 1px #FFFFFF
+}
+
+.dataTableHeadingContent a {
+	font:bold 11px arial; 
+	color:#FFFFFF !important;
+}
+
+.dataTableRowSelected { background-color: #FFFFC4; font-weight:bold;}
+.dataTableRowOver { background-color: #FFFFC4; cursor: hand; }
+.dataTableContent {font:normal 11px arial, sans-serif; color: #000000; height:18px; border-right:solid 1px #FFFFFF; padding-right:5px; padding-left:5px; border-bottom:solid 1px #FFFFFF}
+
+/* info box */
+.infoBoxHeading {font:normal 11px arial, sans-serif; color: #053389; background-color: #DEE4E8; border-color: #7b9ebd; border-style: solid; border-width: 1px; border-bottom:0; border-style:dotted;}
+
+.infoBoxContent {font:normal 10px arial, sans-serif; 
+				 color: #000000; 
+				 background-color: #FFFFFF; 
+				 border: solid 1px #7b9ebd;
+				 border-top:0; 
+				 border-style:dotted;
+				 padding:5px 5px 5px 10px;
+				}
+
+/* message box */
+
+.messageBox {font:normal 10px arial, sans-serif;}
+
+/* warning message stack */
+
+.messageStack {
+    border-collapse: separate;
+    border-spacing: 2px;
+	padding:0 3px
+	}
+
+.messageStack td {
+	font:bold 11px arial, sans-serif;
+	color:#333;
+	padding: 2px 5px;
+	height: 22px; 
+	line-height:22px;
+	vertical-align:middle;
+	}
+
+.messageStack td img {
+	float:left; 
+	margin:2px 2px 0 0;
+}
+
+.messageStackError {background-color: #ffb3b5; }
+.messageStackWarning {background-color: #FFCC00;}
+.messageStackSuccess {background-color: #CCFFCC; }
+
+/* forms */
+CHECKBOX, INPUT, RADIO, SELECT, TEXTAREA, FILE {font:normal 11px arial, sans-serif;}
+FORM { display: inline; }
+
+/* account */
+.formArea { background-color: #f1f9fe; border-color: #7b9ebd; border-style: solid; border-width: 1px; }
+.formAreaTitle { font-family: Tahoma, Arial, sans-serif; font-size: 12px; font-weight: bold; }
+
+/* attributes */
+.attributes-odd { background-color: #f4f7fd; }
+.attributes-even { background-color: #ffffff; }
+
+/* miscellaneous */
+.specialPrice { color: #ff0000; }
+.oldPrice { text-decoration: line-through; }
+.fieldRequired {font:normal 10px arial, sans-serif; color: #ff0000; }
+.smallText {font:normal 10px arial, sans-serif;}
+.main {font:normal 12px arial, sans-serif;}
+.errorText {font:normal 10px arial, sans-serif; color: #ff0000; }
+
+/* START Supertracker [3924] Styles */
+.supertracker_menu {background: #D4D4D4; border: 1px solid #aaa; padding: 10px;}
+.supertracker_title {font:bold 16px Tahoma;}
+.supertracker_section {margin-top: 10px;}
+.supertracker_sub_title {font:bold 14px Tahoma; text-decoration: underline;}
+A.supertracker_link {font:bold 11px Tahoma; text-decoration: underline; margin: 5px 10px 5px 10px;}
+.supertracker_text {font:bold 11px Tahoma;}
+.supertracker_contact {font:bold 11px Tahoma; width: 100%;background: #aaaaaa;	padding: 5px; margin: 10px 0 10px 0; border: 1px solid #000000;}
+/* END Supertracker Styles */
+
+#autocomplete_choices {
+position: absolute;
+top: 63px;
+left: 8px;
+}
+
+#autocomplete_choices ul {
+font: normal 12px arial, Verdana;
+text-align:left;
+border: 1px dashed #333;
+background-color: #FFF;
+}
+
+#autocomplete_choices li {
+background-color: #FFF; 
+list-style:none; 
+padding: 2px; 
+border-bottom: none;
+text-align:left;
+margin: 0 0 0 -40px;
+padding:0 30px 0 10px;
+line-height:22px;
+}
+
+#autocomplete_choices li:hover {background-color: #FFFF99; cursor: pointer;}
+#autocomplete_choices li.selected {}
+
+/* Breadcrumb */
+td.headerNavigation {font:bold 16px arial, sans-serif; color: #616060; }
+a.headerNavigation:link, a.headerNavigation:visited {font:normal 10px arial, sans-serif; color: #616060; text-decoration: none;}
+a.headerNavigation:hover, a.headerNavigation:active {font:normal 10px arial, sans-serif; color: #616060; text-decoration: underline;}
+
+.invoiceHeading { font:normal 11px arial; }
+.invoiceTableHeadingRow {background-color: #333;}
+.invoiceTableHeadingContent { padding:2px 5px; font:bold 11px arial; color: #FFF;}
+.invoiceTableContent {
+	font-weight:normal;
+	font-size: 12px;
+	font-family: Arial, sans-serif; 
+	color: #000000; 
+	height:18px; 
+	border-right:1px solid #FFF; 
+	border-bottom:2px solid #FFF; padding: 5px;
+	}
+
+.tabEven {
+  background-color:#F0F5FB !important;
+}
+
+.tabOdd {
+  background-color:#EBF1F5 !important;
+}
+
+.tabEven:hover, .tabOdd:hover {
+  background-color:#FFFFC4 !important;
+  /*cursor:pointer;*/
+}
+
+
+.tableinfo_right-btm {
+font: normal 11px Arial; color: #000000; height:23px; border-right:solid 1px #FFFFFF; border-bottom:1px solid #FFFFFF; 
+}
+
+.tableinfo_right-end {
+border-bottom:1px solid #FFFFFF;
+
+}
+
+.align_right {
+  text-align: right; padding-right: 4px;
+}
+
+.infoTable {
+	border-collapse: collapse;
+}
+.infoTable td {
+	font:bold 11px arial;
+	color:#000;
+	border:solid 1px #FFFFFF;
+	padding:2px 2px 2px 7px;
+	height:18px;
+	vertical-align:middle;
+}

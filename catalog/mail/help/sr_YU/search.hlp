@@ -1,0 +1,90 @@
+<chapter>
+   <title>
+      Pretraživanje
+   </title>
+   <summary>
+      Pretražuje direktorijume po određenom kriterijumu. 
+   </summary>
+   <description>
+      <p>
+      S ovom korisnom alatkom, možete pretraživati određeni direktorijum 
+      prema datom kriterijumu koji ste upisali.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Uopšteno
+   </title>
+   <description>
+      <p>
+      Jednostavno izaberite direktorijum za pretraživanje, upišite u polje
+      kriterijum za pretraživanje i izaberite kroz koje delove poruka će se  
+      vršiti pretraživanje. Kada stisnete dugme Pretraži, pojaviće se lista 
+      poruka ispod formulara za pretraživanje. Tada možete pronađene poruke
+      pregledati kao normalne email poruke. 
+      </p>
+      <p>
+      Primetićete da kad čitate poruku i posle odete u stranicu za pretraživanje
+      vaš trenutno aktivni direktorijum će biti aktivni direktorijum kroz koji će
+      se vršiti pretraživanje. Na primer, ukoliko ste čitali kroz direktorijum 
+      "Prijatelji" i onda izaberete "Pretraživanje", "Prijatelji" će već biti izabrano
+      kao direktorijum kroz koji će se vršiti pretraživanje.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Šta se pretražuje
+   </title>
+   <description>
+      <p>
+      S leve strane polja za unos postoji padajući meni koji vam govori 
+      koja polja u porukama će biti pretraživana. Ona uključuju Telo poruke, Svuda,
+      Naslov, Od, Kopija, Prima.
+      </p>
+      <p>
+      <b>Telo</b> - Pretražuje kroz tekst tela poruke. Ovo je glavni deo 
+      poruke gde se nalaze važne stvari. To je tekst koji je napisao pošiljalac.
+      </p>
+      <p>
+      <b>Svuda</b> - Ova opcija će pretražiti svuda čak i kroz zaglavlja 
+      poruke. Ukoliko niste sigurni da ovo želite, onda verovatno ne želite.
+      Vratiće rezultate koje obično možda ne biste očekivali.
+      </p>
+      <p>
+      <b>Tema</b> - Pretražuje kroz Naslove svih poruka.
+      </p>
+      <p>
+      <b>Od</b> - Od koga dolazi poruka. Zapamtite da ovo može biti malo više 
+      no što inače piše u listi poruka. Normalno polje "Od" sadrži ime i email 
+      adresu pošiljaoca, ali SquirrelMail uobičajeno prikazuje samo ime.
+      Ukoliko se vaš kriterijum podudara s nekom od email adresa, ali email adrese
+      nisu prikazane, opet ćete dobiti poruke koje spadaju u domen kriterijuma koji
+      ste tražili, tj. poruke će biti pronađene.
+      </p>
+      <p>
+      <b>Prima</b> - Kome je poruka poslata. Ovo može biti mnogo adresa, i nije uvek
+      samo jedna email adresa.
+      </p>
+      <p>
+      <b>Kopija</b> - Isto kao i "Prima" samo što je ovog puta pregledana kome su poslate 
+      kopije poruka.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+   Skorašnja pretraživanja
+   </title>
+   <description>
+   Ukoliko ste uključili ovu opciju, strana za pretraživanje će prikazati i
+   sumu do prethodnih 9 pretraživanja koje ste vršili radi bržeg pristupa. 
+   Možete izabiranjem nekih od starih poruka pokrenuti ta prethodna pretraživanja.
+   Uz pomoć linka Snimi pretraživanje možete snimiti pretraživanja dok ih kasnije
+   eksplicintno ne obrišete putem Obriši iz liste skorašnjih pretraživanja. 
+   </description>
+</section>

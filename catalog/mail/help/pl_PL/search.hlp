@@ -1,0 +1,74 @@
+<chapter>
+   <title>
+      Szukaj
+   </title>
+   <summary>
+      Przeszukiwanie określonego folderu poczty według podanego kryterium.
+   </summary>
+   <description>
+      <p>
+ 	To użyteczne narzędzie umożliwia przeszukiwanie określonego folderu
+	według podanego kryterium.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Przegląd ogólny
+   </title>
+   <description>
+      <p>
+ 	Należy wybrać folder oraz pola wiadomości do przeszukania 
+	("Treść", "Temat" itd.), a także wpisać kryteria szukania.
+	Po zakończeniu procesu pod formularzem wyszukiwania zostanie wyświetlona
+	lista wyników. Tak znalezione wiadomości można przeglądać.
+      </p>
+      <p>
+ 	Należy zauważyć, że przy przeglądania listu, a następnie wybraniu
+	opcji <i>Szukania</i>, do przeszukania zostanie wybrany obecnie aktywny folder.
+	Przykładowo, przy przeglądaniu poczty w folderze
+	"Przyjaciele", a następnie kliknięcu odsyłacza <i>Szukaj</i>,
+	to właśnie folder "Przyjaciele" zostanie domyślnie wybrany do przeszukania.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Pola wiadomości do przeszukania
+   </title>
+   <description>
+      <p>
+ 	Na lewo od przycisku <i>Szukaj</i> można wybrać pola wiadomości do przeszukania.
+	Mogą to być: "Treść", "Wszędzie", "Temat", "Od", "CC", "Do".
+      </p>
+      <p>
+      <b>Treść</b> - przeszukiwanie najważniejszej części wiadomości - jej
+	treści.
+      </p>
+      <p>
+      <b>Wszędzie</b> - przeszukiwanie wszystkich pól nagłówka oraz pola treści wiadomości.
+	Najczęściej nie ma potrzeby zaznaczania tej opcji, gdyż otrzymane wyniki mogą
+	nie pokrywać się z oczekiwaniami.
+      </p>
+      <p>
+      <b>Temat</b> - przeszukiwanie pola "Temat" wszystkich wiadomości.
+      </p>
+      <p>
+ 	<b>Od</b> - od kogo otrzymano wiadomość. Pole te może zawierać więcej informacji
+	niż te wyświetlane w indeksie wiadomości foldera. Normalne pole "Od" zawiera
+	nazwę nadawcy ORAZ jego adres poczty elektronicznej, lecz Wiewiórcza poczta
+	wyświetla zwykle samą nazwę. Jeżeli kryterium wyszukiwania pasuje do
+	adresu poczty, choć nie jest wyświetlany, to wiadomość z tym adresem
+	zostanie podana w wyniku procesu wyszukiwania.
+      </p>
+      <p>
+ 	<b>Do</b> - do kogo wysłano wiadomość. Może to być jeden lub wiele adresów
+	poczty elektronicznej.
+      </p>
+      <p>
+ 	<b>Cc</b> - to samo, co w "Do", z tym że jest to odbiorca kopii	wiadomości.
+      </p>
+   </description>
+</section>

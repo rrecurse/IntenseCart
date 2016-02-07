@@ -1,0 +1,106 @@
+<chapter>
+   <title>   
+      Direktorijumi
+   </title>   
+   <summary>
+      Možete smeštati poruke u različite direktorijume. To 
+      je posebno korisno ako imate mnogo pošte i želite da
+      sve držite organizovanim. Opcije direktorijuma vam 
+      dozvoljavaju manipulaciju vašim direktorijumima.
+   </summary>
+</chapter>
+
+<section>
+   <title>
+      Pretplaćeni (uključeni) direktorijumi u levom frejmu
+   </title>
+   <description>
+      <p>
+      Trenutno uključeni i aktivni direktorijumi se nalaze u obojenom
+      polju s leve strane. Ovaj frejm se može podesiti da se automatski 
+      osvežava u stranici sa Opcijama. Na vrhu levog frejma je
+      veliki masni naslov. Ukoliko su vršene neke promene u direktorijumima
+      koji su aktivni, ova lista se može osvežiti uz pomoć linka ispod
+      naslova. začudo, ovaj link se i zove "osveži listu direktorijuma".
+      </p><p>
+      Prvi direktorijum na listi sadrži vašu primljenu poštu. 
+      Sa desne strane imena direktorijuma stoji broj u zagradi
+      "( )" koji označava količinu <I>nepročitane</I> pošte.
+      Ovaj broj jako varira u odnosu na ukupan broj poruka koje
+      su prikazane s desne strane. Pod glavnim direktorijumom vrlo  
+      je verovatno postojanje poddirektorijuma.
+      Boje ovih direktorijuma se menjaju promenom izbora Teme za
+      vaš mail, u stranici sa Opcijama.
+      </p>
+   </description>
+</section>   
+
+<section>
+   <title>
+      Obriši
+   </title>
+   <description>
+      <p>
+      Možete obrisati bilo koji od direktorijuma koji je prikazan u padajućem
+      meniju s desne strane. Zapamtite da ovaj padajući meni možda <B>neće</B> 
+      prikazati sve direktorijume koje imate. Specijalni direktorijumi poput
+      Sent ili Trash se ne mogu obrisati, i naravno ne možete obrisati INBOX.
+      </p>
+   </description>
+</section>
+
+
+<section>
+   <title>
+      Kreiraj
+   </title>
+   <description>
+      <p>
+      Direktorijumi se kreiraju jednostavnim upisivanjem imena direktorijuma u 
+      kućicu za tekst i pritiskom na Kreiraj dugme. Ukoliko želite da to bude                 poddirektorijum nekog drugog direktorijuma to možete izabrati u padajućem
+      meniju s listom svih direktorijuma. 
+      </p>
+      <p>
+      Na nekim mail serverima, postoje dve vrtse direktorijuma.
+      Jedan koji sadrži poruke, i drugi koji sadrži direktorijume. 
+      Možete videti opciju "Neka ovaj direktorijum sadrži poddirektorijume".
+      Ukoliko to imate, i uključite, direktorijum koji ste kreirali će moći samo da 
+      sadrži druge direktorijume, ali ne i poruke. U suprotnom u njemu ćete moći
+      da držite samo poruke, ali ne i druge direktorijume.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Preimenuj
+   </title>
+   <description>
+      <p>
+      Možete premienovati bilo koji direktorijum koji se nalazi u padajućem
+      meniju levo od "Preminenuj" dugmeta. Zapamtite da ova lista možda <B>ne</B> 
+      sadrži sve direktorijume koji su vam ispisani u levom frejmu. Iz istih razloga
+      dakle, ne možete preimenovati INBOX, Trash ili Sent direktorijume.
+      </p>
+   </description>
+</section>
+
+<section>
+   <title>
+      Odjavi i Prijavi
+   </title>
+   <description>
+      Definicije:<br>
+      <i>Prijavi</i>: Da biste pokrenuli direktorijum na mail serveru i  
+                        učinili ga aktivnim.<br>
+      <i>Odjavi</i>: Suprotno od prijavljivanja. Ova opcija negira aktivnost
+                        direktorijuma kod mail servera.<br>
+      <br><p>
+      Možete izabrati koliko god želite direktorijuma koje ćete prijaviti 
+      ili odjaviti, tako što kliknete na njegovo ime i stisnete odgovarajuće 
+      dugme (prijavi/odjavi) da bi ste izvršili promenu. Videćete kako je 
+      direktorijum prešao iz jedne liste u drugu. Isto tako možete i odjavljivati
+      i prijavljivati direktorijume po vašoj želji.
+      </p>
+   </description>
+</section>

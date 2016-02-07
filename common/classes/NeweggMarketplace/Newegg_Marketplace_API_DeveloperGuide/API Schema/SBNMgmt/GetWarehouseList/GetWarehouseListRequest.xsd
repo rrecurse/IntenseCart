@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="NeweggAPIRequest">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="OperationType" fixed="GetWarehouseRequest">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="GetWarehouseRequest"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="RequestBody">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="WarehouseCode" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:int">
+										<xs:enumeration value="06"/>
+										<xs:enumeration value="07"/>
+										<xs:enumeration value="08"/>
+										<xs:enumeration value="10"/>
+										<xs:enumeration value="12"/>
+										<xs:enumeration value="14"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

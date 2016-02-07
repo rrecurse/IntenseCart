@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by as13 (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="NeweggEnvelope">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocumentVersion" fixed="2.0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MessageType" type="xs:string" fixed="Price"/>
+        <xs:element name="Message">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Price">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Item" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SellerPartNumber" type="xs:string"/>
+                          <xs:element name="NeweggItemNumber" type="xs:string" minOccurs="0"/>
+                          <xs:element name="CountryCode">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="USA"/>
+                                <xs:enumeration value="AUS"/>
+                                <xs:enumeration value="IND"/>
+                                <xs:enumeration value="IRL"/>
+                                <xs:enumeration value="NLD"/>
+                                <xs:enumeration value="NZL"/>
+                                <xs:enumeration value="POL"/>
+                                <xs:enumeration value="SGP"/>
+                                <xs:enumeration value="GBR"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Currency" minOccurs="0" default="USD">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="USD"/>
+                                <xs:enumeration value="INR"/>
+                                <xs:enumeration value="EUR"/>
+                                <xs:enumeration value="NZD"/>
+                                <xs:enumeration value="PLN"/>
+                                <xs:enumeration value="SGD"/>
+                                <xs:enumeration value="AUD"/>
+                                <xs:enumeration value="GBP"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="MSRP" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal">
+                                <xs:minInclusive value="0.00"/>
+                                <xs:maxInclusive value="99999.00"/>
+                                <xs:fractionDigits value="2"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="MAP" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal">
+                                <xs:minInclusive value="0.00"/>
+                                <xs:maxInclusive value="99999.00"/>
+                                <xs:fractionDigits value="2"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="CheckoutMAP" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="True"/>
+                                <xs:enumeration value="False"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="SellingPrice" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal">
+                                <xs:minInclusive value="0.00"/>
+                                <xs:maxInclusive value="99999.00"/>
+                                <xs:fractionDigits value="2"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Shipping" default="default" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="default"/>
+                                <xs:enumeration value="free"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="ActivationMark" default="True" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="True"/>
+                                <xs:enumeration value="False"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

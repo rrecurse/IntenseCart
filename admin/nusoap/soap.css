@@ -1,0 +1,37 @@
+table {
+	font-size: 10px;
+	font-family: Verdana;
+	border-collapse: collapse;
+	width: auto;
+	}
+
+th {
+	padding: 0 0.5em;
+	text-align: center;
+	}
+
+.yellow  {
+	border-top: 1px solid #FB7A31;
+	border-bottom: 1px solid #FB7A31;
+	background: #FFC;
+	}
+
+td {
+	border-bottom: 1px solid #CCC;
+	padding: 0 0.5em;
+	}
+
+td:first-child {
+	width: 30px;
+	}
+	
+td+td {
+	border-left: 1px solid #CCC;
+	text-align: center;
+}
+
+.strip {
+	
+	background: #EFEFEF;
+	
+}

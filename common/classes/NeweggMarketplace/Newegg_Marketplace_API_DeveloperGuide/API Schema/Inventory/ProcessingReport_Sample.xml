@@ -1,0 +1,36 @@
+<NeweggEnvelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Header>
+		<DocumentVersion>1.0</DocumentVersion>
+		<!--The identifier for the very of current feed; assigned by Newegg-->
+	</Header>
+	<MessageType>ProcessingReport</MessageType>
+	<!--Fixed value-->
+	<Message>
+		<ProcessingReport>
+			<OriginalMessageName>Inventory_Sample.xml</OriginalMessageName>
+			<!--The value to identify processed message-->
+			<StatusCode>ProcessReport</StatusCode>
+			<!--Available value to identify message processing status-->
+			<OriginalMessageType>Inventory</OriginalMessageType>
+			<!--Available value to identify processed message type-->
+			<ProcessedStamp>5/13/2011 2:55:00 PM,PST</ProcessedStamp>
+			<!--the time stamp for processed message. Time format: 8/12/2010  9:32:33 PM-->
+			<ProcessingSummary>
+				<ProcessedCount>1</ProcessedCount>
+				<SuccessCount>0</SuccessCount>
+				<WithErrorCount>1</WithErrorCount>
+			</ProcessingSummary>
+			<Result>
+				<AdditionalInfo>
+					<SellerPartNumber>SP_BenTest31</SellerPartNumber>
+				</AdditionalInfo>
+				<ErrorList>
+					<Error>
+						<ErrorElement></ErrorElement>
+						<ErrorDescription><![CDATA[The  SellerItem does not exist!]]></ErrorDescription>
+					</Error>
+				</ErrorList>
+			</Result>
+		</ProcessingReport>
+	</Message>
+</NeweggEnvelope>

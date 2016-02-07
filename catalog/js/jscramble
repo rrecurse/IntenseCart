@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+while (<>) {
+  next if (/^\s*\/\//);
+  s/\r//sg;
+  $js.=$_;
+}
+$q='';
+while ($js=~/([^'"]*)(.?)/sg) {
+  $s=$1;
+  $qs=$2;
+  if (!$q) {
+    $s=~s/\s*([^\s\w])\s*/$1/sg;
+    $q=$qs if ($qs);
+  } else {
+    $q='' if (($q eq $qs) && $s!~/\\$/);
+  }
+  $rs.=$s.$qs;
+}
+
+$rs=~s/(.{160,}?[^\w\\])(\w)/$1\r\n$2/sg;
+print $rs;

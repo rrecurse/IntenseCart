@@ -1,0 +1,58 @@
+<chapter>
+   <title>
+     Wprowadzenie do Wiewiórczej poczty
+   </title>
+   <summary>
+      Wiewiórcza poczta pozwala na korzystanie z poczty elektronicznej za
+      pomocą przeglądarki WWW.
+   </summary>
+   <tion>
+      <p>
+      Czym dokładnie jest <A HREF="http://www.squirrelmail.org/index.php3?from=1">Wiewiórcza poczta</A>?
+      To interfejs sieciowy służący do pisania i odbierania poczty elektronicznej napisany
+      w języku <A HREF="http://www.php.net">PHP4</A>. Został tak zaprojektowany, by umożliwić
+      dostęp do serwera poczty z dowolnego miejsca na świecie poprzez sieć WWW. Więcej
+      informacji o sposobie działania programu oraz protokole IMAP znajduje się
+      w <A HREF="http://imap.org">tym</a> miejscu.
+      </p>
+      </description>
+</chapter>   
+
+<section>
+   <title>
+  Podstawy
+   </title>
+   <description>
+      <p>
+      Odpowiedzi na najczęściej zadawane pytanie dotyczące programu znajdują się w FAQ
+      (ang. Frequentyl Asked Questions).
+      </p>
+      <p>
+      Okno Wiewiórczej poczty w przeglądarce podzielone jest na dwie części zwane ramkami.
+      W lewej ramce pokazane są używane (subskrybowane) foldery. Więcej informacji
+      dotyczących lewej ramki znajduje się w tym dokumencie pomocy w sekcji "Foldery".
+      </p>
+      <p>
+      Większość operacji przeprowadzana jest jednak po prawej stronie. Na samej górze
+      znajduje się pierwszy pasek wyboru. Dostępne opcje to <i>Wyloguj się</i>, pozwalający
+      na bezpieczne wylogowanie po zakończeniu pracy w  programie oraz <i>Aktualny folder</i>,
+      wskazujący w którym z używanych (subskrybowanych) folderów, użytkownik znajduje się
+      w danej chwili. Po zalogowaniu domyślnie korzysta się z folderu "Inbox", więc tenże
+      zostanie pokazany.
+      </p>
+      <p>
+      Niżej znajduje się kolejny pasek wyboru, w którym dostępne opcje to:
+         <ul>
+	<li><i><b>Nowa wiadomość</b></i> - tworzenie i wysyłanie wiadomości, czyli
+	poczty elektronicznej, (ang. <i>email</i>), w tym również dołączanie
+	do nich plików.
+	<li><i><b>Adresy</b></i> - adresy znajdujące się w osobistej książce adresowej.
+	<li><i><b>Foldery</b></i> - przeprowadzanie wszelkich operacji na folderach
+	(kasowanie, tworzenie, zmiana nazwy, dokonywanie subskrypcji lub jej anulowanie).
+	<li><i><b>Konfiguracja</b></i> - zmiana ustawień (wygląd, zachowanie programu).
+	<li><i><b>Szukaj</b></i> - przeszukiwanie skrzynki pocztowej według podanych kryteriów.
+	<li><i><b>Pomoc</b></i> - właśnie tu jesteś!
+         </ul>
+      </p>
+   </description>
+</section>   

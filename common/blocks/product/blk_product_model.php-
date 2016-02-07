@@ -1,0 +1,370 @@
+<?
+
+class blk_product_model extends IXblock {
+
+  function jsObjectName() {
+    return 'productModels_'.$this->makeID();
+  }
+
+  function renderOnce() {
+?>
+<script language="javascript">
+
+function productModelObj(flds) {
+  for (var f in flds) this[f]=flds[f];
+  this.linked=[];
+  this.qty=1;
+  this.attrSelObj=[];
+  this.imageSwapObj=[];
+  this.prodSwapObj=[];
+  if (this.master) this.master.linked.push(this);
+}
+
+  productModelObj.prototype.addAttrSelector=function(obj) {
+    this.attrSelObj.push(obj);
+    var avl=this.getAvailList(this.currAttr);
+    obj.selectionChanged(this.currAttr,avl);
+  };
+  productModelObj.prototype.addImageSwap=function(obj) {
+    this.imageSwapObj.push(obj);
+  };
+  productModelObj.prototype.addProductSwap=function(obj) {
+    this.prodSwapObj.push(obj);
+  };
+  productModelObj.prototype.getAvailList=function(sll) {
+    var rs={};
+    var sl={};
+    var unsl={};
+    for (var op in this.optns) {
+      rs[op]={};
+      if (sll[op]==null) unsl[op]=true; else sl[op]=sll[op];
+    }
+    var m;
+    for (var i=0;m=this.models[i];i++) {
+      var mis=null;
+      var ovf=false;
+      for (var op in sl) if (m.attr[op]!=sl[op]) {
+	if (mis==null) mis=op; else { ovf=true; break; }
+      }
+      if (!ovf) for (var op in this.optns) if (mis==null || mis==op) {
+	if (!rs[op][m.attr[op]]) rs[op][m.attr[op]]=[];
+	rs[op][m.attr[op]].push(m);
+      }
+      if (mis==null) {
+	if (!rs[undefined]) rs[undefined]=[];
+	rs[undefined].push(m);
+      }
+    }
+    return rs;
+  };
+  productModelObj.prototype.getOffStock=function(lst) {
+    var off={};
+    for (var op in this.optns) if (lst[op]) {
+      off[op]={};
+      for (var attr in lst[op]) {
+        var stk=0;
+        for (var i=0;m=lst[op][attr][i];i++) stk+=Number(m.qty);
+	if (stk<this.qty) off[op][attr]=this.qty-stk;
+      }
+    }
+    return off;
+  };
+  productModelObj.prototype.previewAttr=function(optn,attr) {
+    var sl={};
+    for (var op in this.optns) if (op==optn && attr!=null) sl[op]=attr; else sl[op]=this.currAttr[op];
+    var slm={};
+    slm[optn]=attr;
+    var avl=this.getAvailList(sl);
+    var avm=attr==null?null:this.getAvailList(slm);
+    var off=this.getOffStock(avl);
+    for (var i=0;this.attrSelObj[i];i++) this.attrSelObj[i].selectionChanged(this.currAttr,avl,avm,off);
+  };
+  productModelObj.prototype.selectAttr=function(optn,attr) {
+    if (this.optns[optn]) {
+      if (this.optns[optn].values[attr]) this.currAttr[optn]=attr; else this.currAttr[optn]=undefined;
+    }
+    return this.master?this.master.swapAttr():this.swapAttr();
+  };
+  productModelObj.prototype.swapAttr=function() {
+    var ac=!((this.pidElement.type=='checkbox' || this.pidElement.type=='radio') && !this.pidElement.checked);
+    if (this.contentDivs) for (var i=0;this.contentDivs[i];i++) this.contentDivs[i].style.display=ac?'':'none';
+    if (!ac) {
+      this.modelSwap({});
+      return null;
+    }
+    var lids=[];
+    var mid;
+    if (this.linked) for (var i=0;this.linked[i];i++) if (mid=this.linked[i].swapAttr()) lids.push(mid);
+    this.linked_ids=lids;
+    var avl=this.getAvailList(this.currAttr);
+    var off=this.getOffStock(avl);
+    for (var i=0;this.attrSelObj[i];i++) this.attrSelObj[i].selectionChanged(this.currAttr,avl,null,off);
+    return this.modelSwap(avl);
+  };
+  productModelObj.prototype.modelSwap=function(avl) {
+    var mdls=avl[undefined];
+    var fsl=mdls && true;
+    if (!fsl) {
+      var optns=[];
+      for (var op in this.optns) optns.unshift(op);
+      for (var i=0;optns[i]!=null;i++) {
+	for (var attr in avl[optns[i]]) { mdls=avl[optns[i]][attr]; break; }
+	if (mdls) break;
+      }
+    }
+    this.pidElement.value='';
+    var errblk=$('models_attr_error_'+this.id);
+    var stockblk=$('models_stock_warning_'+this.id);
+    var availblk=$('models_date_avail_warning_'+this.id);
+    if (errblk) errblk.style.display=fsl?'none':'';
+    if (stockblk) stockblk.style.display='none';
+    if (availblk) availblk.style.display='none';
+    if (!mdls) {
+      this.currPrice=0;
+      return null;
+    }
+    var imgs=mdls[0].image['default'];
+    if (this.linked_ids && mdls[0].image.linked) for (var i=0;this.linked_ids[i];i++) if (mdls[0].image.linked[this.linked_ids[i]]) imgs=mdls[0].image.linked[this.linked_ids[i]];
+    for (var i=0;this.imageSwapObj[i];i++) this.imageSwapObj[i].imageSwap(imgs);
+    for (var i=0;this.prodSwapObj[i];i++) this.prodSwapObj[i].productSwap(mdls[0].mid);
+    this.itemPrice={min:mdls[0].price.price,max:mdls[0].price.price,quantity:mdls[0].price.quantity};
+    this.currPrice=this.displayPrice();
+    this.setField('model',mdls.length==1?mdls[0]['model']:'');
+    if (this.showCartButton) this.showCartButton(false);
+    if (fsl && mdls.length==1) {
+      if (stockblk && this.qty>Number(mdls[0].qty)) {
+        if ($('models_stock_qty_'+this.id)) $('models_stock_qty_'+this.id).innerHTML=mdls[0].qty;
+        if ($('models_stock_msg_'+this.id)) $('models_stock_msg_'+this.id).innerHTML=mdls[0].stockmsg?mdls[0].stockmsg:'';
+	stockblk.style.display='';
+<? if (STOCK_ALLOW_CHECKOUT != 'true') { ?>
+	return mdls[0].mid;
+<? } ?>
+      }
+      if (mdls[0].date_avail) {
+        $('models_date_avail_msg_'+this.id).innerHTML=mdls[0].date_avail;
+	availblk.style.display='';
+      }
+      if (this.showCartButton) this.showCartButton(true);
+      this.pidElement.value=mdls[0].mid;
+      this.attrsElement.name='attrs['+mdls[0].mid+']';
+      var attrs=[];
+      for (var op in mdls[0].attr) attrs.push(op+':'+mdls[0].attr[op]);
+      this.attrsElement.value=attrs.join(';');
+    } 
+    return mdls[0].mid;
+  };
+  productModelObj.prototype.displayPrice=function() {
+    this.qty=Number($('order_quantity')?$('order_quantity').value:1);
+    var qcur=0;
+    if (this.itemPrice.quantity) for (var q in this.itemPrice.quantity) if (Number(q)<=this.qty && Number(q)>qcur) qcur=Number(q);
+    pmin=qcur?this.itemPrice.quantity[qcur]:this.itemPrice.min;
+    pval=Number(pmin.replace(/[^\d\.]/,''));
+    if (this.linked && this.linked.length>0) {
+      for (var i=0;this.linked[i];i++) pval+=this.linked[i].currPrice;
+      pmin=pmin.replace(/\d+(\.\d*)?/,pval.toFixed(2));
+    }
+    this.setField('price',(pmin!=this.models[0].price.price?'<span class="priceChanged">'+pmin+'</span>':pmin));
+//    if ($('final_price')) $('final_price').innerHTML=(pmin!=this.models[0].price.price?'<span class="priceChanged">'+pmin+'</span>':pmin);
+//    if ($('add_product_price')) $('add_product_price').value=pmin.replace(/[^\d\.]/g,'');
+    return pval;
+  };
+  productModelObj.prototype.setField=function(fld,val) {
+    var e;
+    if (this.fields[fld]) for (var i=0;e=this.fields[fld][i];i++) {
+      if (e.tagName=='INPUT') e.value=val;
+      else e.innerHTML=val;
+    }
+  };
+  productModelObj.prototype.buyNow=function(frm) {
+    if (this.pidElement.value) {
+      if (frm.wishListClicked) { frm.wishListClicked=false; return true; }
+      if (window.addToCart) {
+        window.addToCart(frm);
+	return false;
+      }
+      return true;
+    }
+    if (this.msgSelect) this.msgSelect.style.display='';
+    return false;
+  };
+</script>
+<?
+  }
+
+  function render(&$body) {
+    if (isset($this->context['product'])) $this->pid=$this->context['product']->getProductField('products_id');
+    $this->master=$this->args['detach']?NULL:$this->context['models'];
+    $this->loadModels();
+    $selattr=isset($this->models[$this->pid])?$this->models[$this->pid]['attr']:Array();
+    if (!isset($this->master)) echo '<form method="post" action="/shopping_cart.php?action=add_product" onSubmit="return '.$this->jsObjectName().'.buyNow(this);">';
+    $this->contentDivs=Array();
+    $this->jsFields=Array();
+    $this->jsFieldIdx=0;
+?>
+<script language="javascript">
+
+window.<?=$this->jsObjectName()?>=new productModelObj({
+  id:<?=tep_js_quote($this->makeID())?>,
+  pid:<?=tep_js_quote($this->pid)?>,
+<? if (isset($this->master)) { ?>
+  master:<?=$this->master->jsObjectName()?>,
+<? } ?>
+  optns:<?=tep_js_quote($this->optns)?>,
+  models:<?=tep_js_quote_array($this->models)?>,
+  currAttr:<?=tep_js_quote($selattr)?>
+});
+
+</script>
+<?
+    $this->renderBody($body);
+
+    if (!$this->pidElement) { ?>
+<input type="hidden" name="products_id[]" id="<?=($this->pidElement='products_id_'.$this->makeID())?>" value="">
+<?  }
+    if (!$this->attrsElement) { ?>
+<input type="hidden" name="attrs[<?=$this->pid?>]" id="<?=($this->attrsElement='products_attrs_'.$this->makeID())?>" value="">
+<?  }
+?>
+<script language="javascript">
+  <?=$this->jsObjectName()?>.fields={<? $lst=Array(); foreach ($this->jsFields AS $f=>$fv) $lst[]=$f.':['.join(',',$fv).']'; echo join(',',$lst); ?>};
+  <?=$this->jsObjectName()?>.pidElement=$('<?=$this->pidElement?>');
+  <?=$this->jsObjectName()?>.attrsElement=$('<?=$this->attrsElement?>');
+  <?=$this->jsObjectName()?>.contentDivs=[<? $cds=Array(); foreach ($this->contentDivs AS $c) $cds[]="$('$c')"; echo join(',',$cds); ?>];
+<? if (isset($this->msgSelect)) { ?>
+  <?=$this->jsObjectName()?>.msgSelect=$('<?=$this->msgSelect?>');
+<? } ?>
+<? if (!isset($this->master)) { ?>
+  <?=$this->jsObjectName()?>.selectAttr();
+<? } ?>
+</script>
+<?
+    if (!isset($this->master)) echo '</form>';
+  }
+
+  function HTMLParamsSection($sec,$htargs) {
+    switch ($sec) {
+      case 'content':
+        $this->contentDivs[]=($id=$this->jsObjectName().'_cont_'.sizeof($this->contentDivs));
+        $htargs['id']="id=\"$id\"";
+	break;
+      case 'msg_select':
+        $this->msgSelect=($id=$this->jsObjectName().'_msg_select');
+        $htargs['id']="id=\"$id\"";
+	break;
+    }
+    return $htargs;
+  }
+
+  function renderSection($sec,&$body,$args) {
+    switch ($sec) {
+      case 'null_radio': $null=1;
+      case 'select_radio': $radio=1;
+      case 'select_checkbox':
+?>
+<input type="<?=$radio?'radio':'checkbox'?>" name="products_id[]" <? if (!$null) { ?>id="<?=($this->pidElement='products_id_'.$this->makeID())?>" <? } ?>value="" onClick="<?=$this->jsObjectName()?>.selectAttr();">
+<?
+	$this->renderBody($body);
+	break;
+      default: $this->renderBody($body);
+    }
+  }
+
+  function loadModels() {
+    if (isset($this->models)) return;
+    global $languages_id,$sppc_customer_group_id;
+    $mdls=Array();
+    $sort=Array();
+    $this->optns=Array();
+    $xsell=$this->args['xprice']?$this->context['xsell']:NULL;
+    $qry=tep_db_query("SELECT p.* FROM ".TABLE_PRODUCTS." m, ".TABLE_PRODUCTS." p WHERE m.products_id='".addslashes($this->pid)."' AND p.products_id=m.master_products_id");
+    $master=tep_db_fetch_array($qry);
+    $this->master_pid=$master['products_id'];
+    $dimgs=Array(DIR_WS_CATALOG_IMAGES.$master['products_image']);
+    $this->imglist=Array();
+    for ($i=1;$i<=4;$i++) if ($master['products_image_xl_'.$i]) $dimgs[$i]=DIR_WS_CATALOG_IMAGES.$master['products_image_xl_'.$i];
+    foreach ($dimgs AS $img) $this->imglist[$img]=$img;
+    $qry=tep_db_query("SELECT pa.*,p.products_image,p.products_price,p.products_model,p.products_tax_class_id,p.products_quantity,o.products_options_name,ov.products_options_values_name,p.products_date_available,  p.products_image_xl_1,p.products_image_xl_2,p.products_image_xl_3,p.products_image_xl_4,p.products_date_available FROM ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_ATTRIBUTES." pa LEFT JOIN ".TABLE_PRODUCTS_OPTIONS." o ON pa.options_id=o.products_options_id AND o.language_id='$languages_id' LEFT JOIN ".TABLE_PRODUCTS_OPTIONS_VALUES." ov ON pa.options_values_id=ov.products_options_values_id AND ov.language_id='$languages_id' WHERE p.master_products_id='".$master['products_id']."' AND pa.products_id=p.products_id AND p.products_id!=p.master_products_id ORDER BY pa.options_sort,pa.options_values_sort");
+    while ($row=tep_db_fetch_array($qry)) {
+      $mid=$row['products_id'];
+      $optn=$row['options_id'];
+      $attr=$row['options_values_id'];
+      if (!isset($this->optns[$optn])) $this->optns[$optn]=Array('name'=>$row['products_options_name'],'values'=>Array());
+      if (!isset($this->optns[$optn]['values'][$attr])) $this->optns[$optn]['values'][$attr]=Array('name'=>$row['products_options_values_name'],'image'=>$row['options_image']);
+      if (!isset($sort[$mid])) $sort[$mid]=Array();
+      $sort[$mid][$optn]=$row['options_values_sort'];
+      if (!isset($mdls[$mid])) {
+        $pf=new PriceFormatter();
+        $pf->loadProduct($mid,$languages_id,$sppc_customer_group_id,$xsell?$xsell->getXSellRef($mid):NULL);
+        $imgs=Array($row['products_image']?DIR_WS_CATALOG_IMAGES.$row['products_image']:$dimgs[0]);
+        for ($i=1;$i<=4;$i++) $imgs[$i]=$row['products_image_xl_'.$i]?DIR_WS_CATALOG_IMAGES.$row['products_image_xl_'.$i]:$dimgs[$i];
+	foreach ($imgs AS $img) if ($img) $this->imglist[$img]=$img;
+        $mdls[$mid]=Array('mid'=>$mid,'attr'=>Array($optn=>$attr),'image'=>Array('default'=>$imgs),'price'=>$pf->getPriceArray(),'model'=>$row['products_model'],'qty'=>$row['products_quantity'],'date_avail'=>$this->_dateAvail($row['products_date_available']));
+      } else $mdls[$mid]['attr'][$optn]=$attr;
+    }
+    if ($mdls) {
+      asort($sort);
+      $this->models=Array();
+      foreach ($sort AS $mid=>$srt) $this->models[$mid]=$mdls[$mid];
+    } else {
+      $pf=new PriceFormatter();
+      $pf->loadProduct($master['products_id'],$languages_id,$sppc_customer_group_id,$xsell?$xsell->getXSellRef($master['products_id']):NULL);
+      $this->models=Array($master['products_id']=>Array('mid'=>$master['products_id'],'attr'=>Array(),'image'=>Array('default'=>$dimgs),'price'=>$pf->getPriceArray(),'model'=>$master['products_model'],'qty'=>$master['products_quantity'],'date_avail'=>$this->_dateAvail($master['products_date_available'])));
+    }
+    $imglst=tep_db_read("SELECT pi.*,p.products_id AS products_id FROM products_images pi,products p WHERE (pi.products_id=p.products_id OR pi.products_id=p.master_products_id) AND p.products_id IN (".join(',',array_keys($this->models)).") ORDER BY pi.sort_order",Array('products_id','image_group','ref_id',NULL),'image_file');
+    foreach ($this->models AS $mid=>$mdl) if (isset($imglst[$mid]['linked'])) {
+//      $this->models[$mid]['image']['linked']=Array();
+//      foreach ($imglst[$mid]['linked'] AS $img) $this->models[$mid]['image']['linked'][]=DIR_WS_CATALOG_IMAGES.$img;
+      foreach ($imglst[$mid]['linked'] AS $lid=>$imgs) foreach ($imgs AS $img) if ($img) {
+        $this->models[$mid]['image']['linked'][$lid][]=$this->imglist[$img]=DIR_WS_CATALOG_IMAGES.$img;
+      }
+    }
+  }
+
+  function _dateAvail($d) {
+    if (!$d) return NULL;
+    $t=strtotime($d);
+    return $t>time()+86400?date('M d Y',$t):NULL;
+  }
+
+  function getAttrInfo($optn=NULL) {
+    $this->loadModels();
+    if (!isset($optn)) return $this->optns;
+    return isset($this->optns[$optn])?$this->optns[$optn]['values']:NULL;
+  }
+
+  function getImages() {
+    $this->loadModels();
+    return $this->imglist;
+  }
+
+  function getNumSlots() {
+    return 4;
+  }
+  
+  function getVar($var,$args) {
+    switch ($var) {
+      case 'cart_button':
+        return tep_image_submit('button_in_cart.gif', IMAGE_BUTTON_IN_CART,'id="models_cart_button_'.$this->makeID().'" onClick="return '.$this->jsObjectName().'.buyNow(this.form)"');
+      case 'products_model':
+	return '<span id="'.$this->jsMakeField('model').'"></span>';
+      case 'products_price':
+	return '<span id="'.$this->jsMakeField('price').'"></span>';
+      default: return $this->context['root']->getVar($var,$args);
+    }
+  }
+  
+  function exportContext() {
+    $ctxt=$this->context;
+    $ctxt['models']=&$this;
+    $ctxt['imageset']=&$this;
+    return $ctxt;
+  }
+  
+  function jsMakeField($fld) {
+    if (!isset($this->jsFields[$fld])) $this->jsFields[$fld]=Array();
+    $id=$this->jsObjectName().'_fld_'.(++$this->jsFieldIdx);
+    $this->jsFields[$fld][]="$('$id')";
+    return $id;
+  }
+}
+?>

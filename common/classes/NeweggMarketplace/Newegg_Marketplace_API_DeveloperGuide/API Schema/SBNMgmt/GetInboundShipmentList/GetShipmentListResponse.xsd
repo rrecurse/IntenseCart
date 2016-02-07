@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="NeweggAPIResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="IsSuccess">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="true"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="OperationType" type="xs:string" fixed="GetShipmentListResponse"/>
+				<xs:element name="SellerID" type="xs:string"/>
+				<xs:element name="ResponseBody">
+					<xs:complexType>
+						<xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="ShipmentList">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Shipment">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element name="ShipmentID" type="xs:string" minOccurs="0"/>
+                          <xs:element name="Status" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="Creating"/>
+                                <xs:enumeration value="Preparing"/>
+                                <xs:enumeration value="Ready to ship"/>
+                                <xs:enumeration value="Shipped"/>
+                                <xs:enumeration value="Partially Received"/>
+                                <xs:enumeration value="Received"/>
+                                <xs:enumeration value="Void"/>
+                                <xs:enumeration value="Manually closed"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="CreateDate" type="xs:string" minOccurs="0"/>
+                          <xs:element name="LastEditDate" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShipFrom" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShipToWarehouseCode" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="06"/>
+                                <xs:enumeration value="07"/>
+                                <xs:enumeration value="08"/>
+                                <xs:enumeration value="10"/>
+                                <xs:enumeration value="12"/>
+                                <xs:enumeration value="14"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="ShipToAddress1" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShipToAddress2" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShipToCityName" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShipToStateCode" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShipToZipCode" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShipToCountryCode" type="xs:string" minOccurs="0"/>
+                          <xs:element name="ShippingMethodCode" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="1"/>
+                                <xs:enumeration value="2"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="ShippingCarrierCode" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="101"/>
+                                <xs:enumeration value="102"/>
+                                <xs:enumeration value="103"/>
+                                <xs:enumeration value="104"/>
+                                <xs:enumeration value="105"/>
+                                <xs:enumeration value="99"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="OtherCarrierName" type="xs:string" minOccurs="0"/>
+                          <xs:element name="PackageList">
+                            <xs:complexType>
+                              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="Package">
+                                  <xs:complexType>
+                                    <xs:all>
+                                      <xs:element name="TrackingNumber" type="xs:string"/>
+                                      <xs:element name="PackageWeight" type="xs:decimal"/>
+                                      <xs:element name="PackageLength" type="xs:decimal"/>
+                                      <xs:element name="PackageHeight" type="xs:decimal"/>
+                                      <xs:element name="PackageWidth" type="xs:decimal"/>
+                                    </xs:all>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="ItemList">
+                            <xs:complexType>
+                              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="Item">
+                                  <xs:complexType>
+                                    <xs:all>
+                                      <xs:element name="SellerPartNumber" type="xs:string"/>
+                                      <xs:element name="Quantity" type="xs:integer"/>
+                                      <xs:element name="NumberofPackage" type="xs:integer"/>
+                                    </xs:all>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>							
+              </xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

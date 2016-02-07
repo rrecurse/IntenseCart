@@ -1,0 +1,96 @@
+<?
+
+class dash_box_email_summary {
+
+  var $table_cols=1;
+  var $table_rows=1;
+  var $title="Email Correspondence";
+
+  function render() {
+?>
+<div style="width:399px; overflow-x:hidden"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#8CA9C4"></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#FFFFFF"></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#8CA9C4;"></td>
+                     </tr>
+                     <tr>
+                       <td width="261" style="height:20px; background-color:#6295FD;"><span style="font:bold 12px arial;color:#FFFFFF;">&nbsp; Email
+                           Correspondence:</span></td>
+                       <td width="22" align="right" style="padding-right:7px; background-color:#6295FD;"><div class="helpicon" onMouseover="ddrivetip('<font class=featuredpopName><b>Tool Tips</b></font><br><br>More Tools Tips About This Tool Tip<br>')" onMouseout="hideddrivetip()"> </div></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:2px; background-color:#FFFFFF;"></td>
+                     </tr>
+                    <tr>
+                       <td colspan="2" style="padding-top:1px; background-color:#DEEAF8; height:20px;"><table width="283" border="0" cellpadding="0" cellspacing="0">
+                         <tr>
+                           <td width="71" align="center" style="font:bold 12px arial;"><b>Subject:</b></td>
+                           <td width="53" align="center">Unread</td>
+                           <td width="53" align="center" >Flagged</td>
+                           <td width="53" align="center" style="color:#FF0000">Urgent</td>
+                           <td width="53" align="center">&nbsp;</td>
+                         </tr>
+                       </table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="padding-top:3px; background-color:#F0F5FB; height:122px;"><table width="284" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td width="71" align="center" class="tableinfo_right-btm"><a href="#">General:</a></td>
+                          <td width="53" align="center" class="tableinfo_right-btm">0</td>
+                          <td width="53" align="center" class="tableinfo_right-btm">0</td>
+                          <td width="53" align="center" class="tableinfo_right-btm">0</td>
+                          <td width="53" align="center" class="tableinfo_right-end"><a href="#"><u>view</u></a></td>
+                        </tr>
+                        <tr>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><a href="#">Order
+                              Status:</a></td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-end"><a href="#"><u>view</u></a></td>
+                        </tr>
+                        <tr>
+                          <td align="center" class="tableinfo_right-btm"><a href="#">Support:</a></td>
+                          <td align="center" class="tableinfo_right-btm">0</td>
+                          <td align="center" class="tableinfo_right-btm">0</td>
+                          <td align="center" class="tableinfo_right-btm">0</td>
+                          <td align="center" class="tableinfo_right-end"><a href="#"><u>view</u></a></td>
+                        </tr>
+                        <tr>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><a href="#">Totals:</a></td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">0</td>
+                          <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-end"><a href="#"><u>view</u></a></td>
+                        </tr>
+                        <tr>
+                          <td colspan="5" align="center" style="padding:5px;"><table border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td><img src="images/mailbox-icon.gif" width="14" height="15"></td>
+                                <td style="padding-left:6px;"><a href="mail/src/login.php">open mail manager</a></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                      </table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="background-color:#FFFFFF; height:3px;"></td>
+                    </tr>
+            </table></div>
+	<script language="javascript">
+	<!--
+<?
+	include_once(DIR_FS_DASH_BOX_JS."main_dash.js");
+?>
+	// -->
+	</script>
+<?
+  }
+}
+?>
+

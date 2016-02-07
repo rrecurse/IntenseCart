@@ -1,0 +1,282 @@
+<?php
+//define('SITE_DOMAIN_LIST_TEST', 'vue.kiev.ua, www.vue.kiev.ua, vue.univ.kiev.ua');
+@include_once(DIR_FS_CATALOG_LOCAL.'header_tags_'.$language.'.php');
+
+class dash_box_SERP_saturation 
+	{
+		var $table_cols=1;
+	 	var $table_rows=1;
+		var $title="SERP Saturation";
+		var $compare_date, $compare_time, $se, $se_values, $se_mod, $mods;
+		function dash_box_SERP_saturation() {
+            $moduleset=tep_module('searchengine');
+            $this->mods=$moduleset->getModules();
+			$this->se = 'overall';
+            if (isset($_SESSION['SERP_se'])) {
+                $this->se = $_SESSION['SERP_se'];
+            };
+            if (isset($_GET['SERP_se'])) {
+                $this->se = $_GET['SERP_se'];
+            };
+            $this->se_values .= "<option value='overall'".(($this->se == 'overall')?' selected':'').">Overall</option>";
+            foreach($this->mods as $mod) {
+				$selected = '';
+                if ($this->se == get_class($mod)) {
+                    $this->se_mod = $mod;
+					$selected = " selected";
+                };
+                $this->se_values .= "<option value='".get_class($mod) ."'$selected>" . $mod->getName() . "</option>";
+            };
+            if (!isset($_SESSION['SERP_compare_date'])) {
+                $this->compare_date = date("m-d-Y", mktime(0,0,0,date('m')-1,date('d'),date('Y')));
+            } else {
+                $this->compare_date = $_SESSION['SERP_compare_date'];
+            };
+			if (isset($_GET['SERP_compare_date'])) $this->compare_date = $_GET['SERP_compare_date'];
+            list($month, $day, $year) = explode('-', $this->compare_date);
+            $this->compare_time = mktime(0, 0, 0, $month, $day, $year);
+			tep_session_register('SERP_compare_date');
+			tep_session_register('SERP_se');
+			$_SESSION['SERP_compare_date'] = $this->compare_date;
+			$_SESSION['SERP_se'] = $this->se;
+		}
+
+  		function render() 
+		{
+
+?>
+
+<div style="width:283px; overflow-x:hidden"><table width="283" border="0" cellspacing="0" cellpadding="0">
+                     <tr>
+        <td colspan="3" style="height:1px; background-color:#FFFFFF"></td>
+      </tr>
+	  <tr>
+                       <td colspan="2" style="height:1px; background-color:#8CA9C4"></td>
+    </tr>
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#FFFFFF"></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:1px; background-color:#8CA9C4;"></td>
+                     </tr>
+                     <tr>
+                       <td width="261" style="height:20px; background-color:#6295FD; font:bold 12px arial; color:#FFFFFF;">&nbsp; SERP Saturation:</td>
+                       <td width="22" align="right" style="padding-right:7px; background-color:#6295FD;"><div class="helpicon" onMouseover="ddrivetip('<font class=featuredpopName><b>Tool Tips</b></font><br><br>More Tools Tips About This Tool Tip<br>')" onMouseout="hideddrivetip()"> </div></td>
+                     </tr>
+                     <tr>
+                       <td colspan="2" style="height:2px; background-color:#FFFFFF;"></td>
+                     </tr>
+                    <tr>
+                      <td height="20" colspan="2" valign="top" style="padding-top:1px; background-color:#DEEAF8;">
+<table width="283" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="color:#0B2D86; font-size:12px;">&nbsp; <b>Last Month</b></td>
+    <td width="42" align="center">Google</td>
+    <td width="60" align="center">Yahoo</td>
+    <td width="42" align="center">MSN</td>
+  </tr>
+</table>
+
+</td></tr>
+<tr><td colspan="2" valign="top" style="padding-top:3px; background-color:#F0F5FB;">
+<div id="SERP_container">
+<?php
+	$this->render_ajax();
+?>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color:#DEEAF8; height:20px;" colspan="2">
+<table width="283" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td height="25" align="center" style="padding:5px;"><table border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td><img src="images/graph-icon.jpg" width="16" height="15"></td>
+                              <td style="padding-left:6px;"><a href="supertracker.php">view
+                                  full report</a></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+        </table>                      </td>
+    </tr>                 
+                   </table>
+</div>
+	<script language="javascript">
+	<!--
+	function dash_box_SERP_onblur() {
+		field =  document.getElementById('compare_date_changed'); 
+		if (field.value == 1) dash_box_SERP_update();
+	}
+	function dash_box_SERP_update_hidden() {
+		field = document.getElementById('compare_date_changed');
+		field.value = '1';
+	}
+	function dash_box_SERP_update() {
+		block = document.getElementById('SERP_container') ;
+		SERP_se = document.getElementById('se');
+		SERP_compare_date = document.getElementById('compare_date');
+		SERP_compare_date_changed = document.getElementById('compare_date_changed');
+		new ajax ( '/admin/dashboard_ajax.php?box=dash_box_SERP_saturation&SERP_compare_date=' + SERP_compare_date.value + '&' + 'SERP_se=' + SERP_se.options[SERP_se.selectedIndex].value, {update: block} );
+		SERP_compare_date_changed.value = 0;
+	}
+	function ctlToonBlur(){
+		dash_box_SERP_update();
+	}
+<?
+	include_once(DIR_FS_DASH_BOX_JS."main_dash.js");
+	include_once(DIR_FS_DASH_BOX_JS."ext_dash.js");
+?>
+	// -->
+	</script>
+<?
+  }
+  function array_add($a1, $a2) {
+	$result = array();
+	foreach ($a1 as $key => $value) {
+		if ($key == 'links') continue;
+		$result[$key] = $value + $a2[$key];
+	};
+	return $result;
+  }
+  function get_links_diff($a1, $a2) {
+	$result = array();
+	if (is_array($a1)) {
+	foreach ($a1 as $link => $pos) {
+		switch (true) {
+			case (isset($a2[$link]) && ($pos < $a2[$link])):
+				$result['moveddown']++;
+				unset($a2[$link]);
+				break;
+			case (isset($a2[$link]) && ($pos > $a2[$link])):
+				$result['movedup']++;
+				unset($a2[$link]);
+				break;
+			case (!isset($a2[$link])):
+				$result['gain']++;
+				break;
+		};
+	};
+	};
+	if (is_array($a2)) {
+	foreach ($a2 as $link => $pos) {
+		if (!isset($a1[$link])) {
+			$result['loss']++;
+		};
+	};
+	};
+	return $result;
+  }
+  function render_ajax() {
+		$keywords = explode(',',HEAD_KEY_TAG_ALL);
+		$current = array();
+		$compare = array();
+		$diff = array('movedup' => 0, 'moveddown' => 0, 'gain' =>0, 'loss' => 0);
+		if ($this->se != 'overall') {
+			$se_mod = $this->se_mod;
+			$current_result = $se_mod->getSearchStats($keywords, time(), 30);
+			$current = $this->parseResult($current_result);
+			$compare_result = $this->se_mod->getSearchStats($keywords, $this->compare_time, 30);
+			$compare = $this->parseResult($compare_result);
+			$diff = $this->get_links_diff($current['links'], $compare['links']);
+		} else {
+			foreach ($this->mods as $mod) {
+				$cr1 = $mod->getSearchStats($keywords, time(), 30);
+				$c1 = $this->parseResult($cr1);
+				$cr2 = $mod->getSearchStats($keywords, $this->compare_time, 30);
+				$c2 = $this->parseResult($cr2);
+				$current = $this->array_add($c1, $current);
+				$compare = $this->array_add($c2, $compare);
+				$temp_diff = $this->get_links_diff($c1['links'], $c2['links']);
+				$diff = $this->array_add($diff, $temp_diff);
+		return;
+			};
+		};
+?>
+<table width="283" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="tableinfo_right-btm">&nbsp; Visibility Score:</td>
+<td width=42 align="center" class="tableinfo_right-btm"><?php echo (int)$current['score'];?></td>
+<td width=60 align="center" class="tableinfo_right-btm"><?php echo (int)$compare['score'];?></td>
+<td width=42 align="center" class="tableinfo_right-btm"><?php echo (int)($current['score']-$compare['score']);?></td>
+</tr>
+<tr>
+<td bgcolor="#EBF1F5" class="tableinfo_right-btm">&nbsp; #1 Positions:</td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$current['first'];?></td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$compare['first'];?></td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)($current['first']-$compare['first']);?></td>
+</tr>
+<tr>
+<td class="tableinfo_right-btm">&nbsp; Top 5</td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)$current['top5'];?></td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)$compare['top5'];?></td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)($current['top5']-$compare['top5']);?></td>
+</tr>
+<tr>
+<td bgcolor="#EBF1F5" class="tableinfo_right-btm">&nbsp; Top 10</td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$current['top10'];?></td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$compare['top10'];?></td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)($current['top10']-$compare['top10']);?></td>
+</tr>
+<tr>
+<td class="tableinfo_right-btm">&nbsp; Top 20</td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)$current['top20'];?></td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)$compare['top20'];?></td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)($current['top20']-$compare['top20']);?></td>
+</tr>
+<tr>
+<td bgcolor="#EBF1F5" class="tableinfo_right-btm">&nbsp; Top 30</td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$current['top30'];?></td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$compare['top30'];?></td>
+<td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)($current['top30']-$compare['top30']);?></td>
+</tr>
+<tr>
+<td class="tableinfo_right-btm">&nbsp; Moved Down:</td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)$diff['moveddown'];?></td>
+<td align="center" class="tableinfo_right-btm">Moved Up:</td>
+<td align="center" class="tableinfo_right-btm"><?php echo (int)$diff['movedup'];?></td>
+</tr>
+<tr>
+  <td bgcolor="#EBF1F5" class="tableinfo_right-btm">&nbsp; Gains:</td>
+  <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$diff['gain'];?></td>
+  <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm">Losses:</td>
+  <td align="center" bgcolor="#EBF1F5" class="tableinfo_right-btm"><?php echo (int)$diff['loss'];?></td>
+</tr>
+</table>
+<?php
+  }
+  function parseResult ($results) {
+			if (!is_array($results)) return array();
+            $domains = explode(',', SITE_DOMAIN_LIST);
+            while (list(,$value) = each($domains)) {
+                $http_domains[] = 'http:\/\/' . trim(quotemeta($value));
+            };
+            $domains_regexp = implode('|', $http_domains);
+			$current = array (
+				'first'	=> 0,
+				'top5'	=> 0,
+				'top10'	=> 0,
+				'top20'	=> 0,
+				'top30'	=> 0,
+				'score'	=> 0,
+				'links'	=> array()
+			);
+            foreach ($results AS $result) while (list($pos, $value) = each($result)) {
+                if (preg_match("/^($domains_regexp)/is", $value)) {
+                    $se_pos = $pos+1;
+                    $our_links[] = $se_pos;
+		    if ($se_pos == 1) $current['first']++;
+		    else if ($se_pos<6) $current['top5']++;
+		    else if ($se_pos<11) $current['top10']++;
+		    else if ($se_pos<21) $current['top20']++;
+		    else if ($se_pos<31) $current['top30']++;
+                    $current['score'] += 31 - $se_pos;
+		    if (!isset($current['links'][$value]) || $current['links'][$value]>$se_pos) $current['links'][$value] = $se_pos;
+                };
+            };
+		return $current;
+  }
+}
+?>
+
+

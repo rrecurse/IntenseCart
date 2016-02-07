@@ -1,0 +1,187 @@
+<chapter>
+   <title>
+      Asetukset
+   </title>
+   <summary>
+      Asetuksissa voit muokata SquirrelMailin ulkonäköä ja toimintoja.
+   </summary>
+   <description>
+      <p>
+      SquirrelMailin asetuksissa on paljon vaihtoehtoja. Sinulla on koko
+      joukko mahdollisia asetuksia vaihtaa teemoja, kieltä ja muita
+      ominaisuuksia. Mahdollisuudet vaihtelevat SquirrelMailin asennuksesta
+      riippuen. Muuttaessasi asetuksia vaikutat vain omiin asetuksiisi, et
+      voi vahingossa muuttaa muiden käyttäjien asetuksia.
+      Asetuksissa on viisi pääkategoriaa: Henkilötiedot, Näyttöasetukset,
+      Viestien Merkintä, Kansioasetukset ja Indeksijärjestys.
+      </p>
+   </description>
+</chapter>
+
+<section>
+   <title>
+      Henkilötiedot
+   </title>
+   <description>
+      <b>Koko Nimi</b><br>
+      Kirjoita koko nimesi, esimerkiksi "John Doe". Tämä on se nimi jonka
+      viestisi vastaanottaja näkee. Jos jätät tämän tyhjäksi niin nimen
+      sijaan näytetään sähköpostiosoitteesi.
+      <br><br>
+      
+      <b>Sähköpostiosoite</b><br>
+      <i>Vapaaehtoinen</i> - Voit muuttaa vastaanottajalle näkyvän osoitteesi
+      Jos se eroaa siitä minkä systeemi sinulle automaattisesti valitsee.
+      <br><br>
+      
+      <b>Vastaus Osoitteeseen</b><br>
+      <i>Vapaaehtoinen</i> - Tämä on se osoite johon viestisi vastaanottaja
+      lätettää mahdollisen vastausviestin (reply). Kätevä jos osoite johon
+      haluat vastaukset ei ole sama kuin lähettäjäosoitteesi.
+      <br><br>
+      
+      <b>Allekirjoitus</b><br>
+      <i>Vapaaehtoinen</i> - Allekirjoitus on teksi joka liitetään
+      kirjoittamasi viestien perään automaattisesti. Jos haluat käyttää
+      tätä ominaisuutta niin varmista että valintaruutu "Käytetäänkö
+      allekirjoitusta?" tekstin vieressä on valittu ja että tekstiruudussa
+      on haluamasi teksti.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Näyttöasetukset 
+   </title>
+   <description>
+      <b>Teema</b><br>
+      SquirrelMailissa on monta vaihtoehtoa valita väriteemoja. Kokeilemalla
+      löydät mieleisesi.
+      <br><br>
+
+      <b>Kieli</b><br>
+      Jos englanti ei ole sinun kielesi niin voit helposti vaihtaa kielen jolla
+      useimmat asiat näytetään. Huomaa että tämä ei vaikuta viestien
+      sisältöön eikä systeemikohtaisten kansioiden nimiin.
+      <br><br>
+
+      <b>Käytetäänko Javascipt- vai HTML-osoitekirjaa?</b><br>
+      Yksi peruslinjoista SquirrelMailin teossa on ollut se ettei millään
+      sivulla käytetä Javascriptiä. Eräät kehitysryhmän jäsenet menivät
+      kuitenkin tekemään JavaScript osoitehaun. He onnistuivat siinä niin
+      hyvin ettemme raskineet sitä kokonaan hylätä. Voit itse valita
+      haluatko käyttää sitä vaiko tavallista HTML osoitehakua. Huomaa että
+      Javascript ei välttämättä toimi kaikissa selaimissa.
+      <br><br>
+      
+      <b>Viestien lukumäärä indeksissä</b><br>
+      Tämä on listalla sivua kohden näytettävien viestien lukumäärä. Jos
+      viestejä on enemmän voit käyttää "Edellinen" ja "Seuraava" linkkejä
+      listaussivuilla liikkuaksesi.
+      <br><br>
+      
+      <b>Näytettävien kirjaimien määrä riviä kohti</b><br>
+      Kuinka monta merkkiä riville kirjoitetaan. Tällä laitetaan pakollinen
+      rivinvaihto ylipitkille riveille. 86 on yleensä hyvintoimiva
+      pituus, mutta voit muuttaa tämän tarpeitesi ja halujesi mukaan.
+      <br><br>
+      
+      <b>Editori-ikkunan koko</b><br>
+      Määrittää viestien kirjoitusikkunan leveyden merkeissä.
+      <br><br>
+      
+      <b>Kansiolistan paikka</b><br>
+      Voit valita haluatko kansiolistan vasempaan vai oikeaan laitaan.
+      <br><br>
+      
+      <b>Nappien paikka viestiä kirjoitettaessa</b><br>
+      Voit valita "Osoitekirja" ja "Lähetä" nappien paikan uutta viestiä
+      kirjoitettaessa.
+      <br><br>
+      
+      <b>Kansiolistan leveys</b><br>
+      Jos sinun kansioittesi nimet ovat erittäin pitkiä niin voit kasvattaa
+      listan leveyttä tästä, leveys määritellään pikseleissä eli 
+      resoluutiopisteissä. Tilan säästämiseksi on kuitenkin hyvä pitää tämä
+      niin kapeana kuin mahdollista. 
+      <br><br>
+      
+      <b>Kansiolistan automaattipäivitysaika</b><br>
+      Valitsemalla tästä sopivan ajan selaimesi tarkistaa kansioiden tilan
+      ja päivittää kansiolistan.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Viestien Merkintä
+   </title>
+   <description>
+      Tämä toiminto helpottaa erottaamaan jo listalta sen mistä viestit
+      tulevat. Erittäin käytännöllistä jos olet mukana useissa viestilistoissa.
+      Klikkaa "Uusi" linkkiä ja luo uusi merkintäohje tai klikkaa "Muokkaa"
+      linkkiä ja muuta jo olemassa olevaa.
+      <br><br>
+      
+      <b>Tunnistukseen käytettävä nimi</b><br>
+      Kirjoita tähän haluamasi nimi joka kuvaa valintaa.
+      <br><br>
+      
+      <b>Väri</b><br>
+      Viestilistalla käytettävä taustaväri. Voit joko valita valmiin
+      vaihtoehdon tai määrittää omasi RGB hexadesimaalimäärittyksellä.
+      RGB tarkoittaa punaisen (R), vihreän (G) ja sinisen (B) värin määrää
+      asteikolla jossa alin arvo on 00 (nollanolla) ja ylin FF (255
+      desimaalisysteemissä) väriä kohti.
+      <br><br>
+      
+      <b>Täsmää</b><br>
+      Tässä määrität mikä otsikkotieto ja teksti jota haetaan.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Kansioasetukset 
+   </title>
+   <description>
+      <b>Kansion hakemistopolku</b><br>
+      Tätä vaihtoehtoa ei ole kaikissa systeemeissä. Tämä asetus on
+      sellainen että siihen ei pidä koskea jos ei ole varma siitä mitä
+      tekee.
+      <br><br>
+
+      <b>Paperikori</b><br>
+      Voit valita kansion jota käytetään paperikorina. Voit myös valita olla
+      käyttämättä paperikoria.
+      <br><br>
+      
+      <b>Lähetettyjen Kansio</b><br>
+      Kuten paperikori.
+      <br><br>
+      
+      <b>Ei-luettujen viestien esitys</b><br>
+      Valitse esitetäänkö ollenkaan, vain saapuneitten kansiossa vai
+      kaikissa kansioissa. Kaikkien kansioitten valinta saattaa hidastaa
+      SquirrelMailin toimintaa.
+      <br><br>
+      
+      <b>Ei-luettujen viestien esityksen tyyppi</b><br>
+      Määrittää miten informaatio esitetään.
+      <br><br>
+   </description>
+</section>
+
+<section>
+   <title>
+      Indeksijärjestys
+   </title>
+   <description>
+      Indeksijärjestys on sarakkeiden esittämisjärjestys viestilistalla.
+      Voit lisätä, poistaa ja siirtää sarakkeita tarpeen mukaan.
+      <br><br>
+   </description>
+</section>
