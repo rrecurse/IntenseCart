@@ -2,13 +2,16 @@
 
   require('includes/application_top.php');
 
-	if($_SERVER["HTTPS"] != "on") {
-		header("HTTP/1.1 301 Moved Permanently");
-    	header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-	    exit();
+	if(SITE_ENABLE_SSL === 1) { 
+		if($_SERVER["HTTPS"] != "on") {
+			header("HTTP/1.1 301 Moved Permanently");
+    		header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+	    	exit();
+		}
 	}
 
-	$ssl = ($_SERVER['HTTPS'] != 'off' ? 'SSL' : 'NOSSL' );
+	$ssl = (SITE_ENABLE_SSL === 1 && $_SERVER['HTTPS'] != 'off' ? 'SSL' : 'NOSSL' );
+
 	$url = FILENAME_ACCOUNT;
 
 	// # if session customer_id is already registered, no need for rest of page.

@@ -1,0 +1,10 @@
+/Project Data/nbproject/private/
+admin/www/*
+admin/apility/*
+htaccess/.htpasswd.*
+*.log
+*.sql
+*.zip
+*.gz
+*.phpsu
+iptables-save

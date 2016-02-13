@@ -1,0 +1,7 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* /images/no_image.gif [L]
+
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteRule ^cache/(.*)$ /core/image_resizer.php/$1 [L]

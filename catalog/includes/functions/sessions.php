@@ -141,36 +141,28 @@
     return session_start();
   }
 
-	function tep_session_register($variable) {
-		global $session_started;
-
-		if ($session_started == true) {
-
-			if (isset($GLOBALS[$variable])) {
-				$_SESSION[$variable] =& $GLOBALS[$variable];
-			} else {
-				$_SESSION[$variable] = null;
-			}
-		}
-
-		return false;
-	}
+  function tep_session_register($variable) {
+    global $session_started;
+    if ($session_started == true) {
+      $_SESSION[$variable] = null;
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   function tep_session_is_registered($variable) {
-                if (PHP_VERSION < 4.3) {
-                  return session_is_registered($variable);
-                } else {
-                  return isset($_SESSION) && array_key_exists($variable, $_SESSION);
-                }
+    if(isset($_SESSION[$variable])) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   function tep_session_unregister($variable) {
-                if (PHP_VERSION < 4.3) {
-                  return session_unregister($variable);
-                } else {
-                  unset($_SESSION[$variable]);
-                }
-  }  
+    unset($_SESSION[$variable]);
+  } 
+
 
   function tep_session_id($sessid = '') {
     if (!empty($sessid)) {
@@ -189,10 +181,9 @@
   }
 
   function tep_session_close() {
-    if (PHP_VERSION >= '4.0.4') {
-      return session_write_close();
-    } elseif (function_exists('session_close')) {
-      return session_close();
+    foreach($_SESSION as $key => $value) {
+      global $$key;
+      $_SESSION[$key] = $$key;
     }
   }
 

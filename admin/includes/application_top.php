@@ -9,6 +9,21 @@ $mobile = true;
 
 }
 
+  if (version_compare(phpversion(), "4.1.0", "<") === true) {
+    $_GET &= $HTTP_GET_VARS;
+    $_POST &= $HTTP_POST_VARS;
+    $_SERVER &= $HTTP_SERVER_VARS;
+    $_FILES &= $HTTP_POST_FILES;
+    $_ENV &= $HTTP_ENV_VARS;
+    if (isset($HTTP_COOKIE_VARS)) $_COOKIE &= $HTTP_COOKIE_VARS;
+  }
+
+  if (!ini_get("register_globals")) {
+    extract($_GET, EXTR_SKIP);
+    extract($_POST, EXTR_SKIP);
+    extract($_COOKIE, EXTR_SKIP);
+  } 
+
 // Start the clock for the page parse time log
   define('PAGE_PARSE_START_TIME', microtime());
 
@@ -17,24 +32,20 @@ date_default_timezone_set('UCT');
 // Set the level of error reporting
   error_reporting(E_ALL & ~E_NOTICE);
 
-// Check if register_globals is enabled.
-// Since this is a temporary measure this message is hardcoded. The requirement will be removed before 2.2 is finalized.
-  if (function_exists('ini_get')) {
-    ini_get('register_globals');
-  } else {
-	trigger_error('FATAL ERROR: register_globals is disabled in php.ini, please enable it!');
-  }
-
 // Set the local configuration parameters - mainly for developers
   if (file_exists('includes/local/configure.php')) include('includes/local/configure.php');
 
 // Include application configuration parameters
   require(dirname(__FILE__).'/configure.php');
 
-  if (SITE_ENABLE_SSL && !$_SERVER['HTTPS']) {
-    header('HTTP/1.0 302 Redirect');
-    header('Location: '.HTTP_SERVER.$_SERVER['REQUEST_URI']);
-    exit;
+ if (SITE_ENABLE_SSL === 1) {
+
+    if (!isset($_SERVER['HTTPS'])) {
+
+	    header('HTTP/1.0 302 Redirect');
+    	header('Location: '.HTTP_SERVER.$_SERVER['REQUEST_URI']);
+	    exit;
+	}
   }
 
 // Define the project version
@@ -123,8 +134,15 @@ date_default_timezone_set('UCT');
 // lets start our session
   if (!defined('NO_SESSION') || !NO_SESSION) tep_session_start();
 
+  if (!ini_get("register_globals")) {
+    if (version_compare(phpversion(), "4.1.0", "<") === true) {
+      if (isset($HTTP_SESSION_VARS)) $_SESSION &= $HTTP_SESSION_VARS;
+    }
+    extract($_SESSION, EXTR_SKIP);
+  }
+
 // set the language
-  if (!tep_session_is_registered('language') || isset($_GET['language'])) {
+  if (!tep_session_is_registered('language') || isset($_GET['language']) || empty($language)) {
     if (!tep_session_is_registered('language')) {
       tep_session_register('language');
       tep_session_register('languages_id');

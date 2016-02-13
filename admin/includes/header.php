@@ -1,7 +1,7 @@
 <script type="text/javascript">
 
 jQuery(window).resize(function() {
-	top.resizeIframe('myframe');
+	//top.resizeIframe('myframe');
 });
 
   if (window==top) {

@@ -14,6 +14,20 @@
 		$_REQUEST = $_GET + $_POST; // # $_REQUEST now holds the cleaned $_GET and std $_POST. $_COOKIE has been removed.
 	}
 
+	if (version_compare(phpversion(), "4.1.0", "<") === true) {
+		$_GET &= $HTTP_GET_VARS;
+		$_POST &= $HTTP_POST_VARS;
+		$_SERVER &= $HTTP_SERVER_VARS;
+		$_FILES &= $HTTP_POST_FILES;
+		$_ENV &= $HTTP_ENV_VARS;
+		if (isset($HTTP_COOKIE_VARS)) $_COOKIE &= $HTTP_COOKIE_VARS;
+	}
+
+	if (!ini_get("register_globals")) {
+		extract($_GET, EXTR_SKIP);
+		extract($_POST, EXTR_SKIP);
+		extract($_COOKIE, EXTR_SKIP);
+	}
 
 	// # start the timer for the page parse time log
 	define('PAGE_PARSE_START_TIME', microtime());
@@ -43,15 +57,10 @@
 		$no_sts=1;
 	}
 
-	// # check if register_globals is enabled.
-	// # since this is a temporary measure this message is hardcoded. The requirement will be removed before 2.2 is finalized.
-	if (function_exists('ini_get')) {
-		ini_get('register_globals') or exit('FATAL ERROR: register_globals is disabled in php.ini, please enable it!');
-	}
-
-	$REQUEST_URI_PATH=preg_replace('|\?.*|','',$REQUEST_URI);
+	$REQUEST_URI_PATH = preg_replace('|\?.*|','', $_SERVER['REQUEST_URI']);
 
 	if($REQUEST_URI_PATH != $PHP_SELF && DIR_CGI_CATALOG.$REQUEST_URI_PATH != $PHP_SELF && (strpos($REQUEST_URI, '.asp') !== false || strpos($REQUEST_URI, '.html') !== false)) {
+
 		include('includes/redirects.php');
 	
 		foreach ($redirect_array as $r) {
@@ -223,6 +232,7 @@
     require_once(DIR_WS_CLASSES . 'url_rewrite.php'); 
     $url_rewrite = new url_rewrite;
     $url_rewrite->request_url();
+
     //404 check
     if (isset($HTTP_GET_VARS['products_id'])) {
       if (!tep_product_exists($HTTP_GET_VARS['products_id'])) {
@@ -238,7 +248,7 @@
       //do nothing 
     } elseif (isset($HTTP_GET_VARS['info_id'])) {
       //do nothing 
-    } elseif ($_SERVER['PHP_SELF'] == DIR_CGI_CATALOG.'/'.FILENAME_DEFAULT && $REQUEST_URI_PATH!='/' && $REQUEST_URI_PATH!='/'.FILENAME_DEFAULT) {
+    } elseif ($_SERVER['PHP_SELF'] == DIR_CGI_CATALOG.'/'.FILENAME_DEFAULT && $REQUEST_URI_PATH != '/' && $REQUEST_URI_PATH != '/'.FILENAME_DEFAULT) {
       $page_404 = true;
     }
   
@@ -333,8 +343,15 @@
     $session_started = true;
   }
 
-// set SID once, even if empty
-  $SID = (defined('SID') ? SID : '');
+	if (!ini_get("register_globals")) {
+		if (version_compare(phpversion(), "4.1.0", "<") === true) {
+			if (isset($HTTP_SESSION_VARS)) $_SESSION &= $HTTP_SESSION_VARS;
+		}
+    	extract($_SESSION, EXTR_SKIP);
+	} 
+
+	// set SID once, even if empty
+	$SID = (defined('SID') ? SID : '');
 
 // verify the ssl_session_id if the feature is enabled
   if ( ($request_type == 'SSL') && (SESSION_CHECK_SSL_SESSION_ID == 'True') && (ENABLE_SSL == true) && ($session_started == true) ) {
@@ -403,7 +420,7 @@
   require(DIR_WS_CLASSES . 'email.php');
 
 // set the language
-  if (!tep_session_is_registered('language') || isset($HTTP_GET_VARS['language'])) {
+  if (!tep_session_is_registered('language') || isset($HTTP_GET_VARS['language']) || empty($language)) {
     if (!tep_session_is_registered('language')) {
       tep_session_register('language');
       tep_session_register('languages_id');

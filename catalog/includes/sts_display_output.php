@@ -22,9 +22,10 @@
 	//echo "Location: ".$_SERVER['PHP_SELF']."<br>cPath: ".$cPath."<br>Products ID: ".$HTTP_GET_VARS['products_id'];
 
 	if($page_404) {
-		//die('404');
+
 		$scriptname = '404.php';
 		$scriptbasename = '404.php';
+
 	} else {
 
 		if(isset($HTTP_GET_VARS['products_id'])) {
@@ -39,6 +40,8 @@
 		} else {
 			$scriptbasename = $scriptname;
 		}
+
+
 	}
 	
 	// # If script name contains "popup" then turn off templates and display the normal output
@@ -56,6 +59,7 @@
 	// # ///////////////////////////////////////////
 
 	// # Allow Template output control from the URL
+
 	if($HTTP_GET_VARS['sts_template'] != "") {
 		$display_template_output = $HTTP_GET_VARS['sts_template'];
 	}
@@ -103,18 +107,12 @@
 			$sts_cpath = "mfr";
 		}
 
-		// # Info pages
-		//  if (isset($HTTP_GET_VARS['info_id'])) {
-		//	$sts_cpath = "info_".$HTTP_GET_VARS['info_id'];
-		//  }
-
 		// # Split cPath into parts and check for them individually
-		$cpath_parts = (explode("_", $sts_cpath));
-	
-		if($cpath_parts[0]!='info') foreach ($cpath_parts as $a) {
+		$cpath_parts = (explode("_", $sts_cpath));	
+
+		if($cpath_parts[0] != 'info') foreach ($cpath_parts as $a) {
 			array_push($sts_template_array, STS_TEMPLATE_DIR . "index.php_$a.html");
 			$listing = 'listing_category';
-//error_log(print_r($listing,1));
 		}
 
 		if(sizeof($cpath_parts) >= 2) {
@@ -224,7 +222,7 @@ error_log(print_r('Cant open Template file:' .$sts_template_file . ' by IP - ' .
 	fclose($fh);
 }
 // # See if there are any $url_ or $urlcat_ variables in the template file, if so, flag to read them
-if (strpos($sts_template_file_contents, "\$url_") or strpos($sts_template_file_contents, "\$urlcat_") ) {
+if (strpos(stripslashes($sts_template_file_contents), "\$url_") or strpos(stripslashes($sts_template_file_contents), "\$urlcat_") ) {
 	$sts_need_url_tags = 1;
 } else {
 	$sts_need_url_tags = 0;
@@ -234,8 +232,6 @@ if (strpos($sts_template_file_contents, "\$url_") or strpos($sts_template_file_c
 // # new method of including template file as executable code and capturing the output
 if ($sts_include_template_file) {
 	require(STS_START_CAPTURE);
-	// require("phptest.php");
-	// print "require($sts_template_file);";
 
 	// We could just eval($sts_template_file_contents) instead, but we would then lose the optimization
 	// benefits that a PHP accellerator would offer in caching the compiled code, so we require() the file instead
@@ -264,7 +260,7 @@ require(STS_USER_CODE);
   require(STS_START_CAPTURE);
 
 
-  if ( file_exists(DIR_WS_INCLUDES . 'header_tags.php') ) {
+  if(file_exists(DIR_WS_INCLUDES . 'header_tags.php') ) {
     require_once(DIR_WS_FUNCTIONS . 'clean_html_comments.php');
     require_once(DIR_WS_FUNCTIONS . 'header_tags.php');
     require_once(DIR_WS_INCLUDES . 'header_tags.php');
@@ -306,7 +302,7 @@ require(STS_USER_CODE);
 
 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-	// # Detect Safari and add Touch Icons
+	// # Detect Safari browser and add Touch Icons
     if(preg_match('/Safari/i',$user_agent)) {
 
 		if(defined('CDN_CONTENT') && CDN_CONTENT != '') { 
@@ -318,6 +314,11 @@ require(STS_USER_CODE);
 		}
 
     }
+
+	// # logic to display alternative layout directory named /layout_mobile/
+	// # this is for seperation of mobile/tablet templates and desktop templates
+	// # while this can be accomplished in a single well thought out stylesheet, 
+	// # sometimes it's better for a complete seperation of the two
 
 	if (!isset($_GET['fullsite'])) {
     	$fullsite = 0;
@@ -366,9 +367,10 @@ require(STS_USER_CODE);
 		}
 	}
 
-	 // # Google mod_pagespeed should flatten these stylesheets.
+	// # END of layout_mobile logic
 
 
+	 // # Google mod_pagespeed should flatten these stylesheets if Mod_Pagespeed=on
 
 	if(defined('CDN_CONTENT') && CDN_CONTENT != '') { 
 		$template['headcontent'] .= '<link rel="stylesheet" type="text/css" media="screen" href="'. CDN_CONTENT .'/layout/css/cartbox.css">' . "\n";
@@ -403,9 +405,7 @@ require(STS_USER_CODE);
 
 	$template['headcontent'] .= get_javascript($sts_block['applicationtop2header'],'get_javascript(applicationtop2header)');
 
-	
-	// # moved blk_product_model.js from /IXcore/common/blocks/product/blk_product_model.php
-	// # was included in every instance of product object - sometimes 20 times per page!
+
 	if(defined('CDN_CONTENT') && CDN_CONTENT != '') { 
 		$template['headcontent'] .= '<script src="'. CDN_CONTENT .'/js/blocks/blk_product_model.js"></script>' . "\n";
 	} else {

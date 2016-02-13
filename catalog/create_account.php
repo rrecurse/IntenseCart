@@ -4,13 +4,19 @@
 /*  Copyright (c) 2006 - 2014 IntenseCart eCommerce  */
 // ############################################
 
-if($_SERVER['SERVER_PORT'] != 443) {
-    header("HTTP/1.1 301 Moved Permanently");
-    header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-    exit();
-}
 
 	require('includes/application_top.php');
+
+if(defined('SITE_ENABLE_SSL') && (SITE_ENABLE_SSL === 1 || SITE_ENABLE_SSL == 'true')) { 
+
+	if(SITE_ENABLE_SSL === 1 && $_SERVER['SERVER_PORT'] != 443) {
+    	header("HTTP/1.1 301 Moved Permanently");
+	    header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    	exit();
+	}
+}
+
+
   
 	if(isset($_POST['apply'])) { 
 		$apply = tep_db_prepare_input($_POST['apply']); 

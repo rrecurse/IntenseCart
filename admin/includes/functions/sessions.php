@@ -82,28 +82,21 @@ session_set_save_handler('_sess_open', '_sess_close', '_sess_read', '_sess_write
 		return session_start();
 	}
 
-	function tep_session_register($variable) {
+  function tep_session_register($variable) {
+    $_SESSION[$variable] = null;
+  }
 
-		global $session_started;
-		if($session_started == true) {
-			if(isset($GLOBALS[$variable])) {
-				$_SESSION[$variable] =& $GLOBALS[$variable];
-			} else {
-				$_SESSION[$variable] = null;
-			}
-		}
+  function tep_session_is_registered($variable) {
+    if(isset($_SESSION[$variable])) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-		return false;
-	}
-
-	function tep_session_is_registered($variable) {
-		return isset($_SESSION) && array_key_exists($variable, $_SESSION);
-                
-	}
-
-	function tep_session_unregister($variable) {
-		unset($_SESSION[$variable]);
-	}
+  function tep_session_unregister($variable) {
+    unset($_SESSION[$variable]);
+  } 
 
 	function tep_session_id($sessid = '') {
 		if ($sessid != '') {
@@ -121,9 +114,12 @@ session_set_save_handler('_sess_open', '_sess_close', '_sess_read', '_sess_write
 		}
 	}
 
-	function tep_session_close() {
-		if (function_exists('session_close')) return session_close();
-	}
+  function tep_session_close() {
+    foreach($_SESSION as $key => $value) {
+      global $$key;
+      $_SESSION[$key] = $$key;
+    }
+  } 
 
 	function tep_session_destroy() {
 		return session_destroy();

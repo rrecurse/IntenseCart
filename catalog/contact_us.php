@@ -6,10 +6,14 @@
 
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CONTACT_US);
 
-	if((empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'off') || $_SERVER['SERVER_PORT'] != 443) {
-	    header("HTTP/1.1 301 Moved Permanently");
-	    header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-	    exit();
+
+	// # forward to secure contact page if SSL is enables and an SSL certificate is installed.
+	if(SITE_ENABLE_SSL === 1) { 
+		if((empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'off') || $_SERVER['SERVER_PORT'] != 443) {
+		    header("HTTP/1.1 301 Moved Permanently");
+		    header("Location: https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+		    exit();
+		}
 	}
 
   $error = false;
@@ -416,4 +420,3 @@ echo'<img src="/CaptchaSecurityImages.php?vvc='.$vvc.'" alt="" />';
 </body>
 </html>
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
-

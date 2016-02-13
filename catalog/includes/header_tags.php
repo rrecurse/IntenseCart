@@ -5,21 +5,27 @@
 $tags_array = array();
 // # Define specific settings per page:
 switch (true) {
-// # ALLPRODS.PHP
-  
-  
-  case (strstr($_SERVER['PHP_SELF'],FILENAME_ALLPRODS) or strstr($PHP_SELF,FILENAME_ALLPRODS) ):
-    $the_category_query = tep_db_query("select cd.categories_name from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = '" . $current_category_id . "' and cd.categories_id = '" . $current_category_id . "' and cd.language_id = '" . $languages_id . "'");
-    $the_category = tep_db_fetch_array($the_category_query);
+	case (strstr($_SERVER['PHP_SELF'],FILENAME_ALLPRODS) or strstr($PHP_SELF,FILENAME_ALLPRODS) ):
 
-    $the_manufacturers_query= tep_db_query("select manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . $HTTP_GET_VARS['manufacturers_id'] . "'");
-    $the_manufacturers = tep_db_fetch_array($the_manufacturers_query);
+		$the_category_query = tep_db_query("SELECT cd.categories_name 
+											FROM " . TABLE_CATEGORIES . " c
+											LEFT JOIN " . TABLE_CATEGORIES_DESCRIPTION . " cd ON cd.categories_id = '" . $current_category_id . "' AND cd.language_id = '" . $languages_id . "'
+											WHERE c.categories_id = '" . $current_category_id . "' 
+											");
+		$the_category = tep_db_fetch_array($the_category_query);
 
-    if (HTDA_ALLPRODS_ON=='1') {
-      $tags_array['desc']= HEAD_DESC_TAG_ALLPRODS . ' ' . HEAD_DESC_TAG_ALL;
-    } else {
-      $tags_array['desc']= HEAD_DESC_TAG_ALLPRODS;
-    }
+		$the_manufacturers_query= tep_db_query("SELECT manufacturers_name 
+												FROM " . TABLE_MANUFACTURERS . " 
+												WHERE manufacturers_id = '" . $_GET['manufacturers_id'] . "'
+											   ");
+
+		$the_manufacturers = tep_db_fetch_array($the_manufacturers_query);
+
+		if (HTDA_ALLPRODS_ON == '1') {
+			$tags_array['desc'] = HEAD_DESC_TAG_ALLPRODS . ' ' . HEAD_DESC_TAG_ALL;
+		} else {
+			$tags_array['desc'] = HEAD_DESC_TAG_ALLPRODS;
+		}
 
     if (HTKA_ALLPRODS_ON=='1') {
       $tags_array['keywords']= HEAD_KEY_TAG_ALL . ' ' . HEAD_KEY_TAG_ALLPRODS;
@@ -35,8 +41,8 @@ switch (true) {
     break;
 
 // # info pages
-  case isset($HTTP_GET_VARS['info_id']):
-   $info_sql=tep_db_query("SELECT page_title,htc_description,htc_keywords,info_title FROM ".TABLE_INFORMATION." WHERE information_id='".addslashes($HTTP_GET_VARS['info_id'])."'");
+  case isset($_GET['info_id']):
+   $info_sql=tep_db_query("SELECT page_title,htc_description,htc_keywords,info_title FROM ".TABLE_INFORMATION." WHERE information_id='".addslashes($_GET['info_id'])."'");
    $info_row=tep_db_fetch_array($info_sql);
    $tags_array['title']=($info_row && $info_row['page_title'])?$info_row['page_title']:HEAD_TITLE_TAG_ALL;
    $tags_array['desc']=($info_row && $info_row['htc_description'])?$info_row['htc_description']:HEAD_DESC_TAG_ALL;
@@ -44,12 +50,13 @@ switch (true) {
    break;
 
 
-  // # products_all.PHP
-  case (strstr($_SERVER['PHP_SELF'],FILENAME_PRODUCTS_ALL) or strstr($PHP_SELF,FILENAME_PRODUCTS_ALL) ):
+// # products_all.PHP
+case (strstr($_SERVER['PHP_SELF'],FILENAME_PRODUCTS_ALL) or strstr($PHP_SELF,FILENAME_PRODUCTS_ALL) ):
+
     $the_category_query = tep_db_query("select cd.categories_name from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = '" . $current_category_id . "' and cd.categories_id = '" . $current_category_id . "' and cd.language_id = '" . $languages_id . "'");
     $the_category = tep_db_fetch_array($the_category_query);
 
-    $the_manufacturers_query= tep_db_query("select manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . $HTTP_GET_VARS['manufacturers_id'] . "'");
+    $the_manufacturers_query= tep_db_query("select manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . $_GET['manufacturers_id'] . "'");
     $the_manufacturers = tep_db_fetch_array($the_manufacturers_query);
 
     if (HTDA_PRODUCTS_ALL_ON=='1') {
@@ -72,15 +79,19 @@ switch (true) {
     break;
 
 // # INDEX.PHP
-  case ((strstr($_SERVER['PHP_SELF'],FILENAME_DEFAULT) or strstr($PHP_SELF,FILENAME_DEFAULT) ) && (!isset($HTTP_GET_VARS['products_id'])) ):
+  case ((strstr($_SERVER['PHP_SELF'],FILENAME_DEFAULT) or strstr($PHP_SELF,FILENAME_DEFAULT) ) && (!isset($_GET['products_id'])) ):
+
     $the_category_query = tep_db_query("select categories_name, categories_htc_title_tag, categories_htc_desc_tag, categories_htc_keywords_tag from " . TABLE_CATEGORIES_DESCRIPTION . " where categories_id = '" . (int)$current_category_id . "' and language_id = '" . (int)$languages_id . "'");
     $the_category = tep_db_fetch_array($the_category_query);
 
-    $the_manufacturers_query= tep_db_query("select manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . (int)$HTTP_GET_VARS['manufacturers_id'] . "'");
+    $the_manufacturers_query= tep_db_query("SELECT manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . (int)$HTTP_GET_VARS['manufacturers_id'] . "'");
     $the_manufacturers = tep_db_fetch_array($the_manufacturers_query);
+
+    	//error_log(print_r('manufacturers_name - ' . $the_manufacturers['manufacturers_name'],1));
+
  
     $showCatTags = false;
-    if ($category_depth == 'nested' || ($category_depth == 'products' || isset($HTTP_GET_VARS['manufacturers_id']))) 
+    if ($category_depth == 'nested' || ($category_depth == 'products' || isset($_GET['manufacturers_id']))) 
       $showCatTags = true;
     
     if (HTDA_DEFAULT_ON=='1') {
@@ -162,8 +173,8 @@ switch (true) {
     break;
 
 // PRODUCT_INFO.PHP
-  case ($real_page_name == FILENAME_PRODUCT_INFO || strstr($_SERVER['PHP_SELF'],FILENAME_PRODUCT_INFO) || (strstr($_SERVER['PHP_SELF'],FILENAME_DEFAULT) && isset($HTTP_GET_VARS['products_id'])));
-    $tag_query = tep_db_query("SELECT products_name, products_head_title_tag, products_head_desc_tag, products_head_keywords_tag FROM " . TABLE_PRODUCTS_DESCRIPTION . " WHERE products_id = '".(int)$HTTP_GET_VARS['products_id'] . "' AND language_id = '".$languages_id . "'");
+  case ($real_page_name == FILENAME_PRODUCT_INFO || strstr($_SERVER['PHP_SELF'],FILENAME_PRODUCT_INFO) || (strstr($_SERVER['PHP_SELF'],FILENAME_DEFAULT) && isset($_GET['products_id'])));
+    $tag_query = tep_db_query("SELECT products_name, products_head_title_tag, products_head_desc_tag, products_head_keywords_tag FROM " . TABLE_PRODUCTS_DESCRIPTION . " WHERE products_id = '".(int)$_GET['products_id'] . "' AND language_id = '".$languages_id . "'");
     if (tep_db_num_rows($tag_query) > 0) {
       $tag = tep_db_fetch_array($tag_query);
       /*

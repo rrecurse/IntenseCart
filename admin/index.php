@@ -104,128 +104,6 @@
 		}
 	}
 
-/*
-
-// # sync zwave pro customers into zwp database. Run only once! 
-
-if($_SERVER['REMOTE_ADDR'] == '104.162.19.65') { 
-
-		$zwavepro = tep_db_query("SELECT pro.*, proab.*, proci.*
-								  FROM zwavepro.customers pro
-								  LEFT JOIN zwavepro.address_book proab ON proab.customers_id = pro.customers_id
-								  LEFT JOIN zwavepro.customers_info proci ON proci.customers_info_id = pro.customers_id
-								  WHERE pro.customers_group_id > 1
-								  AND (proab.entry_company_tax_id IS NOT NULL AND proab.entry_company_tax_id != '')
-AND pro.customers_email_address NOT IN ('will2green@gamil.com','josemvela@aol.com','maureen@rfwel.com','mike@jazzupmyplace.com','eric@hit-play.com','colleen@gabriellaronegas.com','ddiaz@trc-it.com','support@intensecart.com','john@jbcommaz.com','steveblinder@gmail.com','gerencia@siscomltda.com','techman@netstep.net','yoliveras@conexta.net','info@theprosautomation.com','kking2004@embarqmail.com','karcherllc@comcast.net','alfredo@alltradecorp.com','Greg@DigitalHome-Tech.com','kvmathi@gte-india.com','rob@domotica-shop.nl','gautamaddanki@gmail.com','rmiller@wiredmediaandtheater.com','vinodh.9@gmail.com','jganovsky@redatomnetworks.com','adam@araudiovideo.com','amutek@aol.com','stuff4sale@netdiversity.ca','fred.hae@gmail.com','ridaj@ihas.com.au','Chuck@gti.to','ben@trifutec.com','jolagues@capitolpacifictechnologies.com','RIC@WARNERAUDIOVIDEO.COM','theaterexperts@gmail.com','vvvmember10.oatman@imincontrol.com','pete_2003_@msn.com','gr8engr@yahoo.com','s_kumokoshi@unitedcom.co.jp','tommy@thuso.com','jairocarranco@hotmail.com','westonhull@reefopticslighting.com','andres.mora@unioninnova.com','wderskine@yahoo.com','chrisd@zwaveproducts.com','mario.cardenas@gmail.com','pdinkins@monitorclosely.com','abdullah.alsmail@revoconsystems.com','tylertdirks@gmail.com','robert.dimitri@gmail.com','roddy.pesantes@yahoo.com','rob@alaskaautomationcenter.com','Andrew.Consalvi@gmail.com','greg@moryc.com','ed11@protectamerica.com','rashid@carbonmetrics.eu','sparky111854@yahoo.com','jags@asitx.com','joejahn@jmjenterprise.com','cctv_sales@security-logics.com','eric@home-electric.ca','jim@oakwoodautomation.com','dcollins@controls4life.com','nels93@aol.com','Marvinoli@hotmail.com','steve@avutn.com','garygerman1@yahoo.com','wag@microcomseguridad.com','b_schaffner@hotmail.com','safehomefree@yahoo.com','pkeast@eresponseinc.com','sales.lionhead@gmail.com','kar_1985@hotmail.com','pfister_automation@yahoo.com','x_rere@hotmail.com','ocsat@wildblue.net','mrtechlock@gmx.com','jamesj@surechoicesecurity.com','david.mcnatt@staracsupply.com','dcollins@contrils4life.com','cmiller@4tecdirect.com','info@smartmaster.com.ua','corey@compusol.com.pa','Brandonclyde@infiniti-security.com','projetos34@hotmail.com','dchurch@atlanticcompanies.net','traceykane@ulinkav.com','enrico@rait88llc.com','k_veibell@hotmail.com','contactus@nujentek.com','jeff@usaalarmservice.com','butchc@ch-ce.com','antri44@gmail.com','pittmanmarkw@avanictech.com','todd@tntdigitalsolutions.com','greg@consultdigital.com','todd@gfss.com','hal@alarmsu.com','josh@safenetsecurity.com','Tom@reliancetec.com','alarmsamerica@gmail.com','docgadget@live.com','TERRY.CHENG@YAHOO.COM','marcabaril@gmail.com','aurso@unisolv.com','brett@kansassecurity.com','tcoleman183@live.com','toshio@privus.com.br','nolightsec@aol.com','phoenix@compuphoenix.com','brian.juris@phtcal.com','jason@epicalarm.com','ogs.cos@gmail.com','sobhi_mohamed93@yahoo.com','atech100@gmail.com','kershner@kershner.com','ray@targetsafesecurity.com','neil_fluit@blackboxxpc.com','munkhbold@monsource.mn','msanchez@mctpr.com','acurtis@panxsolutions.com','kpreston@van-preston.com','support@zwaveproducts.com','wbendelow@webeyeinc.net','david@dwelo.com','rkuhn@russmatic.com','sean@surrounded.la','kiattichai@intech1.com','Mauricechin99@gmail.com','salman@aus-automation.com','freddypastor68@yahoo.es','nicoelectronics10@gmail.com','johnzukelectric@gmail.com','gjones@naptownit.com','zwavepro@echolabs.net','btanner@smarthomesd.com','michael@z-wave.us','pablojimenoharo@gmail.com','angelpacheco11@gmail.com','dbutler@kapitalelectric.com','luciano@ezdomotics.com.br','miguel.paredes@domytec.com','sarath@prandatech.com','info@bluhawktech.com','appridge@aoi.com','mike@ahto.me','info@simplicontrol.com','john.maley@milltel.com','Eric@automationintegration.net','caftechnology@cox.net','knm.ent@live.com','sameer_saud@yahoo.com','bruno-bdco@outlook.com','john@hpytech.com','ing.maparedes@domytec.com','holly@cws-security.com','kaguilar@seguridadcosebra.com','ashish@smartspacez.com','paul@smartsuinc.com','gbraynen@orionbahamas.com','sysadd@gmail.com','zwavepro@richardlee.name','kuang@gemwel.com','pablopeces1@yahoo.com.mx','ajit.jain@securiis.com','anaconstancio@protectamerica.com','jamin@omegaunit.com','pompodakis@gmail.com','bas@b-assured.nl','david@knappandknapp.com','about@statis-online.com','oscar@irarquitectos.net','ingesis@mcasystem.com','dave@comfort-doc.com','tlove@tlovecom.com','rlmays@hotmail.com','kosta.kolaceski@gmail.com','smarthome@verizon.net','tpcoleary@gmail.com','epineda@dypsoluciones.com','mrdavidli@gmail.com','John.Johnson@youinvoketechnology.com','jrodriguez66@gmail.com','eam@primeuv.com','ricardordz1988@gmail.com','sanjeevghei@live.com','kevin@impulsevi.net','pcntecnologia@gmail.com','cscheffler@kpmg.com','Gold007eye@gmail.com','anthonychow@igloohome.co','sflaherty@jlsms.com','wilsonhomeworx@gmail.com','purchasing@allprosound.com','karl@karlcrossman.com','miguelvelhinho@gmail.com','zbl@lorenzhd.com','matt@avs-is.com','knolette@securityservicesms.com','nick@murarik.com','jmurray@alliancesecurity.com','m.khairy@tech-center.com','mustafa.chapal@gmail.com','sammuscleman@yahoo.com','info@controlas.cl','Info@bsdconsulting.com.au','pgudaris@tamed.cl','Carmen@hawleyelectric.com','primotvinstallation@gmail.com','sandeep@ltstechnologies.in','jrstewartiii@gmail.com','bryan@st4u.com','Hasan.alshaar@mas-sa.co','homedroneusmc@gmail.com','ian@k4connect.com','jaiswal.ashutosh@gmail.com','skye@bpsgreenhomes.com','michele@lkaminc.com','jim.putra@gmail.com','Erik@blackrockconcepts.com','ruizcabelloraul@gmail.com','ghardesty@advseceng.com','powera@intelife.ca','dburk6t9ss@yahoo.com','cscheffler14@gmail.com','shamm@fivealarmsecurity.com','raul@ontrack.com.do','dj@geniuscombine.com','david@stonersav.com','pete@watchdogcctv.net','iqbal.ahamed@gmail.com','darrell@truesolutions.net','ramirov@iti-usa.com','rich@manfredisystems.com','americanlandandlease@gmail.com','jvaleroc@alarmascanada.com','mjfagel@aol.com','Eg@gisinternational.com','contact@gdsm.ma','zwave@onfield-technology.com','ric@smart-tech.com.uy','florin.stana@samsolutions.ro','artf@beachcamera.com','chris@securitybyyou.com','robert@lechsmarthome.com','Hudtaylor@gmail.com','efd@efdalby.com','dananoff@gmail.com','mhassebrock@acme4security.com','gwydionjhr@outlook.com','kbeckwith@aplussecurity.com','glaso@housetek.cl','kbrundage@linkinteractive.com','reidbuilders@aol.com','dragon9681@aol.com','damicogenerator@aol.com','maxgarciar@gmail.com','dmccauley@exodustelecom.ca','felipe.rodriguez@iotmexico.com','rebeccahermans@yahoo.com','robertlevy@ecinstall.com','rl@futureimage.ca','vendors@mralarm911.com','louis.furlo@morleynet.com','larryhazen@outlook.com','sales@powerwisesystems.com','cgibson@castlewithnowalls.org','2chay713@gmail.com','Stephen.Poe@bradyservices.com','abuhl@cntrlone.com','sales@gigatech-ht.com','Becky@zwave.com','GREG@ELECTROCLUB.ORG','mahender@telexcell.com','cjansen@securimax.com','carl_hickey@hotmail.com','leesecurity.net@gmail.com','mahadev@microtronix.in','paulmc84@comcast.net','panchamukhee@yahoo.com','michelle.ocampo@veritassupply.com','scottboehme21@gmail.com','raul.gaxiola@gmail.com','ylopez@full-protection.com','adeems@arrowelectricalsupply.com')
-								  
-								");
-
-		while($pro = tep_db_fetch_array($zwavepro)) { 
-
-			$result = mysql_query("SHOW TABLE STATUS LIKE 'customers'");
-			$row = mysql_fetch_array($result);
-
-			$next_id++;
-
-			//$next = ($row['Auto_increment'] + $next_id);
-			
-			tep_db_query("INSERT IGNORE INTO customers
-						  SET purchased_without_account = '". mysql_real_escape_string($pro['purchased_without_account']) ."', 
-						  customers_gender = '". mysql_real_escape_string($pro['customers_gender']) ."', 
-						  customers_firstname = '". mysql_real_escape_string($pro['customers_firstname']) ."', 
-						  customers_lastname = '". mysql_real_escape_string($pro['customers_lastname']) ."', 
-						  customers_dob = '". mysql_real_escape_string($pro['customers_dob']) ."', 
-						  customers_email_address = '". mysql_real_escape_string($pro['customers_email_address']) ."', 
-						  customers_default_address_id = '". mysql_real_escape_string($pro['customers_default_address_id']) ."', 
-						  customers_telephone = '". mysql_real_escape_string($pro['customers_telephone']) ."', 
-						  customers_fax = '". mysql_real_escape_string($pro['customers_fax']) ."', 
-						  customers_password = '". mysql_real_escape_string($pro['customers_password']) ."', 
-						  customers_newsletter = '". mysql_real_escape_string($pro['customers_newsletter']) ."', 
-						  customers_paypal_payerid = '". mysql_real_escape_string($pro['customers_paypal_payerid']) ."', 
-						  customers_paypal_ec = '". mysql_real_escape_string($pro['customers_advertiser']) ."', 
-						  customers_advertiser = '". mysql_real_escape_string($pro['customers_advertiser']) ."', 
-						  customers_referer_url = '". mysql_real_escape_string($pro['customers_referer_url']) ."', 
-						  member_flag = '". mysql_real_escape_string($pro['member_flag']) ."', 
-						  customers_group_id = '". mysql_real_escape_string($pro['customers_group_id']) ."', 
-						  customers_group_ra = '". mysql_real_escape_string($pro['customers_group_ra']) ."', 
-						  customers_payment_allowed = '". mysql_real_escape_string($pro['customers_payment_allowed']) ."', 
-						  customers_shipment_allowed = '". mysql_real_escape_string($pro['customers_shipment_allowed']) ."', 
-						  customers_referred_by = '". mysql_real_escape_string($pro['customers_referred_by']) ."', 
-						  fb_user_id = '". mysql_real_escape_string($pro['fb_user_id'])."'						  
-						");
-
-			$next = tep_db_insert_id();
-
-			tep_db_query("INSERT IGNORE INTO address_book 
-						  SET customers_id = '".$next."',
-						  entry_gender = '". mysql_real_escape_string($pro['entry_gender']) ."',
-						  entry_company = '". mysql_real_escape_string($pro['entry_company']) ."',
-						  entry_company_tax_id = '". mysql_real_escape_string($pro['entry_company_tax_id']) ."', 
-						  entry_firstname = '". mysql_real_escape_string($pro['entry_firstname']) ."',
-						  entry_lastname = '". mysql_real_escape_string($pro['entry_lastname']) ."', 
-						  entry_street_address = '". mysql_real_escape_string($pro['entry_street_address']) ."', 
-						  entry_suburb = '". mysql_real_escape_string($pro['entry_suburb']) ."', 
-						  entry_postcode = '". mysql_real_escape_string($pro['entry_postcode']) ."', 
-						  entry_city = '". mysql_real_escape_string($pro['entry_city']) ."', 
-						  entry_state = '". mysql_real_escape_string($pro['entry_state']) ."', 
-						  entry_country_id = '". mysql_real_escape_string($pro['entry_country_id']) ."',
-						  entry_zone_id = '". mysql_real_escape_string($pro['entry_zone_id'])."'
-						");
-
-			tep_db_query("INSERT IGNORE INTO customers_info 
-						  SET customers_info_id = '".$next."',
-						  customers_info_date_of_last_logon = '". mysql_real_escape_string($pro['customers_info_date_of_last_logon']) ."', 
-						  customers_info_number_of_logons = '". mysql_real_escape_string($pro['customers_info_number_of_logons']) ."',
-						  customers_info_date_account_created = '". mysql_real_escape_string($pro['customers_info_date_account_created']) ."', 
-						  customers_info_date_account_last_modified = '". mysql_real_escape_string($pro['customers_info_date_account_last_modified']) ."',
-						  customers_info_source_id = '". mysql_real_escape_string($pro['customers_info_source_id']) ."',
-						  global_product_notifications = '". mysql_real_escape_string($pro['global_product_notifications'])."'
-						");
-
-			tep_db_query("UPDATE customers c
-						  LEFT JOIN address_book ab ON ab.customers_id = c.customers_id
-						  SET c.customers_default_address_id = ab.address_book_id
-						  WHERE c.customers_id = '".$next."'
-						");
-
-
-			
-
-			error_log($pro['customers_id'] . ' - ' . $pro['customers_email_address'] . ' - ' . $next);
-		}
-
-}
-*/
-
-/*
-$htaccess = file(IX_PATH_SITE . '/.htaccess');
-
-$fh = file_get_contents(trim(IX_PATH_SITE . '/.htaccess'));
-
-$start = '# BEGIN 301Redirects';
-$end   = '# END 301Redirects';
-
-$startpos = strpos($fh, $start) + strlen($start);
-if (strpos($fh, $start) !== false) {
-    $endpos = strpos($fh, $end, $startpos);
-    if (strpos($fh, $end, $startpos) !== false) {
-		$result = explode("\n\n",csubstr($fh, $startpos, $endpos - $startpos));
-error_log(print_r($result,1));
-    }
-}
-
-//preg_match_all('/\BEGIN 301Redirects\w+(?=# END 301Redirects)/m', $fh, $matches);
-
-//error_log(print_r($matches,1));
-
-foreach ($htaccess as $line) {
-	//error_log($line);
-
-	if(preg_match('|^Redirect 301(.*)$|m', trim($line), $matches)) { 
-	//	error_log(print_r($matches[0],1));
-	}
-}
-*/
 
 ?>
 <!DOCTYPE html>
@@ -859,49 +737,51 @@ var host = window.location.protocol+'//'+ window.location.host;
 var url = jQuery('#myframe').attr('src');
 var pos = url.indexOf('?');
 var query = url.substring(49,pos+15);
+
 jQuery(document).ready(function(){
 
 	jQuery("#theBar").click(function () { 
 
-	if(jQuery('#maintab').css('width') == "178px") {	
-			jQuery('#thePanel, #maintab').animate({'width' : '0'}, 400);
-			jQuery(".collapsePanel").toggleClass("active");
-			resizeCaller();
+		if(jQuery('#maintab').css('width') == "178px") {	
+				jQuery('#thePanel, #maintab').animate({'width' : '0'}, 400);
+				jQuery(".collapsePanel").toggleClass("active");
+				resizeCaller();
 
-		// # detect the src= of the iframe and listen for dashboard.php
-		// # this is for chart resizing on panel collapse. the other state is below
-		if(jQuery('#myframe').attr('src') == host+'/admin/dashboard.php'+ query){
-			jQuery("#myframe").contents().find("#chartHeight").animate({height : '325px'});
-			jQuery("#myframe").contents().find("body").css('height','+=82');	
-			resizeCaller();
+			// # detect the src= of the iframe and listen for dashboard.php
+			// # this is for chart resizing on panel collapse. the other state is below
+			if(jQuery('#myframe').attr('src') == host+'/admin/dashboard.php'+ query){
+				jQuery("#myframe").contents().find("#chartHeight").animate({height : '325px'});
+				jQuery("#myframe").contents().find("body").css('height','+=82');	
+				resizeCaller();
+			}
+	
+
+	    } else {
+			jQuery('#thePanel, #maintab').animate({'width' : '178'}, 400);
+    	    jQuery(".collapsePanel").removeClass("active");
+
+			//if (jQuery(document).height() > jQuery(window).height()) { 
+			//}
+
+			if(jQuery("#myframe").contents().find("body").width() > 800) {
+				//jQuery("#myframe").contents().find("body").css('height','+=150');	
+				resizeCaller();
+			} else {
+				resizeCaller();
+			}
+
+			setTimeout(function(){resizeIframe('myframe')},500);
+	
+			if (jQuery('#myframe').attr('src') == host+'/admin/dashboard.php'+ query){
+	
+				jQuery("#myframe").contents().find("#chartHeight").animate({height : '268px'});	
+				jQuery("#myframe").contents().find("body").css('height','-=82');
+				setTimeout(function(){resizeIframe('myframe')},300);
+			}
 		}
 
-
-    } else {
-		jQuery('#thePanel, #maintab').animate({'width' : '178'}, 400);
-        jQuery(".collapsePanel").removeClass("active");
-
-//if (jQuery(document).height() > jQuery(window).height()) { }
-
-	if(jQuery("#myframe").contents().find("body").width() > 800) {
-		//jQuery("#myframe").contents().find("body").css('height','+=150');	
-		resizeCaller();
-	} else {
-		resizeCaller();
-	}
-
-		setTimeout(function(){resizeIframe('myframe')},500);
-
-		if (jQuery('#myframe').attr('src') == host+'/admin/dashboard.php'+ query){
-		jQuery("#myframe").contents().find("#chartHeight").animate({height : '268px'});	
-		jQuery("#myframe").contents().find("body").css('height','-=82');
-		setTimeout(function(){resizeIframe('myframe')},300);
-		}
-    }
-    return false
-
+    	return false;
 	});
-
 });
 
 jQuery(window).resize(function() {

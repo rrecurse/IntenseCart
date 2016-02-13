@@ -22,26 +22,21 @@ if ($order_status == "")
 <head>
 <title><?php echo TITLE . ' - ' . OL_TITLE ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+
 <style type="text/css">
+
 .orderlist {
-font:bold 12px tahoma;
-
-white-space: nowrap;
-color: black;
-
-border-collapse: collapse;
-padding: 0.2em 0.3em;
+	font:bold 12px tahoma;
+	white-space: nowrap;
+	color: black;
+	border-collapse: collapse;
+	padding: 0.2em 0.3em;
 }
-
-
 </style>
+
 </head>
 <body style="margin:0; background:transparent;">
-
-<!-- header //-->
 <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-<!-- header_eof //-->
-
 
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
@@ -93,14 +88,13 @@ $status_result = tep_db_query($query_status);
 
 <br><br>
 
-<TABLE width="100%" align="center" cellspacing="0" cellpadding="4" border="1">
-<TBODY>
-  <TR class="headers" style="font:bold 14px; arial; color:#0000FF;">
-    <TD class="orderNr" align="center"><?php echo OL_ORDERNR; ?></TD>
-    <TD class="date" align="center"><?php echo OL_DATE; ?></TD>
-    <TD class="name"><?php echo OL_NAME; ?></TD>
-    <TD class="details"><?php echo OL_DETAILS; ?></TD>
-</TR>
+<table width="100%" align="center" cellspacing="0" cellpadding="4" border="1">
+  <tr class="headers" style="font:bold 14px; arial; color:#0000FF;">
+    <td class="orderNr" align="center"><?php echo OL_ORDERNR; ?></td>
+    <td class="date" align="center"><?php echo OL_DATE; ?></td>
+    <td class="name"><?php echo OL_NAME; ?></TD>
+    <td class="details"><?php echo OL_DETAILS; ?></td>
+</tr>
 
 <?php
 if (!isset($orderlist_days))

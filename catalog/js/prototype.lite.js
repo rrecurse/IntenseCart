@@ -174,7 +174,7 @@ ajax.prototype = {
 			  this.postBody=flds.join('&');
 			}
 			this.transport.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-			if (this.transport.overrideMimeType) this.transport.setRequestHeader('Connection', 'close');
+			//if (this.transport.overrideMimeType) this.transport.setRequestHeader('Connection', 'close');
 		}
 		this.transport.send(this.postBody);
 	},

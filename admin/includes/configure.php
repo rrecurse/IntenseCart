@@ -16,8 +16,8 @@
 // * DIR_FS_* = Filesystem directories (local/physical)
 // * DIR_WS_* = Webserver directories (virtual/URL)
   define('HTTP_CATALOG_SERVER', 'http://'.SITE_DOMAIN);
-  define('HTTPS_CATALOG_SERVER', (SITE_ENABLE_SSL?'https://':'http://').SITE_DOMAIN);
-  define('HTTP_SERVER', $_SERVER['HTTP_HOST']==SITE_SHARED_DOMAIN?'https://'.SITE_SHARED_DOMAIN:HTTPS_CATALOG_SERVER);
+  define('HTTPS_CATALOG_SERVER', (SITE_ENABLE_SSL === 1 ? 'https://':'http://').SITE_DOMAIN);
+  define('HTTP_SERVER', (SITE_ENABLE_SSL === 0 ? 'http://':'https://').SITE_DOMAIN);
   define('ENABLE_SSL_CATALOG', 'false'); // secure webserver for catalog module
   define('DIR_WS_ADMIN', '/admin/'); // absolute path required
   define('DIR_FS_ADMIN', DIR_FS_CORE.'admin/'); // absolute pate required

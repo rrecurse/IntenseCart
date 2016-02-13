@@ -194,7 +194,7 @@
 <meta http-equiv="refresh" content="600">
 <title>Orders View</title>
 
-<link rel="STYLESHEET" href="js/css.css" type="text/css">
+<link rel="stylesheet" href="js/css.css" type="text/css">
 <script src="js/jquery-2.0.3.min.js"></script>
 <script type="text/javascript" language="javascript" src="includes/general.js"></script>
 <script type="text/javascript" src="js/prototype.lite.js"></script>
@@ -1041,11 +1041,13 @@ function orderLoadComplete(req,id) {
 }
 
 var ordersLoaded={};
+
 function viewOrder(id) {
   if (ordersLoaded[id]==undefined) {
     ordersLoaded[id]=false;
     new ajax('<?php echo tep_href_link(FILENAME_ORDERS,'action=edit&oID=\'+id+\'')?>',{ onComplete:orderLoadComplete, onCompleteArg:id });
   }
+
   return ordersLoaded[id];
 }
 
@@ -1055,7 +1057,7 @@ function preloadOrder(id) {
   return true;
 }
 <?php if(isset($_GET['open']) && $_GET['open'] == '1') { ?>
-var ordersAccordion = new Spry.Widget.Accordion("ordersAccordion",{enableClose:true,defaultPanel: 0});
+	var ordersAccordion = new Spry.Widget.Accordion("ordersAccordion",{enableClose:true,defaultPanel: 0});
 <?php } else { ?>
 var ordersAccordion = new Spry.Widget.Accordion("ordersAccordion",{enableClose:true});
 <?php } ?>

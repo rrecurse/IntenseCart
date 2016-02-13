@@ -60,6 +60,7 @@
 
 	require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
 }
+
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>

@@ -1,33 +1,33 @@
 <?php
-ini_set('display_errors','1');
-define('ADMIN_PERMISSION','ALL');
+
 require('includes/application_top.php');
 
+define('ADMIN_PERMISSION','ALL');
 define('DIR_FS_DASH_BOX',DIR_FS_MODULES.'dash_box/');
 define('DIR_FS_DASH_BOX_JS',DIR_FS_ADMIN.'js/dash_box/');
 
-function render_td($table_cols, $table_rows, $obj)
-	{
-		if ($table_cols==1) $width=283;
-		if ($table_cols==2) $width=571;
-		if ($obj=="none")
-			{
+function render_td($table_cols, $table_rows, $obj) {
+		if ($table_cols == 1) $width=283;
+		if ($table_cols == 2) $width=571;
+
+		if ($obj=="none") {
 				print "<td rowspan=".$table_rows." colspan=".$table_cols." >&nbsp;</td>";
-			}
-		else
-			{
+			} else {
 				print "<td rowspan=".$table_rows." colspan=".$table_cols." >";
 				$obj->render();
 				print "</td>";
 			}
 	}
 
-	$sql="select dash_table, sort_order, dash_permission from admin_dash where dash_name='$dash' order by sort_order";
-	$result=tep_db_query($sql);
-	$i=0;
+	$result = tep_db_query("SELECT dash_table, sort_order, dash_permission 
+						  	FROM admin_dash 
+						  	WHERE dash_name = '". $_GET['dash'] ."'
+						  	ORDER BY sort_order
+						   ");
+	$i = 0;
 ?>
 <!DOCTYPE html>
-		<html>
+	<html>
 		<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
@@ -93,8 +93,8 @@ function render_td($table_cols, $table_rows, $obj)
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding:0 0 0 4px">
 
 <?php
-	while ($row=tep_db_fetch_array($result))
-		{
+error_log(print_r($result[0],1));
+	while ($row = tep_db_fetch_array($result)) {
 			if (!AdminPermission($row['dash_permission'])) continue;
 			$table[$i]=$row['dash_table'];
 			$table_file[$i]=DIR_FS_DASH_BOX.$table[$i].".php";
@@ -110,8 +110,7 @@ function render_td($table_cols, $table_rows, $obj)
 				}
 		}
 	$j=0;
-	while ($j<$i)
-		{
+	while ($j<$i) {
 			$cols=0;
 			print '<tr valign="top">';
 			render_td($t_cols[$j], $t_rows[$j], $obj[$j]);
